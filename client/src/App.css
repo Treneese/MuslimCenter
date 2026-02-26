@@ -1,0 +1,22 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  --primary-green: #0b3d2e;
+  --accent-gold: #caa75e;
+  --text-dark: #1f3729;
+  --text-muted: #6b806d;
+  --bg-light: #cfd2d5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Cormorant Garamond', serif;
+  background: var(--bg-light);
+  color: var(--text-dark);
+}
