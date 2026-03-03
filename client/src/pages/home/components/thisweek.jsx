@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
+
 function withFallback(url) {
   return url && String(url).trim() ? String(url).trim() : null;
 }
@@ -7,6 +8,7 @@ function withFallback(url) {
 export default function ThisWeek({ events = [], loading, error }) {
   const navigate = useNavigate();
   const list = Array.isArray(events) ? events.slice(0, 4) : [];
+  
 
   return (
     <section style={wrap}>
@@ -21,25 +23,17 @@ export default function ThisWeek({ events = [], loading, error }) {
       {error ? <p style={{ color: "crimson" }}>{error}</p> : null}
 
       {!loading && !error && (
-        <div style={grid}>
+        <div style={{ ...grid, gridTemplateColumns: isNarrow ? "1fr" : grid.gridTemplateColumns }}>
           {list.map((e) => {
-            const img = withFallback(e.image_url);
+            const imgUrl = withFallback(e.image_url);
             return (
               <div key={e.id} style={card}>
-                <div style={imgWrap}>
-                  {img ? (
-                    <img
-                      src={img}
-                      alt={e.title}
-                      style={imgStyle}
-                      onError={(ev) => {
-                        ev.currentTarget.style.display = "none";
-                      }}
-                    />
-                  ) : (
-                    <div style={imgPlaceholder}>No image yet</div>
-                  )}
-                </div>
+        
+                {imgUrl ? (
+                    <div style={imgWrap}>
+                        <img src={imgUrl} alt={e.title} style={img} />
+                        </div>
+                ) : null}
 
                 <div style={cardBody}>
                   <div style={cardTitle}>{e.title}</div>
@@ -95,10 +89,10 @@ const cta = {
 };
 
 const grid = {
-  marginTop: 14,
+  marginTop: 12,
   display: "grid",
   gap: 14,
-  gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
+  gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
 };
 
 const card = {
@@ -108,14 +102,6 @@ const card = {
   overflow: "hidden",
   display: "grid",
   gridTemplateRows: "150px auto",
-};
-
-const imgWrap = {
-  width: "100%",
-  height: "150px",
-  background: "#f3f4f6",
-  display: "grid",
-  placeItems: "center",
 };
 
 const imgStyle = {
@@ -161,4 +147,20 @@ const miniLink = {
 
 const muted = {
   color: "#6b7280",
+};
+
+const isNarrow = window.innerWidth < 900;
+
+const imgWrap = {
+  width: "100%",
+  height: 150,
+  overflow: "hidden",
+  background: "#f3f4f6",
+};
+
+const img = {
+  width: "100%",
+  height: "100%",
+  objectFit: "cover",
+  display: "block",
 };

@@ -16,15 +16,15 @@ export default function MapPanel() {
           <div style={infoGrid}>
             <div>
               <div style={label}>Address</div>
-              <div style={value}>1234 Central Ave, Detroit, MI 48201</div>
+              <div style={value}>1605 Davison St W, Detroit, MI 48238</div>
             </div>
             <div>
               <div style={label}>Phone</div>
-              <div style={value}>(313) 456-7890</div>
+              <div style={value}>(313) 883-3330</div>
             </div>
             <div>
               <div style={label}>Email</div>
-              <div style={value}>info@detroitmcc.org</div>
+              <div style={value}>contact@themuslimcenter.com</div>
             </div>
           </div>
         </div>

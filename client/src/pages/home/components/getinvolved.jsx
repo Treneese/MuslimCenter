@@ -21,10 +21,10 @@ export default function GetInvolved() {
         <div style={card}>
           <div style={muted}>Contact</div>
           <MapPanel />
-          <div style={line}>📍 Detroit, MI</div>
-          <div style={line}>📞 (313) 456-7890</div>
-          <div style={line}>✉️ info@detroitmcc.org</div>
-          <div style={tiny}>We’ll wire this to real contact info later.</div>
+          <div style={line}>📍 1605 Davison St W,
+Detroit, MI 48238</div>
+          <div style={line}>📞 (313) 883-3330</div>
+          <div style={line}>✉️ contact@themuslimcenter.com</div>
         </div>
       </div>
     </section>
