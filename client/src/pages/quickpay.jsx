@@ -4,10 +4,14 @@ import { useNavigate } from "react-router-dom";
 export default function QuickPay() {
   const navigate = useNavigate();
 
-  // ✅ Replace these with real links (or remove methods you don’t want)
-  const PAYPAL_URL = "PASTE_PAYPAL_LINK_HERE";
-  const CASHAPP_URL = "PASTE_CASHAPP_LINK_HERE";
-  const ZELLE_INSTRUCTIONS = "Zelle to: donations@yourmasjid.org";
+  // ✅ REAL LINKS
+    const PAYPAL_URL =
+    import.meta.env.VITE_QUICKPAY_PAYPAL_URL ||
+    "https://www.paypal.com/ncp/payment/8S9PKS2USMNBW";
+
+  const CASHAPP_URL =
+    import.meta.env.VITE_QUICKPAY_CASHAPP_URL ||
+    "https://cash.app/$1605TheMuslimCenter";
 
   const presetAmounts = useMemo(() => [10, 25, 50, 100, 250, 500], []);
   const [frequency, setFrequency] = useState("one-time"); // one-time | monthly
@@ -42,7 +46,7 @@ export default function QuickPay() {
         </button>
         <h1 style={{ margin: 0, color: "#1e6b3a" }}>Quick Pay</h1>
       </div>
-
+{/* 
       <p style={{ maxWidth: 900, lineHeight: 1.6, marginTop: 12 }}>
         Choose an amount, then use your preferred payment method.
       </p>
@@ -92,7 +96,7 @@ export default function QuickPay() {
               Final amount: <strong>${finalAmount || 0}</strong>
             </small>
           </div>
-        </div>
+        </div> */}
 
         <div style={card}>
           <h2 style={h2}>Pay Now</h2>
@@ -119,18 +123,13 @@ export default function QuickPay() {
             </button>
           </div>
 
-          <div style={{ marginTop: 14 }}>
-            <strong style={{ color: "#1e6b3a" }}>Zelle</strong>
-            <div style={{ marginTop: 6, opacity: 0.9 }}>{ZELLE_INSTRUCTIONS}</div>
-          </div>
-
-          <small style={{ display: "block", marginTop: 12, opacity: 0.75 }}>
+          {/* <small style={{ display: "block", marginTop: 12, opacity: 0.75 }}>
             Note: some payment portals may ask you to re-enter the amount. If you want the amount to carry over automatically,
             we can integrate Stripe Checkout later.
-          </small>
+          </small> */}
         </div>
       </div>
-    </div>
+    // </div>
   );
 }
 

@@ -46,14 +46,53 @@ export default function Navbar() {
           </div>
         </div>
 
-        <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
-          <NavLink to="/" style={linkStyle} end>Home</NavLink>
-          <NavLink to="/about" style={linkStyle}>About</NavLink>
-          <NavLink to="/programs" style={linkStyle}>Programs</NavLink>
-          <NavLink to="/prayer-times" style={linkStyle}>Prayer Times</NavLink>
-          <NavLink to="/events" style={linkStyle}>Events</NavLink>
-          <NavLink to="/donate" style={linkStyle}>Donate</NavLink>
-          <NavLink to="/contact" style={linkStyle}>Contact</NavLink>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 6,
+            flexWrap: "wrap",
+          }}
+        >
+          <NavLink to="/" style={linkStyle} end>
+            Home
+          </NavLink>
+
+          <NavLink to="/about" style={linkStyle}>
+            About
+          </NavLink>
+
+          <NavLink to="/learn" style={linkStyle}>
+            Learn
+          </NavLink>
+
+          <NavLink to="/services" style={linkStyle}>
+            Services
+          </NavLink>
+
+          <NavLink to="/programs" style={linkStyle}>
+            Programs
+          </NavLink>
+
+          <NavLink to="/prayer-times" style={linkStyle}>
+            Prayer Times
+          </NavLink>
+
+          <NavLink to="/events" style={linkStyle}>
+            Events
+          </NavLink>
+
+          <NavLink to="/donate" style={linkStyle}>
+            Donate
+          </NavLink>
+
+          <NavLink to="/contact" style={linkStyle}>
+            Contact
+          </NavLink>
+
+          <NavLink to="/get-involved" style={linkStyle}>
+          Get Involved
+          </NavLink>
         </div>
       </nav>
     </header>

@@ -4,7 +4,7 @@ from models.contact_message import ContactMessage
 
 contact_bp = Blueprint("contact", __name__)
 
-@contact_bp.post("/contact")
+@contact_bp.post("/api/contact")
 def create_contact():
     data = request.get_json() or {}
     msg_text = (data.get("message") or "").strip()

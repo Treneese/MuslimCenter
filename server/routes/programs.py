@@ -5,17 +5,17 @@ from utils.admin import require_admin
 
 programs_bp = Blueprint("programs", __name__)
 
-@programs_bp.get("/programs")
+@programs_bp.get("/api/programs")
 def get_programs():
     rows = Program.query.order_by(Program.id.desc()).all()
     return jsonify([p.to_dict() for p in rows])
 
-@programs_bp.get("/programs/<int:program_id>")
+@programs_bp.get("/api/programs/<int:program_id>")
 def get_program(program_id):
     p = Program.query.get_or_404(program_id)
     return jsonify(p.to_dict())
 
-@programs_bp.post("/programs")
+@programs_bp.post("/api/programs")
 @require_admin
 def create_program():
     data = request.get_json() or {}
@@ -24,6 +24,7 @@ def create_program():
         audience=data.get("audience"),
         schedule=data.get("schedule"),
         description=data.get("description"),
+        image_url=data.get("image_url"),
     )
     if not p.title:
         return jsonify({"error": "title is required"}), 400
@@ -32,7 +33,7 @@ def create_program():
     db.session.commit()
     return jsonify(p.to_dict()), 201
 
-@programs_bp.put("/programs/<int:program_id>")
+@programs_bp.put("/api/programs/<int:program_id>")
 @require_admin
 def update_program(program_id):
     p = Program.query.get_or_404(program_id)
@@ -43,14 +44,14 @@ def update_program(program_id):
         if not p.title:
             return jsonify({"error": "title is required"}), 400
 
-    for field in ["audience", "schedule", "description"]:
+    for field in ["audience", "schedule", "description", "image_url"]:
         if field in data:
             setattr(p, field, data.get(field))
 
     db.session.commit()
     return jsonify(p.to_dict())
 
-@programs_bp.delete("/programs/<int:program_id>")
+@programs_bp.delete("/api/programs/<int:program_id>")
 @require_admin
 def delete_program(program_id):
     p = Program.query.get_or_404(program_id)
