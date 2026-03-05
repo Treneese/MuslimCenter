@@ -18,7 +18,9 @@ export default function Home() {
 
   return (
     <div>
-      <Hero />
+   <div style={{ marginBottom: 18 }}>
+  <Hero />
+</div>
       <div style={divider} />
 
       <section style={container}>

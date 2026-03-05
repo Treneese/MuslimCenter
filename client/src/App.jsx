@@ -7,6 +7,9 @@ import Home from "./pages/home/home.jsx";
 import About from "./pages/about/aboutindex";
 import History from "./pages/about/history";
 import Leadership from "./pages/about/leadership";
+import MajlisAshuraBoard from "./pages/about/majisashura.jsx";
+import ImamsPage from "./pages/about/imams.jsx";
+import ExecutiveCommittee from "./pages/about/executivecommittee.jsx";
 import Partners from "./pages/about/partners";
 
 import Programs from "./pages/programs.jsx";
@@ -38,6 +41,7 @@ import Appointment from "./pages/get-involved/appointment";
 
 
 
+
 export default function App() {
   return (
     <div style={{ minHeight: "100vh", background:"ffffff" }}>
@@ -50,6 +54,9 @@ export default function App() {
           <Route path="/about" element={<About />} />
           <Route path="/about/history" element={<History />} />
           <Route path="/about/leadership" element={<Leadership />} />
+          <Route path="/about/leadership/majlis-ashura" element={<MajlisAshuraBoard />} />
+          <Route path="/about/leadership/imams" element={<ImamsPage />} />
+          <Route path="/about/leadership/executive" element={<ExecutiveCommittee />} />
           <Route path="/about/partners" element={<Partners />} />
 
           <Route path="/programs" element={<Programs />} />

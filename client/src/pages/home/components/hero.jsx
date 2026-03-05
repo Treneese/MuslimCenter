@@ -1,84 +1,104 @@
 // client/src/pages/home/components/Hero.jsx
 import { useNavigate } from "react-router-dom";
+import heroImg from "../../../assets/muslim center.webp"; 
 
 export default function Hero() {
   const navigate = useNavigate();
 
   return (
-    <section style={wrap}>
-      <h1 style={title}>Welcome to the Muslim Center</h1>
-      <p style={subtitle}>
-        A mosque and community hub for prayer, learning, service, and connection.
-        Join us for daily salah, Jumu’ah, programs, and events for the whole family.
-      </p>
+    <section style={{ ...wrap, backgroundImage: `url(${heroImg})` }}>
+      {/* dark overlay */}
+      <div style={overlay} />
 
-      <div style={ctaRow}>
-        <button style={btnPrimary} onClick={() => navigate("/prayer-times")}>
-          Prayer Times
-        </button>
-        <button style={btn} onClick={() => navigate("/donate")}>
-          Donate
-        </button>
-        <button style={btnSoft} onClick={() => navigate("/events")}>
-          View Events
-        </button>
+      {/* content */}
+      <div style={content}>
+        <h1 style={title}>Detroit Muslim Community Center</h1>
+        <p style={subtitle}>
+          A welcoming mosque and gathering place for the Muslim community in Detroit.
+        </p>
+
+        <div style={ctaRow}>
+          <button style={btnGold} onClick={() => navigate("/prayer-times")} type="button">
+            Prayer Times
+          </button>
+          <button style={btnGreen} onClick={() => navigate("/programs")} type="button">
+            Programs
+          </button>
+          <button style={btnTeal} onClick={() => navigate("/events")} type="button">
+            Events
+          </button>
+          <button style={btnDark} onClick={() => navigate("/donate")} type="button">
+            Donate
+          </button>
+        </div>
       </div>
     </section>
   );
 }
 
 const wrap = {
-  padding: 24,
+  position: "relative",
+  height: 300, // ✅ shorter (try 280–320)
+  display: "grid",
+  alignItems: "center",
+  justifyItems: "center",
+  padding: "18px 24px", // ✅ tighter
+  backgroundSize: "cover",
+  backgroundPosition: "center",
+  borderRadius: 18,
+  overflow: "hidden",
+};
+
+const overlay = {
+  position: "absolute",
+  inset: 0,
+  background:
+    "linear-gradient(180deg, rgba(0,0,0,0.62), rgba(0,0,0,0.45))",
+};
+
+const content = {
+  position: "relative",
+  zIndex: 1,
+  width: "100%",
   maxWidth: 980,
-  margin: "0 auto",
+  textAlign: "center",
+  color: "white",
 };
 
 const title = {
   margin: 0,
-  fontSize: 52,
+  fontSize: 46,
   lineHeight: 1.05,
   letterSpacing: -1,
-  color: "#1e6b3a",
+  textShadow: "0 10px 30px rgba(0,0,0,0.35)",
 };
 
 const subtitle = {
-  marginTop: 10,
+  margin: "12px auto 0",
   maxWidth: 820,
   lineHeight: 1.6,
   fontSize: 16,
-  color: "#1f2937",
+  opacity: 0.92,
 };
 
 const ctaRow = {
+  marginTop: 18,
   display: "flex",
   gap: 12,
+  justifyContent: "center",
   flexWrap: "wrap",
-  marginTop: 16,
 };
 
 const btnBase = {
-  padding: "10px 14px",
-  borderRadius: 10,
-  border: "1px solid #cfe4d6",
-  fontWeight: 700,
+  padding: "10px 14px",   // was 12px 18px
+  borderRadius: 12,
+  border: "1px solid rgba(255,255,255,0.2)",
+  fontWeight: 800,
   cursor: "pointer",
-};
-
-const btnPrimary = {
-  ...btnBase,
-  background: "#123f2a",
-  borderColor: "#123f2a",
   color: "white",
 };
 
-const btn = {
-  ...btnBase,
-  background: "white",
-  color: "#123f2a",
-};
-
-const btnSoft = {
-  ...btnBase,
-  background: "#e6f3eb",
-  color: "#123f2a",
-};
+const btnGold = { ...btnBase, background: "rgba(184, 134, 11, 0.75)" };
+const btnGreen = { ...btnBase, background: "rgba(18, 63, 42, 0.75)" };
+const btnTeal = { ...btnBase, background: "rgba(22, 101, 98, 0.72)" };
+const btnDark = { ...btnBase, background: "rgba(17, 24, 39, 0.75)" };

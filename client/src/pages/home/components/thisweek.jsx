@@ -46,7 +46,7 @@ export default function ThisWeek({ events = [], loading, error }) {
                   <button
                     type="button"
                     style={miniLink}
-                    onClick={() => navigate("/events")}
+                    onClick={() => navigate("/calendar")}
                   >
                     View Full Calendar →
                   </button>
