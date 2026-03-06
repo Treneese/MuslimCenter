@@ -28,7 +28,7 @@ import Faq from "./pages/learn/faq";
 
 import ServicesIndex from "./pages/services/servicesindex";
 import Marriage from "./pages/services/marriage";
-import FamilyDispute from "./pages/services/familydispute";
+import FamilyCounseling from "./pages/services/familycounseling";
 import Shahada from "./pages/services/shahada";
 import Janazah from "./pages/services/janazah";
 
@@ -38,6 +38,13 @@ import SpaceRental from "./pages/get-involved/spacerental";
 import Partner from "./pages/get-involved/partner";
 import Member from "./pages/get-involved/member";
 import Appointment from "./pages/get-involved/appointment";
+import GeneralCounseling from "./pages/services/generalcounseling.jsx";
+import Kids36 from "./pages/learn/kids3-5.jsx";
+import Kids710 from "./pages/learn/kids6-8.jsx";
+import Kids1114 from "./pages/learn/kids9-12.jsx";
+import Kids35 from "./pages/learn/kids3-5.jsx";
+import Kids68 from "./pages/learn/kids6-8.jsx";
+import Kids912 from "./pages/learn/kids9-12.jsx";
 
 
 
@@ -64,6 +71,9 @@ export default function App() {
           <Route path="/learn" element={<LearnIndex />} />
           <Route path="/learn/what-is-islam" element={<WhatIsIslam />} />
           <Route path="/learn/islam-for-kids" element={<IslamForKids />} />
+          <Route path="/learn/kids-3-5"element={<Kids35 />} />
+          <Route path="/learn/kids-6-8"element={<Kids68 />} />
+          <Route path="/learn/kids-9-12"element={<Kids912 />} />
           <Route path="/learn/new-to-islam" element={<NewToIslam />} />
           <Route path="/learn/faq" element={<Faq />} />
 
@@ -72,9 +82,10 @@ export default function App() {
 
           <Route path="/services" element={<ServicesIndex />} />
           <Route path="/services/marriage" element={<Marriage />} />
-          <Route path="/services/family-dispute" element={<FamilyDispute />} />
+          <Route path="/services/family" element={<FamilyCounseling />} />
           <Route path="/services/shahada" element={<Shahada />} />
           <Route path="/services/janazah" element={<Janazah />} />
+          <Route path="/services/general" element={<GeneralCounseling />} />
 
           <Route path="/donate" element={<Donate />} />
           <Route path="/quickpay" element={<QuickPay />} />

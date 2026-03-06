@@ -1,28 +1,28 @@
-export default function Shahada() {
+export default function GeneralCounseling() {
   return (
     <div className="page">
       <header style={header}>
-        <div style={badge}>Services</div>
+        <div style={badge}>Service</div>
         <h1 className="pageTitle" style={{ marginBottom: 10 }}>
-          New Shahada Support
+          General Counseling
         </h1>
         <p className="pageSubtitle" style={{ ...subtitle, maxWidth: 920 }}>
-          Support for new Muslims and those exploring Islam. We’re here to help you feel
-          welcomed, grounded, and connected to community.
+          Private, respectful guidance for individuals and families facing everyday challenges.
+          If you’re not sure where to start, reach out — we’ll help direct you.
         </p>
 
         <div style={quickFacts}>
           <div style={factCard}>
-            <div style={factLabel}>Support Type</div>
-            <div style={factValue}>Guidance • Mentorship • Community</div>
+            <div style={factLabel}>Format</div>
+            <div style={factValue}>Guidance & Referrals</div>
           </div>
           <div style={factCard}>
-            <div style={factLabel}>Who it’s for</div>
-            <div style={factValue}>New Muslims & seekers</div>
+            <div style={factLabel}>For</div>
+            <div style={factValue}>Individuals & Families</div>
           </div>
           <div style={factCard}>
-            <div style={factLabel}>Next Step</div>
-            <div style={factValue}>Contact us to get connected</div>
+            <div style={factLabel}>Next step</div>
+            <div style={factValue}>Contact us to schedule</div>
           </div>
         </div>
       </header>
@@ -30,37 +30,25 @@ export default function Shahada() {
       <section style={section}>
         <h2 style={sectionTitle}>What we can help with</h2>
         <ul style={list}>
-          <li style={li}>Learning the basics (prayer, wudu, Qur’an, daily practices)</li>
-          <li style={li}>Finding community and supportive friendships</li>
-          <li style={li}>Answering questions in a respectful, non-judgmental way</li>
-          <li style={li}>Connecting you to classes and programs</li>
+          <li style={li}>Personal guidance and life direction</li>
+          <li style={li}>Family concerns and conflict support</li>
+          <li style={li}>Faith-based encouragement and accountability</li>
+          <li style={li}>Referrals to additional community resources</li>
         </ul>
-      </section>
-
-      <section style={section}>
-        <h2 style={sectionTitle}>Getting started</h2>
-        <p style={bodyText}>
-          Reach out through the Contact page. Tell us what you’re looking for, and we’ll
-          connect you with the right support.
-        </p>
       </section>
 
       <section style={ctaWrap}>
         <div style={ctaCard}>
           <div>
-            <h3 style={ctaTitle}>You’re not alone.</h3>
+            <h3 style={ctaTitle}>Need support?</h3>
             <p style={ctaText}>
-              Message us and we’ll help you take the next step.
+              Reach out and we’ll guide you to the right next step.
             </p>
           </div>
 
           <div style={ctaButtons}>
-            <a href="/contact" className="btn" style={btnPrimary}>
-              Contact Us
-            </a>
-            <a href="/services" className="btn" style={btnSecondary}>
-              Back to Services
-            </a>
+            <a href="/contact" style={btnPrimary}>Contact</a>
+            <a href="/donate" style={btnSecondary}>Donate</a>
           </div>
         </div>
       </section>
@@ -68,7 +56,6 @@ export default function Shahada() {
   );
 }
 
-/* styles (same as others) */
 const header = {
   background: "#efefef",
   borderRadius: 18,
@@ -80,7 +67,6 @@ const header = {
 const badge = {
   display: "inline-flex",
   alignItems: "center",
-  gap: 8,
   fontSize: 12,
   fontWeight: 800,
   letterSpacing: 0.3,
@@ -109,19 +95,8 @@ const factCard = {
   border: "1px solid #e3e3e3",
 };
 
-const factLabel = {
-  fontSize: 12,
-  color: "#55715f",
-  fontWeight: 800,
-  marginBottom: 6,
-};
-
-const factValue = {
-  fontSize: 14,
-  color: "#1b1b1b",
-  fontWeight: 800,
-  lineHeight: 1.3,
-};
+const factLabel = { fontSize: 12, color: "#55715f", fontWeight: 800, marginBottom: 6 };
+const factValue = { fontSize: 14, color: "#1b1b1b", fontWeight: 900, lineHeight: 1.3 };
 
 const section = {
   background: "#ffffff",
@@ -131,20 +106,7 @@ const section = {
   marginBottom: 14,
 };
 
-const sectionTitle = {
-  margin: 0,
-  color: "#1e6b3a",
-  fontSize: 20,
-  letterSpacing: -0.2,
-};
-
-const bodyText = {
-  marginTop: 10,
-  marginBottom: 0,
-  lineHeight: 1.7,
-  color: "#2b2b2b",
-  maxWidth: 920,
-};
+const sectionTitle = { margin: 0, color: "#1e6b3a", fontSize: 20, letterSpacing: -0.2 };
 
 const list = {
   marginTop: 10,
@@ -168,16 +130,11 @@ const ctaCard = {
   borderRadius: 18,
   padding: "18px 18px",
   color: "#ffffff",
+  flexWrap: "wrap",
 };
 
 const ctaTitle = { margin: 0, fontSize: 18, letterSpacing: -0.2 };
-
-const ctaText = {
-  margin: "6px 0 0",
-  opacity: 0.9,
-  lineHeight: 1.5,
-  maxWidth: 720,
-};
+const ctaText = { margin: "6px 0 0", opacity: 0.9, lineHeight: 1.5, maxWidth: 720 };
 
 const ctaButtons = { display: "flex", gap: 10, flexWrap: "wrap" };
 
@@ -207,10 +164,6 @@ const btnSecondary = {
   border: "1px solid rgba(255,255,255,0.45)",
 };
 
+// responsive fallback (no CSS file needed)
 const mq = window?.matchMedia?.("(max-width: 900px)")?.matches;
-if (mq) {
-  quickFacts.gridTemplateColumns = "1fr";
-  ctaCard.flexDirection = "column";
-  ctaCard.alignItems = "stretch";
-  ctaButtons.justifyContent = "flex-start";
-}
+if (mq) quickFacts.gridTemplateColumns = "1fr";

@@ -1,70 +1,77 @@
-import { useState } from "react";
-
 export default function PersonCard({
   name,
   title,
   image,
   description,
+  meta, // optional small label like "Resident Imam"
   reverse = false,
 }) {
-  const [hover, setHover] = useState(false);
+  const isMobile = window?.matchMedia?.("(max-width: 900px)")?.matches;
+
+  const layout = isMobile
+    ? { flexDirection: "column" }
+    : { flexDirection: reverse ? "row-reverse" : "row" };
 
   return (
-    <div
-      style={{
-        ...card,
-        ...(hover ? cardHover : {}),
-        flexDirection: reverse ? "row-reverse" : "row",
-      }}
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
-    >
-      <img src={image} alt={name} style={imageStyle} />
+    <section style={{ ...card, ...layout }}>
+      <div style={imgWrap}>
+        <img src={image} alt={name} style={imageStyle} />
+      </div>
 
       <div style={content}>
-        <h2 style={nameStyle}>{name}</h2>
+        {meta && <div style={metaBadge}>{meta}</div>}
 
+        <h2 style={nameStyle}>{name}</h2>
         {title && <p style={titleStyle}>{title}</p>}
 
         <div style={text}>{description}</div>
       </div>
-    </div>
+    </section>
   );
 }
 
 /* styles */
-
 const card = {
   display: "flex",
-  gap: 28,
+  gap: 22,
   alignItems: "center",
-  marginBottom: 32,
-
+  marginBottom: 18,
   background: "#ffffff",
   border: "1px solid rgba(0,0,0,0.08)",
   borderRadius: 18,
-  padding: 20,
-
+  padding: 18,
   boxShadow: "0 10px 24px rgba(0,0,0,0.06)",
-  transition: "transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease",
 };
 
-const cardHover = {
-  transform: "translateY(-2px)",
-  boxShadow: "0 14px 30px rgba(0,0,0,0.08)",
-  borderColor: "rgba(30,107,58,0.25)",
+const imgWrap = {
+  width: 280,
+  maxWidth: "100%",
+  borderRadius: 16,
+  overflow: "hidden",
+  border: "1px solid rgba(0,0,0,0.08)",
+  background: "#f3f3f3",
 };
 
 const imageStyle = {
-  width: 260,
-  height: 260,
+  width: "100%",
+  height: 280,
   objectFit: "cover",
-  borderRadius: 14,
-  background: "#f2f2f2",
+  display: "block",
 };
 
-const content = {
-  flex: 1,
+const content = { flex: 1 };
+
+const metaBadge = {
+  display: "inline-flex",
+  alignItems: "center",
+  fontSize: 12,
+  fontWeight: 900,
+  color: "#1e6b3a",
+  background: "#e6f3ea",
+  border: "1px solid #cfe4d6",
+  padding: "6px 10px",
+  borderRadius: 999,
+  marginBottom: 10,
 };
 
 const nameStyle = {
@@ -74,24 +81,14 @@ const nameStyle = {
 };
 
 const titleStyle = {
-  marginTop: 6,
+  marginTop: 8,
+  marginBottom: 0,
   fontWeight: 700,
   color: "#1e6b3a",
 };
 
 const text = {
   marginTop: 12,
-  lineHeight: 1.7,
-  color: "#2b2b2b",
-  maxWidth: 700,
+  lineHeight: 1.75,
+  color: "rgba(0,0,0,0.72)",
 };
-
-/* responsive fallback */
-
-const mq = window?.matchMedia?.("(max-width: 900px)")?.matches;
-
-if (mq) {
-  card.flexDirection = "column";
-  imageStyle.width = "100%";
-  imageStyle.height = 260;
-}

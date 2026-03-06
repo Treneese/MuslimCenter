@@ -1,62 +1,62 @@
-export default function Shahada() {
+export default function FamilyCounseling() {
   return (
     <div className="page">
       <header style={header}>
         <div style={badge}>Services</div>
         <h1 className="pageTitle" style={{ marginBottom: 10 }}>
-          New Shahada Support
+          Family Counseling
         </h1>
         <p className="pageSubtitle" style={{ ...subtitle, maxWidth: 920 }}>
-          Support for new Muslims and those exploring Islam. We’re here to help you feel
-          welcomed, grounded, and connected to community.
+          Support for families navigating conflict, communication issues, and life transitions.
+          We aim to strengthen families with compassion and faith-based guidance.
         </p>
 
         <div style={quickFacts}>
           <div style={factCard}>
-            <div style={factLabel}>Support Type</div>
-            <div style={factValue}>Guidance • Mentorship • Community</div>
+            <div style={factLabel}>Format</div>
+            <div style={factValue}>By appointment</div>
           </div>
           <div style={factCard}>
-            <div style={factLabel}>Who it’s for</div>
-            <div style={factValue}>New Muslims & seekers</div>
+            <div style={factLabel}>Focus</div>
+            <div style={factValue}>Family unity & healthy communication</div>
           </div>
           <div style={factCard}>
             <div style={factLabel}>Next Step</div>
-            <div style={factValue}>Contact us to get connected</div>
+            <div style={factValue}>Contact us to request a session</div>
           </div>
         </div>
       </header>
 
       <section style={section}>
-        <h2 style={sectionTitle}>What we can help with</h2>
+        <h2 style={sectionTitle}>What this service supports</h2>
         <ul style={list}>
-          <li style={li}>Learning the basics (prayer, wudu, Qur’an, daily practices)</li>
-          <li style={li}>Finding community and supportive friendships</li>
-          <li style={li}>Answering questions in a respectful, non-judgmental way</li>
-          <li style={li}>Connecting you to classes and programs</li>
+          <li style={li}>Family conflict and communication breakdown</li>
+          <li style={li}>Parenting support and home structure</li>
+          <li style={li}>Life changes (grief, divorce, blended families, transitions)</li>
+          <li style={li}>Guidance rooted in Islamic values and community care</li>
         </ul>
       </section>
 
       <section style={section}>
-        <h2 style={sectionTitle}>Getting started</h2>
+        <h2 style={sectionTitle}>How to request an appointment</h2>
         <p style={bodyText}>
-          Reach out through the Contact page. Tell us what you’re looking for, and we’ll
-          connect you with the right support.
+          Contact the Muslim Center and share what support you’re looking for. We’ll follow up
+          with availability and next steps.
         </p>
       </section>
 
       <section style={ctaWrap}>
         <div style={ctaCard}>
           <div>
-            <h3 style={ctaTitle}>You’re not alone.</h3>
+            <h3 style={ctaTitle}>Need support for your family?</h3>
             <p style={ctaText}>
-              Message us and we’ll help you take the next step.
+              Reach out and we’ll help you take the next step.
             </p>
           </div>
 
           <div style={ctaButtons}>
             <a href="/contact" className="btn" style={btnPrimary}>
-              Contact Us
+              Contact to Book
             </a>
             <a href="/services" className="btn" style={btnSecondary}>
               Back to Services
@@ -68,7 +68,7 @@ export default function Shahada() {
   );
 }
 
-/* styles (same as others) */
+/* styles (same as marriage) */
 const header = {
   background: "#efefef",
   borderRadius: 18,

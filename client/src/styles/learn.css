@@ -1,0 +1,325 @@
+.learnPage {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.learnHero {
+  margin-bottom: 40px;
+}
+
+.learnEyebrow {
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #2f6b3b;
+  margin-bottom: 10px;
+}
+
+.learnIntro {
+  max-width: 950px;
+  line-height: 1.8;
+}
+
+.quoteBanner {
+  margin-top: 24px;
+  padding: 18px 22px;
+  border-left: 4px solid #2f6b3b;
+  background: #f5faf5;
+  border-radius: 10px;
+  max-width: 750px;
+}
+
+.quoteBanner p {
+  margin: 0;
+  font-style: italic;
+}
+
+.learnSection {
+  margin-bottom: 56px;
+}
+
+.sectionHeading {
+  margin-bottom: 22px;
+}
+
+.sectionHeading h2 {
+  margin-bottom: 8px;
+  color: #1f4d2c;
+  font-size: 1.8rem;
+}
+
+.sectionHeading p {
+  margin: 0;
+  max-width: 900px;
+  line-height: 1.7;
+  color: #4c4c4c;
+}
+
+.learnGrid {
+  display: grid;
+  gap: 24px;
+}
+
+.learnGrid.two {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.learnGrid.three {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.pillarGrid {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.infoCard,
+.navCard,
+.pillarCard {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  border: 1px solid #e6e6e6;
+
+  transition: all 0.25s ease;
+}
+
+.infoCard:hover,
+.navCard:hover,
+.pillarCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.06);
+}
+
+.infoCard p,
+.pillarCard p,
+.navCard p {
+  margin: 0;
+  line-height: 1.7;
+  color: #4d4d4d;
+}
+
+.cardTag {
+  display: inline-block;
+  margin-bottom: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: #eef5ee;
+  color: #2f6b3b;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.navCard {
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+
+.navCard span {
+  display: inline-block;
+  margin-top: 10px;
+  font-weight: 600;
+  color: #2f6b3b;
+}
+
+.navCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.07);
+}
+
+.navCard span:last-child {
+  display: inline-block;
+  margin-top: 14px;
+  font-weight: 700;
+  color: #2f6b3b;
+}
+
+.splitSection {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 20px;
+}
+
+.learnList {
+  margin: 0;
+  padding-left: 20px;
+  line-height: 1.9;
+  color: #4d4d4d;
+}
+
+.videoCard {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 20px;
+  align-items: stretch;
+}
+
+.videoPlaceholder {
+  min-height: 260px;
+  border-radius: 18px;
+  border: 1px dashed #b9cbb9;
+  background: #f6faf6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #537053;
+  font-weight: 600;
+  text-align: center;
+  padding: 20px;
+}
+
+.videoMeta {
+  background: #fff;
+  border: 1px solid #dfe7df;
+  border-radius: 18px;
+  padding: 22px;
+}
+
+.videoMeta h3 {
+  margin-top: 0;
+  color: #1f4d2c;
+}
+
+.videoMeta p {
+  margin: 0;
+  color: #4d4d4d;
+  line-height: 1.7;
+}
+
+@media (max-width: 900px) {
+
+  .learnGrid.two,
+  .learnGrid.three {
+    grid-template-columns: 1fr;
+  }
+
+}
+.shahadaCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.arabicText {
+  font-size: 1.7rem;
+  line-height: 2;
+  text-align: right;
+  color: #1f4d2c;
+  font-weight: 700;
+}
+
+.faqList {
+  display: grid;
+  gap: 14px;
+}
+
+.faqItem {
+  background: #fff;
+  border: 1px solid #dfe7df;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+}
+
+.faqQuestion {
+  width: 100%;
+  border: none;
+  background: transparent;
+  text-align: left;
+  padding: 20px 22px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1f4d2c;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.faqQuestion span:first-child {
+  max-width: 90%;
+  line-height: 1.5;
+}
+
+.faqIcon {
+  font-size: 1.5rem;
+  line-height: 1;
+  color: #2f6b3b;
+  margin-left: 16px;
+}
+
+.faqAnswer {
+  padding: 0 22px 20px;
+}
+
+.faqAnswer p {
+  margin: 0;
+  line-height: 1.8;
+  color: #4d4d4d;
+}
+
+.faqItem.open {
+  border-color: #cddccd;
+}
+.kidsAgePage .quoteBanner {
+  background: #f6fbf6;
+}
+
+.softCard {
+  background: #fbfdf9;
+}
+
+.quizCard {
+  background: #fcfdf7;
+}
+
+.reflectionCard {
+  background: #fafcf8;
+}
+
+.olderKidsPage .infoCard h3,
+.olderKidsPage .sectionHeading h2 {
+  letter-spacing: 0.01em;
+}
+.learnSection {
+  margin: 80px 0;
+}
+
+.sectionHeading {
+  margin-bottom: 30px;
+}
+
+.sectionHeading h2 {
+  font-size: 1.9rem;
+  font-weight: 700;
+}
+
+.sectionHeading p {
+  margin-top: 8px;
+  color: #555;
+  max-width: 700px;
+  line-height: 1.6;
+}
+.learnHero {
+  margin-bottom: 50px;
+}
+
+.learnEyebrow {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #2f6b3b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.pageTitle {
+  margin-top: 6px;
+}
+
+.learnIntro {
+  margin-top: 12px;
+  max-width: 800px;
+  line-height: 1.7;
+  color: #555;
+}

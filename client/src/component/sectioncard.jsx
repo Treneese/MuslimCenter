@@ -1,69 +1,128 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
 
 export default function SectionCards({ items = [] }) {
+  const isMobile = window?.matchMedia?.("(max-width: 900px)")?.matches;
+
   return (
-    <div style={grid}>
+    <div style={{ ...grid, gridTemplateColumns: isMobile ? "1fr" : "repeat(3, minmax(0, 1fr))" }}>
       {items.map((item) => (
-        <SectionCard key={item.to} item={item} />
+        <Link key={item.to} to={item.to} style={card}>
+          {/* image header (optional) */}
+          {item.image ? (
+            <div style={mediaWrap}>
+              <img src={item.image} alt={item.title} style={mediaImg} />
+              <div style={mediaOverlay} />
+            </div>
+          ) : (
+            <div style={mediaFallback}>
+              <div style={badgeRow}>
+                {item.meta && <span style={badge}>{item.meta}</span>}
+              </div>
+              <div style={fallbackIcon}>MC</div>
+            </div>
+          )}
+
+          <div style={body}>
+            {item.meta && item.image && (
+              <div style={badgeRow}>
+                <span style={badge}>{item.meta}</span>
+              </div>
+            )}
+
+            <h3 style={title}>{item.title}</h3>
+
+            {item.subtitle && <p style={subtitle}>{item.subtitle}</p>}
+
+            <div style={footer}>
+              <span style={cta}>View</span>
+              <span style={arrow}>→</span>
+            </div>
+          </div>
+        </Link>
       ))}
     </div>
   );
 }
 
-function SectionCard({ item }) {
-  const [hover, setHover] = useState(false);
-
-  return (
-    <Link
-      to={item.to}
-      style={{
-        ...card,
-        ...(hover ? cardHover : {}),
-      }}
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
-    >
-      <div>
-        <h3 style={title}>{item.title}</h3>
-        {item.subtitle && <p style={subtitle}>{item.subtitle}</p>}
-      </div>
-
-      <div style={footer}>
-        <span style={cta}>View</span>
-        <span style={arrow}>→</span>
-      </div>
-    </Link>
-  );
-}
-
 /* styles */
-
 const grid = {
   display: "grid",
-  gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
   gap: 14,
 };
 
 const card = {
   textDecoration: "none",
   color: "inherit",
-  background: "#ffffff",
+  background: "#fff",
   border: "1px solid rgba(0,0,0,0.08)",
   borderRadius: 18,
-  padding: 16,
+  overflow: "hidden",
   boxShadow: "0 10px 24px rgba(0,0,0,0.06)",
   transition: "transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease",
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "space-between",
-  minHeight: 120,
 };
 
-const cardHover = {
-  transform: "translateY(-2px)",
-  boxShadow: "0 14px 30px rgba(0,0,0,0.08)",
-  borderColor: "rgba(30,107,58,0.25)",
+const mediaWrap = {
+  position: "relative",
+  height: 150,
+  background: "#f3f3f3",
+};
+
+const mediaImg = {
+  width: "100%",
+  height: "100%",
+  objectFit: "cover",
+  display: "block",
+};
+
+const mediaOverlay = {
+  position: "absolute",
+  inset: 0,
+  background: "linear-gradient(to top, rgba(0,0,0,0.35), rgba(0,0,0,0))",
+};
+
+const mediaFallback = {
+  height: 150,
+  background: "#f1f6f3",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  position: "relative",
+};
+
+const fallbackIcon = {
+  width: 54,
+  height: 54,
+  borderRadius: 14,
+  background: "#ffffff",
+  border: "1px solid rgba(30,107,58,0.22)",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  fontWeight: 900,
+  color: "#1e6b3a",
+  letterSpacing: 0.5,
+};
+
+const body = {
+  padding: 16,
+};
+
+const badgeRow = {
+  display: "flex",
+  gap: 8,
+  position: "absolute",
+  top: 10,
+  left: 10,
+};
+
+const badge = {
+  fontSize: 12,
+  fontWeight: 800,
+  color: "#1e6b3a",
+  background: "#e6f3ea",
+  border: "1px solid #cfe4d6",
+  padding: "6px 10px",
+  borderRadius: 999,
 };
 
 const title = {
@@ -84,14 +143,8 @@ const footer = {
   justifyContent: "space-between",
   alignItems: "center",
   color: "#1e6b3a",
-  fontWeight: 800,
+  fontWeight: 900,
 };
 
 const cta = { fontSize: 14 };
 const arrow = { fontSize: 18 };
-
-/* quick responsive fallback */
-const mq = window?.matchMedia?.("(max-width: 900px)")?.matches;
-if (mq) {
-  grid.gridTemplateColumns = "1fr";
-}
