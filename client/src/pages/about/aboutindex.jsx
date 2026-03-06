@@ -1,17 +1,26 @@
 import SectionCards from "../../component/sectioncard";
 
+import historyImg from "../../assets/about/history.jpg";
+import leadershipImg from "../../assets/about/leadership.jpg";
+import partnerImg from "../../assets/about/partner.jpg";
+
+
 export default function AboutIndex() {
   const items = [
-    { to: "/about/history", title: "History", subtitle: "Our story and legacy." },
+    { to: "/about/history", title: "History", subtitle: "Our story and legacy.",
+      image: historyImg,
+     },
     {
       to: "/about/leadership",
       title: "Leadership",
       subtitle: "Meet our leadership and committees.",
+      image: leadershipImg,
     },
     {
       to: "/about/partners",
       title: "Current Partners",
       subtitle: "Organizations we collaborate with.",
+      image: partnerImg,
     },
   ];
 

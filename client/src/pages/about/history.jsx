@@ -1,5 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import PersonCard from "../../component/personcard";
+import khalilImg from "../../assets/history/khalil.webp";
+import wdMohammedImg from "../../assets/history/wdmohammed.webp";
+import abdullahelImg from "../../assets/history/abdullahel-amin.webp";
 
 
 export default function History() {
@@ -100,14 +103,14 @@ export default function History() {
       </section>
        <PersonCard
   name="Imam Khalil"
-  image="/../../assets/khalil.webp"
+  image={khalilImg}
   description="Imam Khalil has served the community through teaching, outreach, and spiritual leadership..."
 />
 
 <PersonCard
   name="Imam Abdullah El-Amin"
   title="Co-Founder of The Muslim Center Mosque & Community Center"
-  image="/../../assets/abdullahel-amin.webp"
+  image={abdullahelImg}
   description="Imam Abdullah El-Amin played a foundational role in establishing the Muslim Center..."
   reverse
 />
@@ -115,7 +118,7 @@ export default function History() {
 <PersonCard
   name="Imam W. Deen Mohammed"
   title="The Muslim American Spokesman for Human Salvation"
-  image="/../../assets/momodouceesay.webp"
+  image={wdMohammedImg}
   description="Imam W. Deen Mohammed was one of the most influential Muslim leaders in American history..."
 />
 

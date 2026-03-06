@@ -1,5 +1,7 @@
 import PersonCard from "../../component/personcard";
 import { useNavigate } from "react-router-dom";
+import Momodou from "../../assets/imam/momodouceesay.webp";
+import Mikail from "../../assets/imam/mika'ilstewartsaadiq.webp";
 
 export default function ImamsPage() {
   const navigate = useNavigate();
@@ -10,20 +12,28 @@ export default function ImamsPage() {
         <div style={badge}>Leadership</div>
 
         <h1 className="pageTitle" style={{ marginBottom: 10 }}>
-          Meet the Imam’s
+          Meet the Imams
         </h1>
 
         <p className="pageSubtitle" style={{ ...subtitle, maxWidth: 920 }}>
-          Our Imam’s serve the community through prayer leadership, education,
+          Our Imams serve the community through prayer leadership, education,
           counseling, and guidance. If you need support or would like to connect,
           please reach out.
         </p>
 
         <div style={actions}>
-          <button style={btnSoft} type="button" onClick={() => navigate("/contact")}>
+          <button
+            style={btnSoft}
+            type="button"
+            onClick={() => navigate("/contact")}
+          >
             Contact
           </button>
-          <button style={btn} type="button" onClick={() => navigate("/about/leadership")}>
+          <button
+            style={btn}
+            type="button"
+            onClick={() => navigate("/about/leadership")}
+          >
             Back to Leadership
           </button>
         </div>
@@ -31,19 +41,37 @@ export default function ImamsPage() {
 
       <section style={list}>
         <PersonCard
-          name="Imam Khalil"
-          title="Imam"
-          image="" // add image url later (or /static/uploads/...)
+          name="Imam Shaykh Momodou Ceesay"
+          title="Resident Imam / Chairman of Ashura Board of Directors"
+          image={Momodou}
           description={
             <>
-              Imam Khalil serves the Muslim Center by leading prayer, supporting
-              community education, and providing guidance rooted in the Qur’an and
-              Sunnah. He is committed to building strong families, strengthening
-              faith, and creating a welcoming community environment for all ages.
+              Imam Shaykh Momodou Ceesay was born into a devout Muslim family in
+              The Gambia, West Africa, and began his educational journey by
+              memorizing the Qur’an at the age of 13. He continued his Islamic
+              studies in Senegal under Shaykh Abdul Aziz Ibn Malick Sy, and later
+              pursued further study in Tunisia and Egypt. He graduated from
+              Al-Azhar University with a degree in Arabic Literature and Islamic
+              Studies.
               <br />
               <br />
-              <strong>Areas of support:</strong> prayer leadership, khutbahs,
-              Islamic guidance, counseling referrals, and community outreach.
+              After returning to The Gambia, Imam Ceesay served as a teacher and
+              founded Jamiyyathul Shabab Al Islamia. In 1989, he moved to the
+              United States, where he dedicated himself to community service,
+              interfaith work, and education. He is widely known for translating
+              the Qur’an into Mandinka and for promoting understanding among
+              people of different faiths.
+              <br />
+              <br />
+              Since becoming the Resident Imam of The Muslim Center in 2013, he
+              has helped expand educational programs, increase attendance, and
+              diversify community activities. His vision is to help build a
+              strong and prosperous community rooted in knowledge, with goals
+              that include establishing both a library and a school.
+              <br />
+              <br />
+              Imam Ceesay is happily married to Kaddy Ceesay and is the proud
+              father of three children.
             </>
           }
         />
@@ -51,38 +79,49 @@ export default function ImamsPage() {
         <div style={{ height: 14 }} />
 
         <PersonCard
-          name="Imam Abdullah El-Amin"
-          title="Imam"
+          name="Al Hajj Imam Mika’il Stewart Saadiq"
+          title="Assistant Imam"
           reverse
-          image="" // add image url later
+          image={Mikail}
           description={
             <>
-              Imam Abdullah El-Amin supports the Muslim Center through teaching,
-              mentorship, and community programs. His focus is helping people grow
-              in faith with clarity, compassion, and consistent practice, while
-              strengthening community connection.
+              Imam Mika’il Stewart Saadiq has taught and served in administration
+              at the historic Al-Ikhlas Training Academy in Detroit since 1999.
+              He is a former Detroit Police Chaplain and currently serves as the
+              Assistant Imam at The Muslim Center in Detroit. He also completed a
+              two-year term as Co-Chair of the Imams Council of Michigan in early
+              2024.
               <br />
               <br />
-              <strong>Areas of support:</strong> classes and lectures, youth and
-              family engagement, spiritual support, and community education.
-            </>
-          }
-        />
-
-        <div style={{ height: 14 }} />
-
-        <PersonCard
-          name="Imam (Name Coming Soon)"
-          title="Imam"
-          image=""
-          description={
-            <>
-              This profile will be updated once we receive the correct name and
-              details for this Imam.
+              From 2016 to 2021, he served as a Detroit City Council liaison,
+              where he advocated for civic engagement, social equity, and
+              empowerment. He has become known for his political and social
+              activism, as well as his passionate commentary on Black and youth
+              social issues.
               <br />
               <br />
-              <strong>Note:</strong> If this slot should be removed, we can remove
-              it instantly.
+              In 2013, he became the first Muslim to offer the invocation for a
+              Michigan State Senate session. At the end of 2014, he gained
+              international attention after organizing 65,000 people to
+              participate in a 24-hour social media blackout called The National
+              Black Day of Silence, protesting the exploitation of violence
+              against Black and marginalized people.
+              <br />
+              <br />
+              In 2021, he authored the first draft of the City of Detroit’s
+              Malcolm X Day Resolution, which led to Malcolm X Day being
+              recognized every third Friday in May. In 2023, he led the launch
+              of the national Assessing the State of the African American Muslim
+              Community project, co-sponsored by five of the most notable
+              Black Muslim-led organizations in the country.
+              <br />
+              <br />
+              Imam Mika’il holds a Bachelor of Science in Criminal Justice and is
+              a Certified Google Project Management Professional. As the founder
+              and lead of Stewart Saadiq Consulting, he has contributed to two
+              presidential campaigns as well as several local campaigns and
+              offices. He currently lives on Detroit’s northwest side, where he
+              and his wife are raising their five youngest children.
             </>
           }
         />

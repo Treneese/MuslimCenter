@@ -1,4 +1,6 @@
 import { NavLink } from "react-router-dom";
+import logo from "../assets/MuslimCenterlogo.webp";
+import "../styles/navbar.css";
 
 export default function Navbar() {
   const linkStyle = ({ isActive }) => ({
@@ -24,20 +26,7 @@ export default function Navbar() {
         }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-          <div
-            style={{
-              width: 36,
-              height: 36,
-              borderRadius: 12,
-              background: "rgba(11, 61, 46, 0.12)",
-              display: "grid",
-              placeItems: "center",
-              fontWeight: 800,
-              color: "#0b3d2e",
-            }}
-          >
-            MC
-          </div>
+          <img src={logo} alt="Muslim Center logo" className="brandLogo" />
           <div style={{ lineHeight: 1.1 }}>
             <div style={{ fontWeight: 800 }}>Muslim Center</div>
             <div style={{ fontSize: 12, color: "#6b7280" }}>

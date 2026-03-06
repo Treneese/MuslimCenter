@@ -1,12 +1,17 @@
 import SectionCards from "../../component/sectioncard";
 import "../../styles/learn.css";
 
+import faqImg from "../../assets/learn/faq.jpg";
+import whatImg from "../../assets/learn/whatisislam.jpg";
+import newImg from "../../assets/learn/newtoislam.jpg";
+import kidsImg from "../../assets/learn/islamkids.jpg";
+
 export default function LearnIndex() {
   const items = [
-    { to: "/learn/what-is-islam", title: "What is Islam?", subtitle: "A clear introduction for everyone." },
-    { to: "/learn/islam-for-kids", title: "Islam for Kids", subtitle: "Simple learning for families and youth." },
-    { to: "/learn/new-to-islam", title: "New to Islam", subtitle: "Shahada support and next steps." },
-    { to: "/learn/faq", title: "FAQ", subtitle: "Common questions and answers." },
+    { to: "/learn/what-is-islam", title: "What is Islam?", subtitle: "A clear introduction for everyone.", image: whatImg, },
+    { to: "/learn/islam-for-kids", title: "Islam for Kids", subtitle: "Simple learning for families and youth.", image: kidsImg, },
+    { to: "/learn/new-to-islam", title: "New to Islam", subtitle: "Shahada support and next steps.", image: newImg, },
+    { to: "/learn/faq", title: "FAQ", subtitle: "Common questions and answers.", image: faqImg, },
   ];
 
   return (

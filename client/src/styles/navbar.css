@@ -1,0 +1,36 @@
+.brandLogo {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  display: block;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.brandLogo {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  border-radius: 12px;
+  background: #f3f7f4;
+}
+
+.brandText {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.brandTitle {
+  font-weight: 700;
+  color: #1f4d2c;
+}
+
+.brandSubtitle {
+  font-size: 0.9rem;
+  color: #6a6a6a;
+}

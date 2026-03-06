@@ -1,4 +1,7 @@
 import { useEffect, useState } from "react";
+import "../styles/prayertimes.css";
+
+const prayerOrder = ["Fajr", "Dhuhr", "Asr", "Maghrib", "Isha"];
 
 export default function PrayerTimes() {
   const [data, setData] = useState(null);
@@ -8,7 +11,7 @@ export default function PrayerTimes() {
     async function load() {
       try {
         setErr("");
-        const res = await fetch("/api/prayer-times"); // Vite proxy handles this
+        const res = await fetch("/api/prayer-times");
         const json = await res.json();
         if (!json.ok) throw new Error(json.error || "Failed to load");
         setData(json);
@@ -19,25 +22,76 @@ export default function PrayerTimes() {
     load();
   }, []);
 
-  if (err) return <div style={{ padding: 24 }}>Error: {err}</div>;
-  if (!data) return <div style={{ padding: 24 }}>Loading...</div>;
+  if (err) {
+    return (
+      <div className="page prayerPage">
+        <div className="prayerStatusCard">
+          <h1 className="pageTitle">Prayer Times</h1>
+          <p className="prayerError">Error: {err}</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!data) {
+    return (
+      <div className="page prayerPage">
+        <div className="prayerStatusCard">
+          <h1 className="pageTitle">Prayer Times</h1>
+          <p className="prayerLoading">Loading prayer times...</p>
+        </div>
+      </div>
+    );
+  }
 
   const t = data.timings;
 
+  const prayers = prayerOrder.map((name) => ({
+    name,
+    adhan: t[name]?.adhan || "--",
+    iqamah: t[name]?.iqamah || "--",
+  }));
+
   return (
-    <div style={{ padding: 24 }}>
-      <h1>Prayer Times</h1>
-      <p>{data.city}, {data.country} ({data.meta?.timezone})</p>
+    <div className="page prayerPage">
+      <section className="prayerHero">
+        <div className="prayerHeroText">
+          <p className="prayerEyebrow">Daily Worship</p>
+          <h1 className="pageTitle">Prayer Times</h1>
+          <p className="pageSubtitle prayerSubtitle">
+            Stay connected to your daily prayers with updated adhan and iqamah
+            times for the Muslim Center community.
+          </p>
+          <p className="prayerLocation">
+            {data.city}, {data.country} ({data.meta?.timezone})
+          </p>
+        </div>
 
-<ul>
-  <li>Fajr: Adhan {t.Fajr.adhan} • Iqamah {t.Fajr.iqamah}</li>
-  <li>Dhuhr: Adhan {t.Dhuhr.adhan} • Iqamah {t.Dhuhr.iqamah}</li>
-  <li>Asr: Adhan {t.Asr.adhan} • Iqamah {t.Asr.iqamah}</li>
-  <li>Maghrib: Adhan {t.Maghrib.adhan} • Iqamah {t.Maghrib.iqamah}</li>
-  <li>Isha: Adhan {t.Isha.adhan} • Iqamah {t.Isha.iqamah}</li>
-</ul>
+        <div className="prayerHighlightCard">
+          <div className="prayerHighlightLabel">Today’s Schedule</div>
+          <div className="prayerHighlightValue">{prayers.length} Daily Prayers</div>
+          <div className="prayerHighlightSource">Source: {data.source}</div>
+        </div>
+      </section>
 
-      <small>Source: {data.source}</small>
+      <section className="prayerMainCard">
+        <div className="prayerTableHeader">
+          <span>Prayer</span>
+          <span>Adhan</span>
+          <span>Iqamah</span>
+        </div>
+
+        {prayers.map((prayer) => (
+          <div key={prayer.name} className="prayerRow">
+            <div className="prayerNameWrap">
+              <span className="prayerDot" />
+              <span className="prayerName">{prayer.name}</span>
+            </div>
+            <span className="prayerTime">{prayer.adhan}</span>
+            <span className="prayerTime">{prayer.iqamah}</span>
+          </div>
+        ))}
+      </section>
     </div>
   );
 }

@@ -1,0 +1,164 @@
+.prayerPage {
+  max-width: 1150px;
+  margin: 0 auto;
+}
+
+.prayerHero {
+  display: grid;
+  grid-template-columns: 1.6fr 0.9fr;
+  gap: 24px;
+  align-items: stretch;
+  margin-bottom: 28px;
+}
+
+.prayerHeroText,
+.prayerHighlightCard,
+.prayerMainCard,
+.prayerStatusCard {
+  background: #ffffff;
+  border: 1px solid #dfe7df;
+  border-radius: 22px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+}
+
+.prayerHeroText {
+  padding: 28px;
+}
+
+.prayerEyebrow {
+  margin: 0 0 10px;
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #2f6b3b;
+}
+
+.prayerSubtitle {
+  max-width: 800px;
+  line-height: 1.7;
+}
+
+.prayerLocation {
+  margin: 18px 0 0;
+  font-weight: 700;
+  color: #2f6b3b;
+}
+
+.prayerHighlightCard {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: linear-gradient(180deg, #f6fbf7 0%, #eef6f0 100%);
+}
+
+.prayerHighlightLabel {
+  font-size: 0.92rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #2f6b3b;
+  margin-bottom: 10px;
+}
+
+.prayerHighlightValue {
+  font-size: 2rem;
+  font-weight: 900;
+  color: #1f4d2c;
+  line-height: 1.1;
+}
+
+.prayerHighlightSource {
+  margin-top: 14px;
+  font-size: 0.95rem;
+  color: #5f6b61;
+}
+
+.prayerMainCard {
+  overflow: hidden;
+}
+
+.prayerTableHeader,
+.prayerRow {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr;
+  gap: 16px;
+  align-items: center;
+  padding: 18px 22px;
+}
+
+.prayerTableHeader {
+  background: #f5faf6;
+  border-bottom: 1px solid #dfe7df;
+  font-weight: 800;
+  color: #1f4d2c;
+}
+
+.prayerRow {
+  border-bottom: 1px solid #edf2ed;
+}
+
+.prayerRow:last-child {
+  border-bottom: none;
+}
+
+.prayerNameWrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.prayerDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: #2f6b3b;
+  flex-shrink: 0;
+}
+
+.prayerName {
+  font-weight: 800;
+  color: #1f4d2c;
+}
+
+.prayerTime {
+  color: #33443a;
+  font-weight: 600;
+}
+
+.prayerStatusCard {
+  padding: 28px;
+}
+
+.prayerLoading,
+.prayerError {
+  margin-top: 12px;
+  font-size: 1rem;
+}
+
+.prayerError {
+  color: #a12626;
+}
+
+@media (max-width: 860px) {
+  .prayerHero {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .prayerTableHeader {
+    display: none;
+  }
+
+  .prayerRow {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 18px;
+  }
+
+  .prayerTime {
+    display: block;
+  }
+}

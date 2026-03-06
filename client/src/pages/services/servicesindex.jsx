@@ -2,9 +2,10 @@ import SectionCards from "../../component/sectioncard";
 
 // optional: add images for each service card
 import marriageImg from "../../assets/services/marriage.jpg";
-import disputeImg from "../../assets/services/dispute.jpg";
+import familyImg from "../../assets/services/family.jpg";
 import shahadaImg from "../../assets/services/shahada.png";
 import janazahImg from "../../assets/services/janazah.jpg";
+import gcImg from "../../assets/services/gc.jpg";
 
 export default function ServicesIndex() {
   const items = [
@@ -18,7 +19,7 @@ export default function ServicesIndex() {
       to: "/services/family",
       title: "Family Counseling",
       subtitle: "Mediation and community support.",
-      image: disputeImg,
+      image: familyImg,
     },
     {
       to: "/services/shahada",
@@ -36,7 +37,7 @@ export default function ServicesIndex() {
       to: "/services/general",
       title: "General Counseling",
       subtitle: "Support and guidance.",
-      image: janazahImg,
+      image: gcImg,
     },
   ];
 
