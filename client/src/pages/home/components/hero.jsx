@@ -12,7 +12,7 @@ export default function Hero() {
 
       {/* content */}
       <div style={content}>
-        <h1 style={title}>Detroit Muslim Community Center</h1>
+        <h1 style={title}>The Muslim Center Mosque & Community Center</h1>
         <p style={subtitle}>
           A welcoming mosque and gathering place for the Muslim community in Detroit.
         </p>

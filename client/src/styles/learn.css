@@ -323,3 +323,436 @@
   line-height: 1.7;
   color: #555;
 }
+.pageReaderControls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.pageReaderControls button {
+  border: 1px solid #cfe3d1;
+  background: #ffffff;
+  color: #1f4d2e;
+  border-radius: 999px;
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.pageReaderControls button:hover {
+  background: #eef8f0;
+  border-color: #9dc7a5;
+}
+
+.cardTopRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.cardTopRow h3 {
+  margin: 0;
+  flex: 1;
+}
+
+.listenButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid #cfe3d1;
+  background: #f7fbf8;
+  color: #1f4d2e;
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.listenButton:hover {
+  background: #eaf6ed;
+  border-color: #9dc7a5;
+}
+
+.listenButton:focus,
+.pageReaderControls button:focus {
+  outline: 2px solid #1f6b3a;
+  outline-offset: 2px;
+}
+
+.quizCard {
+  background: #fbfdfb;
+}
+
+@media (max-width: 640px) {
+  .cardTopRow {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .listenButton {
+    width: fit-content;
+  }
+}
+.learningCard {
+  width: 100%;
+  border: 1px solid #dbe7dd;
+  border-radius: 22px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  text-align: left;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.learningCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.08);
+}
+
+.learningCardImage,
+.learningCardImagePlaceholder {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  background: #f5f8f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.learningCardContent {
+  padding: 18px;
+}
+
+.learningCardBadge {
+  display: inline-block;
+  margin-bottom: 10px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: #eef8f0;
+  color: #1f4d2e;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.learningCardSubtitle {
+  font-weight: 600;
+  color: #2f5132;
+}
+
+.learningCardDescription {
+  color: #4b5f4d;
+}
+
+.learningModalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(17, 24, 18, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  z-index: 1000;
+}
+
+.learningModal {
+  width: min(900px, 100%);
+  max-height: 90vh;
+  overflow-y: auto;
+  background: #fff;
+  border-radius: 24px;
+  padding: 24px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+.learningModalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.modalCloseButton {
+  border: none;
+  background: transparent;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+.videoEmbedWrap {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  border-radius: 18px;
+  overflow: hidden;
+  margin-top: 18px;
+  background: #eef3ee;
+}
+
+.videoEmbedWrap iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.quizGame,
+.tapChoiceGame {
+  display: grid;
+  gap: 16px;
+}
+
+.quizQuestionCard,
+.tapChoiceFeedback {
+  background: #f9fcf9;
+  border: 1px solid #dbe7dd;
+  border-radius: 18px;
+  padding: 18px;
+}
+
+.quizOptions,
+.tapChoiceGrid {
+  display: grid;
+  gap: 12px;
+}
+
+.quizOption,
+.tapChoiceCard {
+  border: 1px solid #cfe3d1;
+  background: #fff;
+  border-radius: 16px;
+  padding: 14px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.quizOption:hover,
+.tapChoiceCard:hover {
+  background: #f3faf4;
+}
+
+.quizOption.correct {
+  border-color: #3b7d4a;
+  background: #edf8ef;
+}
+
+.quizOption.wrong {
+  border-color: #b94a48;
+  background: #fff3f2;
+}
+
+.tapChoiceCard img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+.learnHubPage .sectioncardGrid,
+.learnHubPage .featureGrid {
+  margin-top: 12px;
+}
+
+.adultLearningPage .navCard,
+.adultPathPage .navCard {
+  min-height: 220px;
+}
+.interactiveLearnPage .learnGrid.three {
+  align-items: stretch;
+}
+
+.lessonContent {
+  display: grid;
+  gap: 18px;
+}
+
+.lessonTopRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.lessonTopRow h3 {
+  margin: 0 0 8px;
+}
+
+.storyLessonCard,
+.activityLessonCard {
+  background: #f9fcf9;
+  border: 1px solid #dbe7dd;
+  border-radius: 18px;
+  padding: 18px;
+}
+
+.storyLessonCard h4,
+.activityLessonCard h4 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #1f4d2e;
+}
+
+.activitySteps {
+  margin: 0;
+  padding-left: 20px;
+  line-height: 1.8;
+}
+
+.learningCard {
+  min-height: 100%;
+}
+
+@media (max-width: 640px) {
+  .lessonTopRow {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+.topicLessonFlow {
+  display: grid;
+  gap: 24px;
+}
+
+.topicFlowSection {
+  display: grid;
+  gap: 14px;
+}
+
+.topicFlowHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.topicFlowHeader h3 {
+  margin: 0;
+  color: #1f4d2e;
+}
+
+.topicReadCard,
+.topicPlayCard {
+  background: #f9fcf9;
+  border: 1px solid #dbe7dd;
+  border-radius: 18px;
+  padding: 18px;
+}
+
+.topicReadCard h4 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #1f4d2e;
+}
+
+.topicReadCard p {
+  margin: 0;
+  line-height: 1.8;
+}
+
+@media (max-width: 640px) {
+  .topicFlowHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+.watchVideoGrid {
+  display: grid;
+  gap: 20px;
+}
+
+.watchVideoGrid iframe {
+  border-radius: 16px;
+}
+.videoScroller {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(260px, 320px);
+  gap: 18px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  scroll-snap-type: x proximity;
+}
+
+.videoScroller::-webkit-scrollbar {
+  height: 10px;
+}
+
+.videoScroller::-webkit-scrollbar-thumb {
+  background: #cfe3d1;
+  border-radius: 999px;
+}
+
+.videoScroller::-webkit-scrollbar-track {
+  background: #edf5ee;
+  border-radius: 999px;
+}
+
+.videoLibraryCard {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 250px;
+  padding: 20px;
+  background: #ffffff;
+  border: 1px solid #dbe7dd;
+  border-radius: 22px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.05);
+  text-decoration: none;
+  color: inherit;
+  scroll-snap-align: start;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.videoLibraryCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.08);
+  border-color: #bcd4bf;
+}
+
+.videoLibraryTag {
+  display: inline-flex;
+  align-self: flex-start;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: #eef8f0;
+  color: #1f4d2e;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.videoLibraryCard h3 {
+  margin: 0;
+  color: #173c22;
+  font-size: 1.1rem;
+}
+
+.videoLibraryCard h4 {
+  margin: 0;
+  color: #2f5132;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.videoLibraryCard p {
+  margin: 0;
+  color: #4d5f4f;
+  line-height: 1.7;
+  flex: 1;
+}
+
+.videoLibraryLink {
+  font-weight: 700;
+  color: #1f6b3a;
+}

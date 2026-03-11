@@ -25,6 +25,13 @@ import WhatIsIslam from "./pages/learn/whatisislam";
 import IslamForKids from "./pages/learn/islamforkids";
 import NewToIslam from "./pages/learn/newtoislam";
 import Faq from "./pages/learn/faq";
+import Kids35 from "./pages/learn/kids3-5";
+import Kids68 from "./pages/learn/kids6-8";
+import Kids912 from "./pages/learn/kids9-12";
+import AdultLearning from "./pages/learn/adultlearning";
+import AdultFoundations from "./pages/learn/foundations";
+import AdultGrowingInFaith from "./pages/learn/growinginfaith";
+import AdultDeepeningKnowledge from "./pages/learn/deepeningknowledge";
 
 import ServicesIndex from "./pages/services/servicesindex";
 import Marriage from "./pages/services/marriage";
@@ -39,19 +46,14 @@ import Partner from "./pages/get-involved/partner";
 import Member from "./pages/get-involved/member";
 import Appointment from "./pages/get-involved/appointment";
 import GeneralCounseling from "./pages/services/generalcounseling.jsx";
-import Kids36 from "./pages/learn/kids3-5.jsx";
-import Kids710 from "./pages/learn/kids6-8.jsx";
-import Kids1114 from "./pages/learn/kids9-12.jsx";
-import Kids35 from "./pages/learn/kids3-5.jsx";
-import Kids68 from "./pages/learn/kids6-8.jsx";
-import Kids912 from "./pages/learn/kids9-12.jsx";
+
 
 
 
 
 export default function App() {
   return (
-    <div style={{ minHeight: "100vh", background:"ffffff" }}>
+    <div style={{ minHeight: "100vh", background:"#ffffff" }}>
       <Navbar />
 
       <main style={{ maxWidth: 1100, margin: "0 auto", padding: "22px 18px" }}>
@@ -76,6 +78,11 @@ export default function App() {
           <Route path="/learn/kids-9-12"element={<Kids912 />} />
           <Route path="/learn/new-to-islam" element={<NewToIslam />} />
           <Route path="/learn/faq" element={<Faq />} />
+
+          <Route path="/learn/adult-learning" element={<AdultLearning />} />
+<Route path="/learn/adults/foundations" element={<AdultFoundations />} />
+<Route path="/learn/adults/growing-in-faith" element={<AdultGrowingInFaith />} />
+<Route path="/learn/adults/deepening-knowledge" element={<AdultDeepeningKnowledge />} />
 
           <Route path="/prayer-times" element={<PrayerTimes />} />
           <Route path="/events" element={<Events />} />

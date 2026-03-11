@@ -5,30 +5,116 @@ const ageGroups = [
   {
     title: "Ages 3–5",
     subtitle: "Visual, simple, and gentle",
-    text: "Short phrases, repetition, bright visuals, short duas, and very simple Islamic ideas.",
+    text: "Early learning through short phrases, repetition, audio, pictures, and parent-guided activities.",
     to: "/learn/kids-3-5",
   },
   {
     title: "Ages 6–8",
-    subtitle: "Fun learning and early understanding",
-    text: "Short lessons, prophet stories, basic pillars, short quizzes, and guided activities.",
+    subtitle: "Fun, active, and easy to follow",
+    text: "Short lessons, simple reading, prophet stories, mini quizzes, and hands-on Islamic learning.",
     to: "/learn/kids-6-8",
   },
   {
     title: "Ages 9–12",
-    subtitle: "Deeper thinking and stronger understanding",
-    text: "Meaningful topics like prayer, fasting, the Quran, character, and growing responsibility.",
+    subtitle: "Growing understanding and reflection",
+    text: "Deeper learning about prayer, fasting, the Quran, character, responsibility, and everyday faith.",
     to: "/learn/kids-9-12",
   },
 ];
 
-const ideas = [
-  "Short animated learning videos",
-  "Mini quizzes and matching games",
-  "Printable activity sheets",
-  "Prophet stories by age group",
-  "Good deeds trackers",
-  "Ramadan and salah challenge pages",
+const learnAreas = [
+  "Who Allah is",
+  "What a masjid is",
+  "The Five Pillars",
+  "Short duas and daily manners",
+  "Stories of the prophets",
+  "Prayer, gratitude, and kindness",
+];
+
+const learningFormats = [
+  {
+    title: "Watch",
+    text: "Short, trusted videos that help children learn through visuals, sound, and repetition.",
+  },
+  {
+    title: "Read",
+    text: "Simple age-based lessons designed for growing attention spans and reading levels.",
+  },
+  {
+    title: "Practice",
+    text: "Mini questions, matching, repetition, and reflection that help lessons stick.",
+  },
+  {
+    title: "Try at Home",
+    text: "Printable pages, family prompts, and simple activities that continue learning beyond the screen.",
+  },
+];
+
+const featuredVideos = [
+  {
+    title: "Omar & Hana",
+    subtitle: "Songs, manners, and everyday Islamic learning",
+    description:
+      "A familiar series for young children with simple Islamic themes, songs, and daily life lessons.",
+    url: "https://www.youtube.com/@OmarHanaIslamicSongsforKids",
+    tag: "Preschool + Early Readers",
+  },
+  {
+    title: "Mina and Mila",
+    subtitle: "Faith, family, and daily Muslim life",
+    description:
+      "Gentle stories and faith-based learning for children through fun and relatable family moments.",
+    url: "https://www.youtube.com/@MinaMilaMuslimTwins",
+    tag: "Ages 3–8",
+  },
+  {
+    title: "Zaky and friends",
+    subtitle: "Islamic stories and character lessons",
+    description:
+      "Animated lessons that help children learn values, Islamic habits, and meaningful everyday lessons.",
+    url: "https://www.youtube.com/@One4kids-Zaky",
+    tag: "Ages 6–12",
+  },
+  {
+    title: "Muhammad: The Last Prophet",
+    subtitle: "Animated film for older children and families",
+    description:
+      "A longer animated resource better suited for older children with parent guidance and discussion.",
+    url: "https://www.youtube.com/watch?v=KfDsedlR6F0",
+    tag: "Older Kids + Family",
+  },
+  {
+    title: "Little Ammar",
+    subtitle: "Songs, manners, and everyday Islamic learning",
+    description:
+      "A familiar series for young children with simple Islamic themes, songs, and daily life lessons.",
+    url: "https://www.youtube.com/@LittleAmmarIslamicSongsDurioo",
+    tag: "Preschool + Early Readers",
+  },
+  {
+    title: "Little Muslim Nation",
+    subtitle: "Songs about faith, patience, and reliance on Allah",
+    description:
+      "Helpful for reinforcing messages children can remember through rhythm and repetition.",
+    url: "https://www.youtube.com/channel/UCxFzGwiomf2BgIUaEnszy-w",
+    tag: "Ages 3–8",
+  },
+   {
+    title: "MiniMuslims",
+    subtitle: "Songs and stories for Muslim kids",
+    description:
+      "Animated lessons and songs that help children learn values, Islamic habits, and meaningful everyday lessons.",
+    url: "https://www.youtube.com/channel/UCIDYe6rgdROl77DDevNIcPA",
+    tag: "Ages 3–8",
+  },
+  {
+    title: "Prophet Story Videos",
+    subtitle: "Stories that teach courage and patience",
+    description:
+      "Short videos that help children connect with the lives and lessons of the prophets.",
+    url: "https://www.youtube.com/@IslamicKidsVideos",
+    tag: "Ages 6–12",
+  },
 ];
 
 export default function IslamForKids() {
@@ -38,15 +124,14 @@ export default function IslamForKids() {
         <p className="learnEyebrow">Kids & Families</p>
         <h1 className="pageTitle">Islam for Kids</h1>
         <p className="pageSubtitle learnIntro">
-          Helping children learn Islam in ways that match their age, attention
-          span, and reading level. This section is designed to make learning
-          feel welcoming, joyful, and easy to grow into over time.
+          A growing learning space for children and families with age-based
+          lessons, simple faith-building tools, and resources designed to make
+          Islamic learning feel warm, accessible, and consistent.
         </p>
 
         <div className="quoteBanner">
           <p>
-            “Children learn best when truth is taught with love, clarity, and
-            consistency.”
+            “Children grow best when faith is taught with love, clarity, and consistency.”
           </p>
         </div>
       </section>
@@ -55,8 +140,8 @@ export default function IslamForKids() {
         <div className="sectionHeading">
           <h2>Choose an Age Group</h2>
           <p>
-            Reading level, attention span, and learning style change a lot as
-            children grow. Start with the group that fits your child best.
+            Start with the group that best matches your child’s reading level,
+            attention span, and stage of learning.
           </p>
         </div>
 
@@ -74,82 +159,19 @@ export default function IslamForKids() {
 
       <section className="learnSection">
         <div className="sectionHeading">
-          <h2>How This Section Helps</h2>
-        </div>
-
-        <div className="learnGrid three">
-          <div className="infoCard">
-            <h3>Age-appropriate learning</h3>
-            <p>
-              Younger children need visuals and short repetition. Older children
-              can handle more meaning, questions, and reflection.
-            </p>
-          </div>
-
-          <div className="infoCard">
-            <h3>More than reading</h3>
-            <p>
-              Children learn through stories, activities, videos, routines, and
-              simple interaction, not just long paragraphs.
-            </p>
-          </div>
-
-          <div className="infoCard">
-            <h3>Family support</h3>
-            <p>
-              Parents and caregivers can use this section as a starting point
-              for conversations and consistent learning at home.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="learnSection">
-        <div className="sectionHeading">
-          <h2>What Kids Can Learn Here</h2>
-        </div>
-
-        <div className="splitSection">
-          <div className="infoCard">
-            <ul className="learnList">
-              <li>Who Allah is</li>
-              <li>What a masjid is</li>
-              <li>The Five Pillars in simple language</li>
-              <li>Short duas and daily manners</li>
-              <li>Ramadan and why Muslims fast</li>
-              <li>Stories of the prophets</li>
-            </ul>
-          </div>
-
-          <div className="infoCard">
-            <ul className="learnList">
-              <li>Why Muslims pray</li>
-              <li>What the Quran is</li>
-              <li>Kindness, honesty, and patience</li>
-              <li>Respect for parents and community</li>
-              <li>Good habits and gratitude</li>
-              <li>Growing love for faith over time</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section className="learnSection">
-        <div className="sectionHeading">
-          <h2>Interactive Learning Ideas</h2>
+          <h2>What Children Can Learn Here</h2>
           <p>
-            This is what will make the page feel much stronger than a basic info
-            page later on.
+            Lessons are designed to help children grow in understanding, routine,
+            confidence, and love for Islam over time.
           </p>
         </div>
 
         <div className="learnGrid three">
-          {ideas.map((idea) => (
-            <div key={idea} className="infoCard">
-              <h3>{idea}</h3>
+          {learnAreas.map((item) => (
+            <div key={item} className="infoCard softCard">
+              <h3>{item}</h3>
               <p>
-                This can be built into the kids section as the learning area
-                grows.
+                Age-appropriate learning designed to be simple, meaningful, and easy to return to again and again.
               </p>
             </div>
           ))}
@@ -158,34 +180,54 @@ export default function IslamForKids() {
 
       <section className="learnSection">
         <div className="sectionHeading">
-          <h2>Featured Family Resource</h2>
+          <h2>Ways Families Can Learn</h2>
+          <p>
+            Children learn in different ways, so this section is built to support more than just reading.
+          </p>
         </div>
 
-        <div className="videoCard">
-          <div className="videoPlaceholder">
-            Kids or family YouTube video embed goes here
-          </div>
-          <div className="videoMeta">
-            <h3>Learn Together</h3>
-            <p>
-              Add a trusted, approved video here for families or children. Keep
-              it short, clear, and age-appropriate.
-            </p>
-          </div>
+        <div className="learnGrid two">
+          {learningFormats.map((item) => (
+            <div key={item.title} className="infoCard">
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </div>
+          ))}
         </div>
       </section>
 
       <section className="learnSection">
         <div className="sectionHeading">
-          <h2>Parent & Family Note</h2>
+          <h2>Trusted Kids Videos & Shows</h2>
+          <p>
+            Browse family-friendly Islamic videos, songs, stories, and animated resources for different age groups.
+          </p>
         </div>
 
+        <div className="videoScroller">
+          {featuredVideos.map((video) => (
+            <a
+              key={video.title}
+              href={video.url}
+              target="_blank"
+              rel="noreferrer"
+              className="videoLibraryCard"
+            >
+              <span className="videoLibraryTag">{video.tag}</span>
+              <h3>{video.title}</h3>
+              <h4>{video.subtitle}</h4>
+              <p>{video.description}</p>
+              <span className="videoLibraryLink">Watch resource ↗</span>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section className="learnSection">
         <div className="infoCard">
+          <h2>Parent & Family Note</h2>
           <p>
-            Every child learns differently. Some children respond best to
-            stories, some to visuals, some to repetition, and some to hands-on
-            activity. This section should support families by making Islamic
-            learning feel natural, encouraging, and realistic.
+            Children do not all learn the same way. Some respond to stories, some to visuals, some to repetition, and some to hands-on activities. The goal of this section is to support families in building steady, encouraging Islamic learning one step at a time.
           </p>
         </div>
       </section>
