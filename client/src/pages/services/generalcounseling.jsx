@@ -1,14 +1,23 @@
+import { useState } from "react";
+import ServiceRequestModal from "../home/components/servicerequestmodal";
+import { serviceFormConfig } from "../home/components/serviceformconfig";
+
 export default function GeneralCounseling() {
+  const [openModal, setOpenModal] = useState(false);
+
   return (
     <div className="page">
       <header style={header}>
         <div style={badge}>Service</div>
+
         <h1 className="pageTitle" style={{ marginBottom: 10 }}>
           General Counseling
         </h1>
+
         <p className="pageSubtitle" style={{ ...subtitle, maxWidth: 920 }}>
-          Private, respectful guidance for individuals and families facing everyday challenges.
-          If you’re not sure where to start, reach out — we’ll help direct you.
+          Private, respectful guidance for individuals and families facing everyday
+          challenges. If you’re not sure where to start, reach out and we’ll help
+          direct you.
         </p>
 
         <div style={quickFacts}>
@@ -16,13 +25,15 @@ export default function GeneralCounseling() {
             <div style={factLabel}>Format</div>
             <div style={factValue}>Guidance & Referrals</div>
           </div>
+
           <div style={factCard}>
             <div style={factLabel}>For</div>
             <div style={factValue}>Individuals & Families</div>
           </div>
+
           <div style={factCard}>
-            <div style={factLabel}>Next step</div>
-            <div style={factValue}>Contact us to schedule</div>
+            <div style={factLabel}>Next Step</div>
+            <div style={factValue}>Request Support</div>
           </div>
         </div>
       </header>
@@ -37,21 +48,76 @@ export default function GeneralCounseling() {
         </ul>
       </section>
 
+      <section style={section}>
+        <h2 style={sectionTitle}>How support begins</h2>
+        <p style={bodyText}>
+          If you would like to speak with someone, use the request form below.
+          After you submit it, the Muslim Center can follow up with availability
+          and next steps.
+        </p>
+      </section>
+
+      <section style={section}>
+        <h2 style={sectionTitle}>What to expect</h2>
+        <div style={miniGrid}>
+          <div style={miniCard}>
+            <div style={miniTitle}>Private & Respectful</div>
+            <div style={miniText}>
+              Conversations are approached with care, dignity, and respect.
+            </div>
+          </div>
+
+          <div style={miniCard}>
+            <div style={miniTitle}>Faith-Centered</div>
+            <div style={miniText}>
+              Guidance can include Islamic perspective, encouragement, and practical next steps.
+            </div>
+          </div>
+
+          <div style={miniCard}>
+            <div style={miniTitle}>Helpful Direction</div>
+            <div style={miniText}>
+              If additional help is needed, we can guide you toward the right support or resources.
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section style={ctaWrap}>
         <div style={ctaCard}>
           <div>
-            <h3 style={ctaTitle}>Need support?</h3>
+            <h3 style={ctaTitle}>Ready to reach out?</h3>
             <p style={ctaText}>
-              Reach out and we’ll guide you to the right next step.
+              Send a request and we’ll help you take the next step toward the right support.
             </p>
           </div>
 
           <div style={ctaButtons}>
-            <a href="/contact" style={btnPrimary}>Contact</a>
-            <a href="/donate" style={btnSecondary}>Donate</a>
+            <button
+              type="button"
+              className="btn"
+              style={btnPrimary}
+              onClick={() => setOpenModal(true)}
+            >
+              Request Support
+            </button>
+
+            <a href="/services" className="btn" style={btnSecondary}>
+              Back to Services
+            </a>
           </div>
         </div>
       </section>
+
+      <ServiceRequestModal
+        serviceKey="general-counseling"
+        open={openModal}
+        onClose={() => {
+            setOpenModal(false);
+            setActiveServiceKey(null);
+          }}
+          configMap={serviceFormConfig}
+      />
     </div>
   );
 }
@@ -79,7 +145,10 @@ const badge = {
   marginBottom: 10,
 };
 
-const subtitle = { lineHeight: 1.6, color: "#2b2b2b" };
+const subtitle = {
+  lineHeight: 1.6,
+  color: "#2b2b2b",
+};
 
 const quickFacts = {
   display: "grid",
@@ -95,8 +164,19 @@ const factCard = {
   border: "1px solid #e3e3e3",
 };
 
-const factLabel = { fontSize: 12, color: "#55715f", fontWeight: 800, marginBottom: 6 };
-const factValue = { fontSize: 14, color: "#1b1b1b", fontWeight: 900, lineHeight: 1.3 };
+const factLabel = {
+  fontSize: 12,
+  color: "#55715f",
+  fontWeight: 800,
+  marginBottom: 6,
+};
+
+const factValue = {
+  fontSize: 14,
+  color: "#1b1b1b",
+  fontWeight: 900,
+  lineHeight: 1.3,
+};
 
 const section = {
   background: "#ffffff",
@@ -106,7 +186,20 @@ const section = {
   marginBottom: 14,
 };
 
-const sectionTitle = { margin: 0, color: "#1e6b3a", fontSize: 20, letterSpacing: -0.2 };
+const sectionTitle = {
+  margin: 0,
+  color: "#1e6b3a",
+  fontSize: 20,
+  letterSpacing: -0.2,
+};
+
+const bodyText = {
+  marginTop: 10,
+  marginBottom: 0,
+  color: "#2b2b2b",
+  lineHeight: 1.7,
+  maxWidth: 920,
+};
 
 const list = {
   marginTop: 10,
@@ -117,9 +210,39 @@ const list = {
   maxWidth: 920,
 };
 
-const li = { marginBottom: 8 };
+const li = {
+  marginBottom: 8,
+};
 
-const ctaWrap = { marginTop: 10 };
+const miniGrid = {
+  display: "grid",
+  gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
+  gap: 12,
+  marginTop: 14,
+};
+
+const miniCard = {
+  background: "#f8faf8",
+  borderRadius: 14,
+  padding: "14px 14px",
+  border: "1px solid #e3e3e3",
+};
+
+const miniTitle = {
+  fontWeight: 900,
+  color: "#1b1b1b",
+  marginBottom: 6,
+};
+
+const miniText = {
+  color: "#2b2b2b",
+  lineHeight: 1.6,
+  fontSize: 14,
+};
+
+const ctaWrap = {
+  marginTop: 10,
+};
 
 const ctaCard = {
   display: "flex",
@@ -133,10 +256,24 @@ const ctaCard = {
   flexWrap: "wrap",
 };
 
-const ctaTitle = { margin: 0, fontSize: 18, letterSpacing: -0.2 };
-const ctaText = { margin: "6px 0 0", opacity: 0.9, lineHeight: 1.5, maxWidth: 720 };
+const ctaTitle = {
+  margin: 0,
+  fontSize: 18,
+  letterSpacing: -0.2,
+};
 
-const ctaButtons = { display: "flex", gap: 10, flexWrap: "wrap" };
+const ctaText = {
+  margin: "6px 0 0",
+  opacity: 0.9,
+  lineHeight: 1.5,
+  maxWidth: 720,
+};
+
+const ctaButtons = {
+  display: "flex",
+  gap: 10,
+  flexWrap: "wrap",
+};
 
 const btnPrimary = {
   display: "inline-flex",
@@ -149,6 +286,7 @@ const btnPrimary = {
   fontWeight: 900,
   textDecoration: "none",
   border: "1px solid rgba(255,255,255,0.35)",
+  cursor: "pointer",
 };
 
 const btnSecondary = {
@@ -164,6 +302,8 @@ const btnSecondary = {
   border: "1px solid rgba(255,255,255,0.45)",
 };
 
-// responsive fallback (no CSS file needed)
 const mq = window?.matchMedia?.("(max-width: 900px)")?.matches;
-if (mq) quickFacts.gridTemplateColumns = "1fr";
+if (mq) {
+  quickFacts.gridTemplateColumns = "1fr";
+  miniGrid.gridTemplateColumns = "1fr";
+}

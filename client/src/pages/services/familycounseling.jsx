@@ -1,4 +1,11 @@
+import { useState } from "react";
+import ServiceRequestModal from "../home/components/servicerequestmodal";
+import { serviceFormConfig } from "../home/components/serviceformconfig";
+
 export default function FamilyCounseling() {
+  const [openModal, setOpenModal] = useState(false);
+
+
   return (
     <div className="page">
       <header style={header}>
@@ -45,25 +52,48 @@ export default function FamilyCounseling() {
         </p>
       </section>
 
-      <section style={ctaWrap}>
-        <div style={ctaCard}>
-          <div>
-            <h3 style={ctaTitle}>Need support for your family?</h3>
-            <p style={ctaText}>
-              Reach out and we’ll help you take the next step.
-            </p>
-          </div>
-
-          <div style={ctaButtons}>
-            <a href="/contact" className="btn" style={btnPrimary}>
-              Contact to Book
-            </a>
-            <a href="/services" className="btn" style={btnSecondary}>
-              Back to Services
-            </a>
-          </div>
-        </div>
-      </section>
+       <section style={section}>
+              <h2 style={sectionTitle}>How to request an appointment</h2>
+              <p style={bodyText}>
+                To request counseling, please contact the Muslim Center. We’ll follow up with
+                availability and next steps.
+              </p>
+            </section>
+      
+            <section style={ctaWrap}>
+              <div style={ctaCard}>
+                <div>
+                  <h3 style={ctaTitle}>Ready to talk?</h3>
+                  <p style={ctaText}>
+                    Send us a message and we’ll help you schedule the right support.
+                  </p>
+                </div>
+      
+                <div style={ctaButtons}>
+                  <button
+                    type="button"
+                    className="btn"
+                    style={btnPrimary}
+                    onClick={() => setOpenModal(true)}
+                  >
+                    Contact to Book
+                  </button>
+                  <a href="/services" className="btn" style={btnSecondary}>
+                    Back to Services
+                  </a>
+                </div>
+              </div>
+            </section>
+      
+             <ServiceRequestModal
+              serviceKey="family-counseling"
+              open={openModal}
+              onClose={() => {
+    setOpenModal(false);
+    setActiveServiceKey(null);
+  }}
+  configMap={serviceFormConfig}
+            />
     </div>
   );
 }

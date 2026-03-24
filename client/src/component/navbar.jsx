@@ -1,87 +1,34 @@
 import { NavLink } from "react-router-dom";
 import logo from "../assets/MuslimCenterlogo.webp";
 import "../styles/navbar.css";
+import "../styles/components.css";
 
 export default function Navbar() {
-  const linkStyle = ({ isActive }) => ({
-    padding: "10px 12px",
-    borderRadius: 10,
-    textDecoration: "none",
-    color: isActive ? "#0b3d2e" : "#1f2937",
-    background: isActive ? "rgba(11, 61, 46, 0.10)" : "transparent",
-    fontWeight: 600,
-  });
+  const navClass = ({ isActive }) =>
+    `siteNavLink${isActive ? " active" : ""}`;
 
   return (
-    <header style={{ borderBottom: "1px solid #e5e7eb", background: "#fff" }}>
-      <nav
-        style={{
-          maxWidth: 1100,
-          margin: "0 auto",
-          padding: "14px 18px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          gap: 16,
-        }}
-      >
-        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+    <header className="siteHeader">
+      <nav className="siteNav">
+        <NavLink to="/" className="brand">
           <img src={logo} alt="Muslim Center logo" className="brandLogo" />
-          <div style={{ lineHeight: 1.1 }}>
-            <div style={{ fontWeight: 800 }}>Muslim Center</div>
-            <div style={{ fontSize: 12, color: "#6b7280" }}>
-              Mosque & Community Hub
-            </div>
+          <div className="brandText">
+            <div className="brandTitle">Muslim Center</div>
+            <div className="brandSubtitle">Mosque & Community Hub</div>
           </div>
-        </div>
+        </NavLink>
 
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: 6,
-            flexWrap: "wrap",
-          }}
-        >
-          <NavLink to="/" style={linkStyle} end>
-            Home
-          </NavLink>
-
-          <NavLink to="/about" style={linkStyle}>
-            About
-          </NavLink>
-
-          <NavLink to="/learn" style={linkStyle}>
-            Learn
-          </NavLink>
-
-          <NavLink to="/services" style={linkStyle}>
-            Services
-          </NavLink>
-
-          <NavLink to="/programs" style={linkStyle}>
-            Programs
-          </NavLink>
-
-          <NavLink to="/prayer-times" style={linkStyle}>
-            Prayer Times
-          </NavLink>
-
-          <NavLink to="/events" style={linkStyle}>
-            Events
-          </NavLink>
-
-          <NavLink to="/donate" style={linkStyle}>
-            Donate
-          </NavLink>
-
-          <NavLink to="/contact" style={linkStyle}>
-            Contact
-          </NavLink>
-
-          <NavLink to="/get-involved" style={linkStyle}>
-          Get Involved
-          </NavLink>
+        <div className="siteNavLinks">
+          <NavLink to="/" className={navClass} end>Home</NavLink>
+          <NavLink to="/about" className={navClass}>About</NavLink>
+          <NavLink to="/learn" className={navClass}>Learn</NavLink>
+          <NavLink to="/services" className={navClass}>Services</NavLink>
+          <NavLink to="/programs" className={navClass}>Programs</NavLink>
+          <NavLink to="/prayer-times" className={navClass}>Prayer Times</NavLink>
+          <NavLink to="/events" className={navClass}>Events</NavLink>
+          <NavLink to="/donate" className={navClass}>Donate</NavLink>
+          <NavLink to="/contact" className={navClass}>Contact</NavLink>
+          <NavLink to="/get-involved" className={navClass}>Get Involved</NavLink>
         </div>
       </nav>
     </header>

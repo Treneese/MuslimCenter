@@ -1,161 +1,362 @@
+import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import "../../styles/learn.css";
 
-const lessonCards = [
-  {
-    title: "Allah Made Everything",
-    text: "Allah made the sky, the earth, the animals, and all people.",
-  },
-  {
-    title: "We Love Allah",
-    text: "Muslims love Allah, thank Allah, and remember Allah every day.",
-  },
-  {
-    title: "A Masjid is a Special Place",
-    text: "A masjid is where Muslims pray, learn, and gather together.",
-  },
-];
+import LearningCard from "../home/components/learning/learningcard";
+import LearningModal from "../home/components/learning/learningmodal";
+import VideoLesson from "../home/components/learning/videolesson";
+import QuizGame from "../home/components/learning/quizgame";
+import MatchingGame from "../home/components/learning/matchinggame";
+import ScenarioGame from "../home/components/learning/scenariogame";
+import ListenButton from "../../component/listenbutton";
+import {
+  speakText,
+  stopSpeech,
+  pauseSpeech,
+  resumeSpeech,
+} from "../../utils/speech";
 
-const simpleHabits = [
-  "Say Bismillah before eating",
-  "Say Alhamdulillah after finishing",
-  "Be kind to parents and family",
-  "Share with others",
-  "Use gentle words",
-  "Keep hands and body clean",
-];
+const hasRealEmbed = (url = "") =>
+  typeof url === "string" &&
+  url.startsWith("https://www.youtube.com/embed/") &&
+  !url.includes("VIDEO_ID");
 
 export default function Kids35() {
+  const [activeTopic, setActiveTopic] = useState(null);
+
+  const topics = useMemo(
+    () => [
+      {
+        id: "allah-made-everything",
+        type: "Topic",
+        title: "Allah Made Everything",
+        subtitle: "A simple first truth for little learners",
+        description:
+          "Help children connect the world around them to Allah through watching, listening, and play.",
+        watch: [
+          {
+            title: "Watch: Allah Made Everything",
+            description:
+              "Add your chosen preschool video here about Allah creating the world.",
+            embedUrl: "",
+            fallbackNote:
+              "Video coming soon. Add a short gentle video about Allah creating the sky, earth, animals, and people.",
+            speechText:
+              "Watch Allah made everything. A short children’s video about Allah creating the sky, earth, animals, and people.",
+          },
+        ],
+        read: {
+          title: "Read: Allah Made Everything",
+          text: "Allah made the sky, the earth, the animals, and all people. When children look around at creation, they can begin learning that Allah made everything.",
+          speech:
+            "Read Allah made everything. Allah made the sky, the earth, the animals, and all people. When children look around at creation, they can begin learning that Allah made everything.",
+        },
+        play: {
+          type: "quiz",
+          title: "Play: Allah Made Everything",
+          questions: [
+            {
+              question: "Who made the sky?",
+              options: ["Allah", "A bird", "A car"],
+              answer: "Allah",
+            },
+            {
+              question: "Who made the animals?",
+              options: ["Allah", "A tree", "A toy"],
+              answer: "Allah",
+            },
+          ],
+        },
+      },
+      {
+        id: "we-love-allah",
+        type: "Topic",
+        title: "We Love Allah",
+        subtitle: "Faith through love and repetition",
+        description:
+          "Teach children to love, thank, and remember Allah in simple ways.",
+        watch: [
+          {
+            title: "Watch: We Love Allah",
+            description:
+              "Add your chosen song or short lesson about loving and thanking Allah.",
+            embedUrl: "",
+            fallbackNote:
+              "Video coming soon. Add a joyful short video or song that helps children remember Allah with love.",
+            speechText:
+              "Watch we love Allah. A gentle video or song helping children remember Allah with joy and love.",
+          },
+        ],
+        read: {
+          title: "Read: We Love Allah",
+          text: "Muslims love Allah, thank Allah, and remember Allah every day. Little children can begin learning this through kind words, songs, and repetition.",
+          speech:
+            "Read we love Allah. Muslims love Allah, thank Allah, and remember Allah every day. Little children can begin learning this through kind words, songs, and repetition.",
+        },
+        play: {
+          type: "scenario",
+          title: "Play: Loving Allah in Daily Life",
+          question: "You finish eating and feel happy. What can you say?",
+          options: [
+            {
+              text: "Alhamdulillah",
+              correct: true,
+              feedback:
+                "Yes. Saying Alhamdulillah is a beautiful way to thank Allah.",
+            },
+            {
+              text: "Nothing at all",
+              correct: false,
+              feedback:
+                "We can remember Allah with small words every day.",
+            },
+            {
+              text: "Only ask for more toys",
+              correct: false,
+              feedback:
+                "This choice does not teach gratitude to Allah.",
+            },
+          ],
+        },
+      },
+      {
+        id: "masjid",
+        type: "Topic",
+        title: "A Masjid is a Special Place",
+        subtitle: "Introduce the masjid with warmth",
+        description:
+          "Help children understand that the masjid is a place to pray, learn, and gather.",
+        watch: [
+          {
+            title: "Watch: What is a Masjid?",
+            description:
+              "Add a preschool-friendly introduction to the masjid here.",
+            embedUrl: "",
+            fallbackNote:
+              "Video coming soon. Add a short preschool-friendly video introducing the masjid.",
+            speechText:
+              "Watch what is a masjid. A short preschool-friendly video introducing the masjid.",
+          },
+        ],
+        read: {
+          title: "Read: A Masjid is a Special Place",
+          text: "A masjid is where Muslims pray, learn, and gather together. It is a peaceful place where families come to worship Allah.",
+          speech:
+            "Read a masjid is a special place. A masjid is where Muslims pray, learn, and gather together. It is a peaceful place where families come to worship Allah.",
+        },
+        play: {
+          type: "quiz",
+          title: "Play: Masjid Quiz",
+          questions: [
+            {
+              question: "Where do Muslims pray together?",
+              options: ["Masjid", "Bus", "Store"],
+              answer: "Masjid",
+            },
+            {
+              question: "Is the masjid a special place?",
+              options: ["Yes", "No", "Only for toys"],
+              answer: "Yes",
+            },
+          ],
+        },
+      },
+      {
+        id: "little-daily-words",
+        type: "Topic",
+        title: "Little Daily Words",
+        subtitle: "Bismillah and Alhamdulillah",
+        description:
+          "Teach simple daily words children can hear and repeat often.",
+        watch: [
+          {
+            title: "Watch: Daily Islamic Words",
+            description:
+              "Add a short song or children’s lesson for Bismillah and Alhamdulillah.",
+            embedUrl: "",
+            fallbackNote:
+              "Video coming soon. Add a short children’s video or song teaching Bismillah and Alhamdulillah.",
+            speechText:
+              "Watch daily Islamic words. A short children’s video or song teaching Bismillah and Alhamdulillah.",
+          },
+        ],
+        read: {
+          title: "Read: Little Daily Words",
+          text: "Children can begin with small daily words like Bismillah before eating and Alhamdulillah after finishing. These simple words help Islam become part of everyday life.",
+          speech:
+            "Read little daily words. Children can begin with small daily words like Bismillah before eating and Alhamdulillah after finishing. These simple words help Islam become part of everyday life.",
+        },
+        play: {
+          type: "matching",
+          title: "Play: Match the Daily Words",
+          pairs: [
+            { left: "Bismillah", right: "Before eating" },
+            { left: "Alhamdulillah", right: "After finishing" },
+          ],
+        },
+      },
+    ],
+    []
+  );
+
+  const pageIntroSpeech = `
+    Islam for Kids. Ages 3 to 5.
+    Explore one topic at a time.
+    In each topic, children can watch, read, and play.
+    This page is best used with a parent or older sibling.
+  `;
+
+  function renderWatchSection(watchItems = []) {
+    return (
+      <div className="watchVideoGrid">
+        {watchItems.map((video) =>
+          hasRealEmbed(video.embedUrl) ? (
+            <VideoLesson
+              key={video.title}
+              title={video.title}
+              description={video.description}
+              embedUrl={video.embedUrl}
+              speechText={video.speechText}
+            />
+          ) : (
+            <div key={video.title} className="topicReadCard videoPendingCard">
+              <h4>{video.title}</h4>
+              <p>{video.description}</p>
+              <p>{video.fallbackNote}</p>
+            </div>
+          )
+        )}
+      </div>
+    );
+  }
+
+  function renderPlaySection(play) {
+    if (!play) return null;
+
+    if (play.type === "quiz") {
+      return <QuizGame title={play.title} questions={play.questions} />;
+    }
+
+    if (play.type === "matching") {
+      return <MatchingGame title={play.title} pairs={play.pairs} />;
+    }
+
+    if (play.type === "scenario") {
+      return (
+        <ScenarioGame
+          title={play.title}
+          question={play.question}
+          options={play.options}
+        />
+      );
+    }
+
+    return null;
+  }
+
+  function renderTopicModal(topic) {
+    if (!topic) return null;
+
+    return (
+      <div className="topicLessonFlow">
+        <section className="topicFlowSection">
+          <div className="topicFlowHeader">
+            <h3>Watch</h3>
+          </div>
+          {renderWatchSection(Array.isArray(topic.watch) ? topic.watch : [topic.watch])}
+        </section>
+
+        <section className="topicFlowSection">
+          <div className="topicFlowHeader">
+            <h3>Read</h3>
+            <ListenButton text={topic.read.speech} label="Listen" rate={0.86} />
+          </div>
+
+          <div className="topicReadCard">
+            <h4>{topic.read.title}</h4>
+            <p>{topic.read.text}</p>
+          </div>
+        </section>
+
+        <section className="topicFlowSection">
+          <div className="topicFlowHeader">
+            <h3>Play</h3>
+          </div>
+
+          <div className="topicPlayCard">{renderPlaySection(topic.play)}</div>
+        </section>
+      </div>
+    );
+  }
+
   return (
-    <div className="page learnPage kidsAgePage">
+    <div className="page learnPage kidsAgePage kids35Page interactiveLearnPage">
       <section className="learnHero kidsHero">
         <p className="learnEyebrow">Islam for Kids</p>
         <h1 className="pageTitle">Ages 3–5</h1>
         <p className="pageSubtitle learnIntro">
-          Simple, loving introductions to Islam for early learners through short
-          phrases, clear ideas, and gentle repetition.
+          Simple and loving introductions to Islam for early learners through
+          sound, short phrases, gentle repetition, and family support.
         </p>
 
         <div className="quoteBanner">
-          <p>
-            “Little hearts learn through love, repetition, and simple truth.”
-          </p>
+          <p>“Little hearts learn through love, repetition, and simple truth.”</p>
+        </div>
+
+        <div className="supportBadge">Best with a parent or older sibling</div>
+
+        <div className="pageReaderControls">
+          <button
+            type="button"
+            onClick={() => speakText(pageIntroSpeech, { rate: 0.86, voiceName: "Samantha" })}
+          >
+            🔊 Read Page Intro
+          </button>
+          <button type="button" onClick={pauseSpeech}>⏸ Pause</button>
+          <button type="button" onClick={resumeSpeech}>▶ Resume</button>
+          <button type="button" onClick={stopSpeech}>⏹ Stop</button>
         </div>
       </section>
 
       <section className="learnSection">
         <div className="sectionHeading">
-          <h2>What We Learn</h2>
-          <p>
-            At this age, children learn best through very short language,
-            visuals, routine, and repetition.
-          </p>
+          <h2>Choose a Topic</h2>
+          <p>Open one topic at a time, then watch, read, and play in order.</p>
         </div>
 
-        <div className="learnGrid three">
-          {lessonCards.map((item) => (
-            <div key={item.title} className="infoCard softCard">
-              <h3>{item.title}</h3>
-              <p>{item.text}</p>
-            </div>
+        <div className="learnGrid two">
+          {topics.map((topic) => (
+            <LearningCard
+              key={topic.id}
+              title={topic.title}
+              subtitle={topic.subtitle}
+              description={topic.description}
+              type={topic.type}
+              onClick={() => setActiveTopic(topic)}
+            />
           ))}
         </div>
       </section>
 
       <section className="learnSection">
         <div className="sectionHeading">
-          <h2>Simple Daily Habits</h2>
-          <p>
-            These are small Islamic habits young children can begin learning at
-            home and in the masjid.
-          </p>
+          <h2>Parent Note</h2>
         </div>
 
         <div className="infoCard">
-          <ul className="learnList">
-            {simpleHabits.map((habit) => (
-              <li key={habit}>{habit}</li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      <section className="learnSection">
-        <div className="sectionHeading">
-          <h2>Short Learning Time</h2>
+          <div className="cardTopRow">
+            <h3>Keep It Light and Repetitive</h3>
+            <ListenButton
+              text="Keep it light and repetitive. Young children learn through warmth, repetition, simple wording, and short sessions."
+              label="Listen"
+              rate={0.88}
+            />
+          </div>
           <p>
-            Keep learning sessions short, happy, and easy to remember.
+            Young children do not need long explanations. Let them hear small
+            truths often, repeat key words, and connect Islamic learning to
+            daily life with love.
           </p>
-        </div>
-
-        <div className="learnGrid two">
-          <div className="infoCard">
-            <h3>Good topics for this age</h3>
-            <ul className="learnList">
-              <li>Who is Allah?</li>
-              <li>What is a masjid?</li>
-              <li>We say Bismillah</li>
-              <li>We love to pray</li>
-              <li>Allah loves kindness</li>
-            </ul>
-          </div>
-
-          <div className="infoCard">
-            <h3>Best learning style</h3>
-            <ul className="learnList">
-              <li>Short videos</li>
-              <li>Simple songs or repetition</li>
-              <li>Picture-based learning</li>
-              <li>Parent-led reading</li>
-              <li>Coloring and tracing</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section className="learnSection">
-        <div className="sectionHeading">
-          <h2>Watch Together</h2>
-          <p>
-            Add a very short approved video here for preschool and early
-            learners.
-          </p>
-        </div>
-
-        <div className="videoCard">
-          <div className="videoPlaceholder">
-            Preschool-friendly Islamic video embed goes here
-          </div>
-          <div className="videoMeta">
-            <h3>Learn with Family</h3>
-            <p>
-              Keep videos short, gentle, and easy for a child to understand with
-              a parent nearby.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="learnSection">
-        <div className="sectionHeading">
-          <h2>Try at Home</h2>
-        </div>
-
-        <div className="learnGrid three">
-          <div className="infoCard softCard">
-            <h3>Coloring Page</h3>
-            <p>Print a masjid or moon-and-stars page for simple learning time.</p>
-          </div>
-
-          <div className="infoCard softCard">
-            <h3>Say the Words</h3>
-            <p>Practice Bismillah, Alhamdulillah, and Allah with your child.</p>
-          </div>
-
-          <div className="infoCard softCard">
-            <h3>Prayer Mat Time</h3>
-            <p>Let children explore prayer gently by standing with family.</p>
-          </div>
         </div>
       </section>
 
@@ -169,17 +370,25 @@ export default function Kids35() {
 
           <Link to="/learn/kids-6-8" className="navCard">
             <h3>Next Age Group</h3>
-            <p>Move to ages 6–8 for early reading and more activities.</p>
+            <p>Move forward to ages 6–8 when your child is ready.</p>
             <span>Go to ages 6–8 →</span>
           </Link>
 
-          <Link to="/contact" className="navCard">
-            <h3>Need Family Support?</h3>
-            <p>Reach out to the masjid for children and family resources.</p>
-            <span>Contact us →</span>
+          <Link to="/learn/new-to-islam" className="navCard">
+            <h3>Family Learning</h3>
+            <p>Explore more faith-building resources for the whole family.</p>
+            <span>Continue learning →</span>
           </Link>
         </div>
       </section>
+
+      <LearningModal
+        isOpen={!!activeTopic}
+        onClose={() => setActiveTopic(null)}
+        title={activeTopic?.title || ""}
+      >
+        {renderTopicModal(activeTopic)}
+      </LearningModal>
     </div>
   );
 }

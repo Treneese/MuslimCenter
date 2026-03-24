@@ -1,3 +1,5 @@
+import "../styles/components.css";
+
 export default function LeadershipGrid({ children }) {
   return <div style={grid}>{children}</div>;
 }

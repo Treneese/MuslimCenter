@@ -1,0 +1,446 @@
+.homePage {
+  display: grid;
+  gap: 30px;
+}
+
+.homeHeroWrap {
+  margin-bottom: 18px;
+}
+
+.homeDivider {
+  max-width: 980px;
+  margin: 0 auto;
+  border-top: 1px solid rgba(219, 160, 76, 0.18);
+}
+
+.homeContainer {
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.homeTwoCol {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 18px;
+  align-items: start;
+}
+
+.homeSectionCard {
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(219, 160, 76, 0.18);
+  border-radius: 24px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+}
+
+.homeSectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.homeSectionTitle {
+  margin: 0;
+  font-family: var(--mc-font-heading);
+  font-size: 2rem;
+  line-height: 1.05;
+  color: #18301f;
+}
+
+.homeSectionText {
+  margin-top: 8px;
+  color: var(--mc-text-soft);
+  line-height: 1.75;
+}
+
+.homeLinkBtn {
+  border: none;
+  background: transparent;
+  color: var(--mc-green-deep);
+  font-weight: 800;
+  cursor: pointer;
+  padding: 8px 0;
+}
+
+.homePillBtn {
+  border: 1px solid rgba(23, 117, 60, 0.14);
+  background: rgba(255, 255, 255, 0.96);
+  color: var(--mc-green-deep);
+  font-weight: 800;
+  padding: 10px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.homePillBtn:hover,
+.homeLinkBtn:hover {
+  opacity: 0.9;
+}
+
+/* HERO */
+
+.heroSection {
+  position: relative;
+  min-height: 390px;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  padding: 28px 24px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.14);
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,0.62), rgba(0,0,0,0.46)),
+    linear-gradient(90deg, rgba(0,0,0,0.18), rgba(0,0,0,0.06));
+}
+
+.heroContent {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 980px;
+  text-align: center;
+  color: white;
+}
+
+.heroTitle {
+  margin: 0;
+  font-family: var(--mc-font-heading);
+  font-size: clamp(2.6rem, 6vw, 4.6rem);
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  text-shadow: 0 12px 32px rgba(0,0,0,0.34);
+}
+
+.heroSubtitle {
+  margin: 14px auto 0;
+  max-width: 820px;
+  line-height: 1.75;
+  font-size: 1.05rem;
+  opacity: 0.96;
+}
+
+.heroCtaRow {
+  margin-top: 24px;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.heroBtn {
+  padding: 12px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.22);
+  font-weight: 800;
+  cursor: pointer;
+  color: white;
+  min-width: 140px;
+  backdrop-filter: blur(6px);
+}
+
+.heroBtn.gold {
+  background: rgba(219, 160, 76, 0.82);
+}
+
+.heroBtn.green {
+  background: rgba(23, 117, 60, 0.82);
+}
+
+.heroBtn.teal {
+  background: rgba(22, 101, 98, 0.78);
+}
+
+.heroBtn.dark {
+  background: rgba(17, 24, 39, 0.78);
+}
+
+/* THIS WEEK */
+
+.thisWeekSection {
+  padding: 0;
+}
+
+.thisWeekGrid {
+  margin-top: 14px;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.thisWeekCard {
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(219, 160, 76, 0.18);
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+}
+
+.thisWeekImageWrap {
+  width: 100%;
+  height: 150px;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(23,117,60,0.05), rgba(219,160,76,0.06));
+}
+
+.thisWeekImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.thisWeekBody {
+  padding: 16px;
+  display: grid;
+  gap: 8px;
+}
+
+.thisWeekCardTitle {
+  font-weight: 900;
+  color: #18301f;
+  font-family: var(--mc-font-heading);
+  font-size: 1.45rem;
+  line-height: 1.05;
+}
+
+.thisWeekMeta {
+  color: var(--mc-text-soft);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.thisWeekMiniLink {
+  margin-top: 6px;
+  border: none;
+  background: transparent;
+  color: var(--mc-green-deep);
+  font-weight: 900;
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+}
+
+/* PRAYER TIMES */
+
+.todayPrayerSection {
+  padding: 0;
+}
+
+.todayPrayerCard {
+  margin-top: 12px;
+  border: 1px solid rgba(219, 160, 76, 0.18);
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: 22px;
+  padding: 14px;
+  max-width: 520px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+}
+
+.todayPrayerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 14px;
+  border-radius: 16px;
+  border: 1px solid rgba(23, 117, 60, 0.1);
+  margin-bottom: 10px;
+  background: rgba(23, 117, 60, 0.03);
+}
+
+.todayPrayerLabel {
+  font-weight: 800;
+  color: #18301f;
+}
+
+.todayPrayerTime {
+  font-weight: 800;
+  color: #374151;
+}
+
+.homeMuted {
+  color: var(--mc-text-soft);
+}
+
+/* SUPPORT MASJID */
+
+.supportMasjidSection {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 12px 24px 0;
+}
+
+.supportMasjidCard {
+  margin-top: 14px;
+  border: 1px solid rgba(219, 160, 76, 0.18);
+  border-radius: 24px;
+  padding: 20px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(247,243,235,0.92));
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+}
+
+.supportMasjidRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.supportMasjidAmount {
+  font-size: 2rem;
+  font-weight: 900;
+  color: #18301f;
+  font-family: var(--mc-font-heading);
+}
+
+.supportMasjidBarOuter {
+  margin-top: 14px;
+  height: 12px;
+  background: rgba(23, 117, 60, 0.08);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.supportMasjidBarInner {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--mc-green), var(--mc-gold));
+}
+
+/* GET INVOLVED */
+
+.getInvolvedSection {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 24px 36px;
+}
+
+.getInvolvedGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  align-items: start;
+}
+
+.getInvolvedCard {
+  border: 1px solid rgba(219, 160, 76, 0.18);
+  border-radius: 24px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+}
+
+.getInvolvedMuted {
+  color: var(--mc-text-soft);
+  font-weight: 700;
+}
+
+.getInvolvedLine {
+  margin-top: 8px;
+  color: #1f2937;
+  font-weight: 600;
+}
+
+/* MAP PANEL */
+
+.mapPanelSection {
+  padding: 0;
+}
+
+.mapPanelCard {
+  border: 1px solid rgba(219, 160, 76, 0.18);
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: 24px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+}
+
+.mapPanelLeft {
+  padding: 20px;
+}
+
+.mapPanelRight {
+  min-height: 280px;
+}
+
+.mapPanelTitle {
+  margin: 0;
+  color: #18301f;
+  font-family: var(--mc-font-heading);
+  font-size: 1.75rem;
+}
+
+.mapPanelText {
+  margin-top: 8px;
+  margin-bottom: 14px;
+  color: var(--mc-text-soft);
+  line-height: 1.75;
+}
+
+.mapPanelInfoGrid {
+  display: grid;
+  gap: 12px;
+}
+
+.mapPanelLabel {
+  font-weight: 900;
+  color: var(--mc-green-deep);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.mapPanelValue {
+  color: #374151;
+  font-weight: 700;
+}
+
+.mapPanelIframe {
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+  border: 0;
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .homeTwoCol,
+  .getInvolvedGrid,
+  .mapPanelCard,
+  .thisWeekGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .mapPanelRight {
+    min-height: 240px;
+  }
+}
+
+@media (max-width: 640px) {
+  .heroSection {
+    min-height: 330px;
+    padding: 20px 16px;
+    border-radius: 22px;
+  }
+
+  .heroBtn {
+    width: 100%;
+  }
+
+  .supportMasjidSection,
+  .getInvolvedSection {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+}

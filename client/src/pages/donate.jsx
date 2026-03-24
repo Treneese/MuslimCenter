@@ -1,5 +1,5 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "../styles/pages.css";
 
 const FALLBACK_MOHID_URL =
   "https://us.mohid.co/mi/detroit/mcd/masjid/online/donation";
@@ -22,73 +22,52 @@ export default function Donate() {
     );
   }
 
-
   return (
-    <div style={{ padding: 24 }}>
-      <h1 style={{ marginTop: 0, color: "#1e6b3a" }}>Donate</h1>
+    <div className="page">
+      <section className="learnHero">
+        <p className="learnEyebrow">Donate</p>
+        <h1 className="pageTitle">Support the Masjid</h1>
+        <p className="pageSubtitle pageIntro">
+          Your donation helps sustain the masjid, support programs, and serve
+          the community. May Allah reward you for every contribution.
+        </p>
+      </section>
 
-      <p style={{ maxWidth: 900, lineHeight: 1.6 }}>
-        Your donation helps sustain the masjid, programs, and services. May Allah
-        reward you.
-      </p>
+      <section className="learnSection">
+        <div className="pageCardsGrid">
+          <div className="pageCard">
+            <h2 className="pageCardTitle">Option 1: Donate Online</h2>
+            <p className="pageCardText">
+              Use our secure official donation portal for one-time or recurring
+              giving.
+            </p>
+            <button
+              onClick={() => {
+                window.location.href = MOHID_DONATE_URL;
+              }}
+              className="secondaryBtn"
+              style={{ marginTop: 14 }}
+            >
+              Donate Now
+            </button>
+          </div>
 
-      <div style={{ display: "grid", gap: 14, maxWidth: 760 }}>
-        <div style={card}>
-          <h2 style={h2}>Option 1: Donate Online</h2>
-          <p style={p}>
-            Use our secure official donation portal for one-time or recurring giving.
-          </p>
-         <button
-          onClick={() => window.location.href = MOHID_DONATE_URL}
-          style={primaryBtn}
-        >
-          Donate Now
-        </button>
+          <div className="pageCard">
+            <h2 className="pageCardTitle">Option 2: Quick Pay</h2>
+            <p className="pageCardText">
+              Choose a fast mobile-friendly payment option and complete your
+              donation quickly.
+            </p>
+            <button
+              onClick={() => navigate("/quickpay")}
+              className="ghostBtn"
+              style={{ marginTop: 14 }}
+            >
+              Quick Pay
+            </button>
+          </div>
         </div>
-
-        <div style={card}>
-          <h2 style={h2}>Option 2: Quick Pay</h2>
-          <p style={p}>
-            Choose an amount and complete your donation with a fast mobile method.
-          </p>
-          <button onClick={() => navigate("/quickpay")} style={secondaryBtn}>
-            Quick Pay
-          </button>
-        </div>
-      </div>
+      </section>
     </div>
   );
 }
-
-/* ✅ put these back (your originals) */
-const card = {
-  border: "1px solid #cfe4d6",
-  borderRadius: 12,
-  padding: 16,
-  background: "#fff",
-};
-
-const h2 = { margin: 0, color: "#1e6b3a" };
-const p = { margin: "8px 0 0 0", lineHeight: 1.6 };
-
-const primaryBtn = {
-  padding: "12px 14px",
-  borderRadius: 10,
-  border: "1px solid #1e6b3a",
-  background: "#1e6b3a",
-  color: "white",
-  fontWeight: 900,
-  width: 180,
-  marginTop: 12,
-};
-
-const secondaryBtn = {
-  padding: "12px 14px",
-  borderRadius: 10,
-  border: "1px solid #1e6b3a",
-  background: "#ffffff",
-  color: "#1e6b3a",
-  fontWeight: 900,
-  width: 180,
-  marginTop: 12,
-};

@@ -1,4 +1,4 @@
-// client/src/pages/home/Home.jsx
+import "../../styles/home.css";
 import useHomeData from "./usehomedata";
 import Hero from "./components/hero";
 import ThisWeek from "./components/thisweek";
@@ -17,14 +17,15 @@ export default function Home() {
   } = useHomeData();
 
   return (
-    <div>
-   <div style={{ marginBottom: 18 }}>
-  <Hero />
-</div>
-      <div style={divider} />
+    <div className="homePage">
+      <div className="homeHeroWrap">
+        <Hero />
+      </div>
 
-      <section style={container}>
-        <div style={twoCol}>
+      <div className="homeDivider" />
+
+      <section className="homeContainer">
+        <div className="homeTwoCol">
           <ThisWeek events={events} loading={loadingEvents} error={eventsError} />
           <TodaysPrayerTimes
             prayerTimes={prayerTimes}
@@ -33,30 +34,9 @@ export default function Home() {
           />
         </div>
       </section>
+
       <SupportMasjid />
-<GetInvolved />
+      <GetInvolved />
     </div>
   );
 }
-
-const container = {
-  maxWidth: 980,
-  margin: "0 auto",
-};
-
-const twoCol = {
-  display: "grid",
-  gridTemplateColumns: "1.15fr 0.85fr",
-  gap: 16,
-  alignItems: "start",
-};
-
-const divider = {
-  maxWidth: 980,
-  margin: "0 auto",
-  borderTop: "1px solid #cfe4d6",
-};
-
-// quick responsive fallback
-const mq = window?.matchMedia?.("(max-width: 900px)")?.matches;
-if (mq) twoCol.gridTemplateColumns = "1fr";

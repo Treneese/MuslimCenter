@@ -1,4 +1,9 @@
+import { useState } from "react";
+import ServiceRequestModal from "../home/components/servicerequestmodal";
+import { serviceFormConfig } from "../home/components/serviceformconfig";
+
 export default function Marriage() {
+  const [openModal, setOpenModal] = useState(false);
   return (
     <div className="page">
       <header style={header}>
@@ -55,15 +60,30 @@ export default function Marriage() {
           </div>
 
           <div style={ctaButtons}>
-            <a href="/contact" className="btn" style={btnPrimary}>
+            <button
+              type="button"
+              className="btn"
+              style={btnPrimary}
+              onClick={() => setOpenModal(true)}
+            >
               Contact to Book
-            </a>
+            </button>
             <a href="/services" className="btn" style={btnSecondary}>
               Back to Services
             </a>
           </div>
         </div>
       </section>
+
+       <ServiceRequestModal
+        serviceKey="marriage-counseling"
+        open={openModal}
+        onClose={() => {
+            setOpenModal(false);
+            setActiveServiceKey(null);
+          }}
+          configMap={serviceFormConfig}
+      />
     </div>
   );
 }

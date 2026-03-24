@@ -4,20 +4,20 @@ import "../../styles/learn.css";
 const adultPaths = [
   {
     title: "Foundations of Islam",
-    subtitle: "Start with the basics",
-    text: "For new Muslims, curious visitors, returning learners, and anyone who wants a clear foundation in Islam.",
+    subtitle: "Start here if you are new or restarting",
+    text: "A step-by-step, no-gap guide for new Muslims, curious learners, or anyone rebuilding their understanding from the beginning.",
     to: "/learn/adults/foundations",
   },
   {
     title: "Growing in Faith",
-    subtitle: "Strengthen practice and understanding",
-    text: "For Muslims who know the basics and want to build consistency, character, worship, and daily Islamic growth.",
+    subtitle: "Strengthen your practice and discipline",
+    text: "For Muslims who know the basics and want to improve the quality of their worship, consistency, character, and daily life.",
     to: "/learn/adults/growing-in-faith",
   },
   {
     title: "Deepening Knowledge",
-    subtitle: "Go further in study and reflection",
-    text: "For longer-term learners who want deeper study, reflection, spiritual growth, and stronger understanding.",
+    subtitle: "Go deeper in understanding and reflection",
+    text: "For Muslims ready to focus on inner purification, deeper Quran reflection, scholarship, and long-term spiritual growth.",
     to: "/learn/adults/deepening-knowledge",
   },
 ];
@@ -30,13 +30,15 @@ export default function AdultLearning() {
         <h1 className="pageTitle">Adult Learning Paths</h1>
         <p className="pageSubtitle learnIntro">
           Learn Islam in a way that matches your stage of growth. Whether you
-          are just beginning, strengthening your practice, or seeking deeper
-          understanding, these paths are designed to support continued learning.
+          are brand new, building consistency, or seeking deeper understanding,
+          these paths are designed to help you move forward clearly and
+          confidently.
         </p>
 
         <div className="quoteBanner">
           <p>
-            “Seeking knowledge is a lifelong part of faith, growth, and sincerity.”
+            “You were not created to be perfect. What matters is sincerity,
+            growth, and returning to Allah again and again.”
           </p>
         </div>
       </section>
@@ -45,8 +47,8 @@ export default function AdultLearning() {
         <div className="sectionHeading">
           <h2>Choose a Learning Path</h2>
           <p>
-            You do not have to stay in one lane forever. Move between these
-            paths as needed and return to the basics whenever beneficial.
+            These paths are guides, not strict labels. You can return to the
+            basics at any time or move forward when ready.
           </p>
         </div>
 
@@ -59,37 +61,6 @@ export default function AdultLearning() {
               <span>Open path →</span>
             </Link>
           ))}
-        </div>
-      </section>
-
-      <section className="learnSection">
-        <div className="sectionHeading">
-          <h2>What You’ll Find Here</h2>
-        </div>
-
-        <div className="learnGrid three">
-          <div className="infoCard">
-            <h3>Short Lessons</h3>
-            <p>
-              Clear, manageable learning instead of long overwhelming pages.
-            </p>
-          </div>
-
-          <div className="infoCard">
-            <h3>Audio, Video & Quizzes</h3>
-            <p>
-              Learn through multiple formats with read-aloud support and quick
-              checks for understanding.
-            </p>
-          </div>
-
-          <div className="infoCard">
-            <h3>Practical Growth</h3>
-            <p>
-              Lessons designed to connect faith to everyday practice, worship,
-              and character.
-            </p>
-          </div>
         </div>
       </section>
     </div>

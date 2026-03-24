@@ -1,4 +1,11 @@
+import { useState } from "react";
+import ServiceRequestModal from "../home/components/servicerequestmodal";
+import { serviceFormConfig } from "../home/components/serviceformconfig";
+
 export default function Shahada() {
+  const [openModal, setOpenModal] = useState(false);
+
+
   return (
     <div className="page">
       <header style={header}>
@@ -37,33 +44,48 @@ export default function Shahada() {
         </ul>
       </section>
 
-      <section style={section}>
-        <h2 style={sectionTitle}>Getting started</h2>
-        <p style={bodyText}>
-          Reach out through the Contact page. Tell us what you’re looking for, and we’ll
-          connect you with the right support.
-        </p>
-      </section>
-
-      <section style={ctaWrap}>
-        <div style={ctaCard}>
-          <div>
-            <h3 style={ctaTitle}>You’re not alone.</h3>
-            <p style={ctaText}>
-              Message us and we’ll help you take the next step.
-            </p>
-          </div>
-
-          <div style={ctaButtons}>
-            <a href="/contact" className="btn" style={btnPrimary}>
-              Contact Us
-            </a>
-            <a href="/services" className="btn" style={btnSecondary}>
-              Back to Services
-            </a>
-          </div>
-        </div>
-      </section>
+       <section style={section}>
+  <h2 style={sectionTitle}>How to get connected</h2>
+  <p style={bodyText}>
+    If you are interested in support, shahada, or learning more, reach out through the form below.
+    We’ll follow up with care and next steps.
+  </p>
+</section>
+      
+            <section style={ctaWrap}>
+              <div style={ctaCard}>
+                <div>
+                  <h3 style={ctaTitle}>Ready to talk?</h3>
+                  <p style={ctaText}>
+                    Send us a message and we’ll help you schedule the right support.
+                  </p>
+                </div>
+      
+                <div style={ctaButtons}>
+                  <button
+                    type="button"
+                    className="btn"
+                    style={btnPrimary}
+                    onClick={() => setOpenModal(true)}
+                  >
+                    Request Support
+                  </button>
+                  <a href="/services" className="btn" style={btnSecondary}>
+                    Back to Services
+                  </a>
+                </div>
+              </div>
+            </section>
+      
+             <ServiceRequestModal
+              serviceKey="new-shahada-support"
+              open={openModal}
+              onClose={() => {
+                  setOpenModal(false);
+                  setActiveServiceKey(null);
+                }}
+                configMap={serviceFormConfig}
+            />
     </div>
   );
 }

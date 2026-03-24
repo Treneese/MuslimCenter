@@ -1,4 +1,10 @@
+import { useState } from "react";
+import ServiceRequestModal from "../home/components/servicerequestmodal";
+import { serviceFormConfig } from "../home/components/serviceformconfig";
+
 export default function Janazah() {
+  const [openModal, setOpenModal] = useState(false);
+
   const PARTNER_FUNERAL_HOME_URL = "https://www.rahmanfuneralhome.com/";
 
   return (
@@ -42,7 +48,7 @@ export default function Janazah() {
           </ol>
 
           <div style={buttonsRow}>
-            <a href="/contact" style={btnPrimary}>Contact the Muslim Center</a>
+            <a href="/contact?service=janazah-counseling" style={btnPrimary}>Contact the Muslim Center</a>
           </div>
         </div>
 
@@ -125,11 +131,27 @@ export default function Janazah() {
           </div>
 
           <div style={ctaButtons}>
-            <a href="/contact" style={btnOnDark}>Contact</a>
+            <button
+              type="button"
+              onClick={() => setOpenModal(true)}
+              style={btnOnDark}
+            >
+              Contact
+            </button>
             <a href="/donate" style={btnOnDarkOutline}>Donate</a>
           </div>
         </div>
       </section>
+
+      <ServiceRequestModal
+        serviceKey="janazah-services"
+        open={openModal}
+        onClose={() => {
+            setOpenModal(false);
+            setActiveServiceKey(null);
+          }}
+          configMap={serviceFormConfig}
+      />
     </div>
   );
 }
@@ -143,6 +165,7 @@ const header = {
   border: "1px solid #d9e4dd",
   marginBottom: 18,
 };
+
 
 const badge = {
   display: "inline-flex",
@@ -240,6 +263,7 @@ const btnPrimary = {
   fontWeight: 900,
   textDecoration: "none",
   border: "1px solid rgba(0,0,0,0.06)",
+  cursor: "pointer",
 };
 
 const btnSecondary = {
@@ -344,6 +368,7 @@ const btnOnDark = {
   fontWeight: 900,
   textDecoration: "none",
   border: "1px solid rgba(255,255,255,0.35)",
+  cursor: "pointer",
 };
 
 const btnOnDarkOutline = {

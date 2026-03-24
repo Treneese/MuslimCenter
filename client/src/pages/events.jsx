@@ -28,10 +28,14 @@ export default function Events() {
 
   return (
     <div className="page featurePage">
-      <h1 className="pageTitle">Events</h1>
-      <p className="pageSubtitle featureIntro">
-        Stay connected—join weekly programs, special events, and community gatherings.
-      </p>
+      <section className="learnHero">
+        <p className="learnEyebrow">Events</p>
+        <h1 className="pageTitle">Community Events</h1>
+        <p className="pageSubtitle featureIntro">
+          Stay connected through weekly programs, special gatherings, and events
+          for the community.
+        </p>
+      </section>
 
       {loading && <p className="featureStatus">Loading...</p>}
       {err && <p className="featureError">{err}</p>}

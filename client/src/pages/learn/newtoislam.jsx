@@ -1,95 +1,40 @@
 import { Link } from "react-router-dom";
 import "../../styles/learn.css";
 
-const firstSteps = [
-  {
-    title: "Begin with the Shahada",
-    text: "The Shahada is the declaration of faith in Islam. It is the beginning of a new relationship with Allah built on sincerity, belief, and submission.",
-  },
-  {
-    title: "Learn Prayer Gradually",
-    text: "Do not feel like you must know everything immediately. Start learning the daily prayers step by step and build consistency over time.",
-  },
-  {
-    title: "Start Reading the Quran",
-    text: "Begin with translation, short surahs, and simple explanations. Focus on understanding and connection, not rushing.",
-  },
-  {
-    title: "Stay Connected to Community",
-    text: "A supportive masjid and good company can make a big difference. Ask questions, attend classes, and take your journey one step at a time.",
-  },
-];
-
-const supports = [
-  {
-    title: "Prayer Help",
-    text: "Learn the basics of wudu, prayer times, and how to begin salah with patience and support.",
-  },
-  {
-    title: "Beginner Resources",
-    text: "Use simple guides, beginner-friendly Quran resources, and trusted educational content.",
-  },
-  {
-    title: "Questions Welcome",
-    text: "It is normal to have questions. Learning Islam is a journey, and no sincere question is too small.",
-  },
-];
-
 export default function NewToIslam() {
   return (
     <div className="page learnPage">
       <section className="learnHero">
         <p className="learnEyebrow">New to Islam</p>
-        <h1 className="pageTitle">Welcome</h1>
+        <h1 className="pageTitle">You Are Welcome Here</h1>
+
         <p className="pageSubtitle learnIntro">
-          Whether you are exploring Islam, considering the Shahada, or have
-          recently accepted Islam, you are welcome here. This page is meant to
-          help you begin with clarity, peace, and practical next steps.
+          Whether you are exploring Islam, thinking about becoming Muslim, or
+          have recently accepted Islam, you are not alone. Our masjid and
+          community are here to support you with guidance, patience, and care.
         </p>
 
         <div className="quoteBanner">
           <p>
-            “You do not have to know everything at once. Begin sincerely, keep
-            learning, and trust Allah with your growth.”
+            “You do not have to know everything at once. Begin sincerely and
+            grow step by step.”
           </p>
         </div>
       </section>
 
       <section className="learnSection">
-        <div className="sectionHeading">
-          <h2>You Are Not Alone</h2>
+        <div className="infoCard">
+          <h2>You Have a Place Here</h2>
           <p>
-            Many people come to Islam with questions, emotions, and a desire to
-            understand more deeply. Islam is not about becoming perfect
-            overnight. It is about turning to Allah sincerely and continuing to
-            grow.
+            Becoming Muslim is not something you have to figure out on your own.
+            Our masjid is here to help you learn, ask questions, and feel
+            supported as you begin your journey.
           </p>
-        </div>
 
-        <div className="learnGrid three">
-          <div className="infoCard">
-            <h3>Take it step by step</h3>
-            <p>
-              Focus on learning one thing at a time instead of trying to carry
-              everything at once.
-            </p>
-          </div>
-
-          <div className="infoCard">
-            <h3>Ask questions freely</h3>
-            <p>
-              Questions are part of learning. Growth comes through seeking
-              understanding with sincerity.
-            </p>
-          </div>
-
-          <div className="infoCard">
-            <h3>Stay connected</h3>
-            <p>
-              A healthy Muslim community can help you feel supported,
-              encouraged, and grounded.
-            </p>
-          </div>
+          <p>
+            You can visit, reach out, or attend at your own pace. There is no
+            pressure, only support.
+          </p>
         </div>
       </section>
 
@@ -97,13 +42,13 @@ export default function NewToIslam() {
         <div className="sectionHeading">
           <h2>The Shahada</h2>
           <p>
-            The Shahada is the declaration of faith in Islam and the foundation
-            of becoming Muslim.
+            The Shahada is the declaration of faith and the beginning of a
+            Muslim’s journey.
           </p>
         </div>
 
         <div className="splitSection">
-          <div className="infoCard shahadaCard">
+          <div className="infoCard">
             <h3>Arabic</h3>
             <p className="arabicText">
               أَشْهَدُ أَنْ لَا إِلَٰهَ إِلَّا ٱللَّٰهُ وَأَشْهَدُ أَنَّ
@@ -112,14 +57,13 @@ export default function NewToIslam() {
           </div>
 
           <div className="infoCard">
-            <h3>English Meaning</h3>
+            <h3>Meaning</h3>
             <p>
-              I bear witness that there is no god but Allah, and I bear witness
-              that Muhammad is the Messenger of Allah.
+              I bear witness that there is no god but Allah, and Muhammad is
+              the Messenger of Allah.
             </p>
             <p>
-              Saying the Shahada with sincere belief is how a person enters
-              Islam.
+              Saying this sincerely is how a person becomes Muslim.
             </p>
           </div>
         </div>
@@ -127,85 +71,93 @@ export default function NewToIslam() {
 
       <section className="learnSection">
         <div className="sectionHeading">
-          <h2>First Steps</h2>
+          <h2>What to Do First</h2>
           <p>
-            These are some of the most important next steps after accepting or
-            seriously exploring Islam.
+            Keep your beginning simple. Focus on what matters most first.
           </p>
+        </div>
+
+        <div className="learnGrid three">
+          <div className="infoCard">
+            <h3>Start with belief</h3>
+            <p>
+              Begin with sincerity, belief in Allah, and learning what Islam
+              teaches at a basic level.
+            </p>
+          </div>
+
+          <div className="infoCard">
+            <h3>Learn prayer step by step</h3>
+            <p>
+              Do not pressure yourself to know everything immediately. Build one
+              step at a time.
+            </p>
+          </div>
+
+          <div className="infoCard">
+            <h3>Stay connected</h3>
+            <p>
+              Support, classes, and good community can make the journey lighter
+              and more grounded.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="learnSection">
+        <div className="infoCard">
+          <h2>Need Personal Support?</h2>
+          <p>
+            If you are exploring Islam, preparing to take shahada, or have
+            recently become Muslim, we would be honored to support you with
+            guidance, mentorship, and connection to community.
+          </p>
+
+          <Link to="/services/shahada" className="primaryBtn">
+            Get Shahada Support →
+          </Link>
+        </div>
+      </section>
+
+      <section className="learnSection">
+        <div className="sectionHeading">
+          <h2>Connect with the Community</h2>
         </div>
 
         <div className="learnGrid two">
-          {firstSteps.map((step) => (
-            <div key={step.title} className="infoCard">
-              <h3>{step.title}</h3>
-              <p>{step.text}</p>
-            </div>
-          ))}
-        </div>
-      </section>
 
-      <section className="learnSection">
-        <div className="sectionHeading">
-          <h2>Helpful Support Areas</h2>
-        </div>
-
-        <div className="learnGrid three">
-          {supports.map((item) => (
-            <div key={item.title} className="infoCard">
-              <h3>{item.title}</h3>
-              <p>{item.text}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="learnSection">
-        <div className="sectionHeading">
-          <h2>Watch and Learn</h2>
-          <p>
-            Add trusted beginner-friendly videos here for prayer, belief, and
-            first steps in Islam.
-          </p>
-        </div>
-
-        <div className="videoCard">
-          <div className="videoPlaceholder">
-            Beginner-friendly YouTube video embed goes here
-          </div>
-          <div className="videoMeta">
-            <h3>Starting Your Journey</h3>
+          <Link to="/events" className="navCard">
+            <h3>Attend a Program</h3>
             <p>
-              Use a trusted approved video that explains the basics of Islam in
-              a welcoming and clear way.
+              Join classes, prayers, and gatherings to begin building
+              connection.
             </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="learnSection">
-        <div className="sectionHeading">
-          <h2>Where to Go Next</h2>
-        </div>
-
-        <div className="learnGrid three">
-          <Link to="/learn/what-is-islam" className="navCard">
-            <h3>What is Islam?</h3>
-            <p>Return to the foundations of belief and practice.</p>
-            <span>Go to page →</span>
-          </Link>
-
-          <Link to="/learn/faq" className="navCard">
-            <h3>FAQ</h3>
-            <p>Find quick answers to common questions.</p>
-            <span>Go to page →</span>
+            <span>View events →</span>
           </Link>
 
           <Link to="/contact" className="navCard">
-            <h3>Need Support?</h3>
-            <p>Reach out to the masjid for guidance and connection.</p>
+            <h3>Reach Out</h3>
+            <p>
+              Contact the masjid if you have questions or want to speak with
+              someone directly.
+            </p>
             <span>Contact us →</span>
           </Link>
         </div>
+      </section>
+
+      <section className="learnSection">
+        <div className="sectionHeading">
+          <h2>Ready to Learn Step by Step?</h2>
+          <p>
+            When you are ready, Foundations will walk you through the basics in
+            a clear and structured way.
+          </p>
+        </div>
+
+        <Link to="/learn/adults/foundations" className="primaryBtn">
+          Start Foundations →
+        </Link>
       </section>
     </div>
   );

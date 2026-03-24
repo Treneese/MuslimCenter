@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
-import LeadershipCard from "../../component/personcard";
 import LeadershipModal from "../../component/leadershipmodal";
-import PersonCard from "../../component/personcard";
+import LeadershipGridCard from "../../component/leadershipgridcard";
+import "../../styles/pages.css";
 
 export default function ExecutiveCommittee() {
   const [open, setOpen] = useState(false);
@@ -13,8 +13,8 @@ export default function ExecutiveCommittee() {
         id: "pres",
         name: "Name Coming Soon",
         role: "President",
-        short: "Oversees operations and leadership direction.",
-        image: "", // add later
+        blurb: "Oversees operations and leadership direction.",
+        image: "",
         bio: (
           <>
             Full bio coming soon.
@@ -28,7 +28,7 @@ export default function ExecutiveCommittee() {
         id: "vp",
         name: "Name Coming Soon",
         role: "Vice President",
-        short: "Supports operations and key initiatives.",
+        blurb: "Supports operations and key initiatives.",
         image: "",
         bio: <>Full bio coming soon.</>,
       },
@@ -36,7 +36,7 @@ export default function ExecutiveCommittee() {
         id: "sec",
         name: "Name Coming Soon",
         role: "Secretary",
-        short: "Keeps records and supports governance admin.",
+        blurb: "Keeps records and supports governance admin.",
         image: "",
         bio: <>Full bio coming soon.</>,
       },
@@ -44,7 +44,7 @@ export default function ExecutiveCommittee() {
         id: "treas",
         name: "Name Coming Soon",
         role: "Treasurer",
-        short: "Supports finances and responsible oversight.",
+        blurb: "Supports finances and responsible oversight.",
         image: "",
         bio: <>Full bio coming soon.</>,
       },
@@ -64,22 +64,25 @@ export default function ExecutiveCommittee() {
 
   return (
     <div className="page">
-      <header style={header}>
-        <div style={badge}>Leadership</div>
-
-        <h1 className="pageTitle" style={{ marginBottom: 10 }}>
-          Executive Committee
-        </h1>
-
-        <p className="pageSubtitle" style={{ ...subtitle, maxWidth: 920 }}>
-          The Executive Committee supports governance and day-to-day leadership for
-          the Muslim Center &amp; Community Center.
+      <section className="learnHero">
+        <p className="learnEyebrow">Leadership</p>
+        <h1 className="pageTitle">Executive Committee</h1>
+        <p className="pageSubtitle pageIntro">
+          The Executive Committee supports governance and day-to-day leadership
+          for the Muslim Center &amp; Community Center.
         </p>
-      </header>
+      </section>
 
-      <section style={grid}>
+      <section className="leadershipGridPage">
         {people.map((p) => (
-          <PersonCard key={p.id} person={p} onOpen={() => openPerson(p)} />
+          <LeadershipGridCard
+            key={p.id}
+            name={p.name}
+            role={p.role}
+            image={p.image}
+            blurb={p.blurb}
+            onClick={() => openPerson(p)}
+          />
         ))}
       </section>
 
@@ -87,37 +90,3 @@ export default function ExecutiveCommittee() {
     </div>
   );
 }
-
-const header = {
-  background: "#efefef",
-  borderRadius: 18,
-  padding: "22px 18px",
-  border: "1px solid #d9e4dd",
-  marginBottom: 18,
-};
-
-const badge = {
-  display: "inline-flex",
-  alignItems: "center",
-  fontSize: 12,
-  fontWeight: 800,
-  letterSpacing: 0.3,
-  textTransform: "uppercase",
-  color: "#1e6b3a",
-  background: "#e6f3ea",
-  border: "1px solid #cfe4d6",
-  padding: "6px 10px",
-  borderRadius: 999,
-  marginBottom: 10,
-};
-
-const subtitle = { lineHeight: 1.6, color: "#2b2b2b" };
-
-const grid = {
-  display: "grid",
-  gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
-  gap: 14,
-};
-
-const mq = window?.matchMedia?.("(max-width: 900px)")?.matches;
-if (mq) grid.gridTemplateColumns = "1fr";

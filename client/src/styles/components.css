@@ -1,0 +1,477 @@
+/* ---------- SHARED COMPONENT SURFACES ---------- */
+
+.siteShell {
+  width: min(1100px, calc(100% - 36px));
+  margin: 0 auto;
+}
+
+.softCard {
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(219, 160, 76, 0.18);
+  border-radius: 24px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+}
+
+.pillBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: rgba(23, 117, 60, 0.08);
+  border: 1px solid rgba(23, 117, 60, 0.14);
+  color: var(--mc-green-deep);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* ---------- FOOTER ---------- */
+
+.siteFooter {
+  margin-top: 60px;
+  border-top: 1px solid rgba(219, 160, 76, 0.18);
+  background: linear-gradient(180deg, rgba(255,255,255,0.88), rgba(247,243,235,0.94));
+}
+
+.siteFooterInner {
+  width: min(1100px, calc(100% - 36px));
+  margin: 0 auto;
+  padding: 30px 0;
+}
+
+.siteFooterRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.siteFooterBrand {
+  display: grid;
+  gap: 6px;
+}
+
+.siteFooterTitle {
+  font-family: var(--mc-font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #18301f;
+}
+
+.siteFooterText {
+  color: var(--mc-text-soft);
+  font-size: 0.95rem;
+  max-width: 340px;
+  line-height: 1.7;
+}
+
+.siteFooterIcons {
+  display: flex;
+  gap: 14px;
+  margin-top: 10px;
+}
+
+.siteFooterIconLink {
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(219, 160, 76, 0.18);
+  color: var(--mc-green-deep);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.siteFooterIconLink:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+}
+
+.siteFooterCopyright {
+  color: var(--mc-text-soft);
+  font-size: 0.9rem;
+}
+
+/* ---------- NAVBAR ---------- */
+
+.siteHeader {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(219, 160, 76, 0.16);
+  background: rgba(255, 253, 249, 0.92);
+  backdrop-filter: blur(12px);
+}
+
+.siteNav {
+  width: min(1100px, calc(100% - 36px));
+  margin: 0 auto;
+  padding: 14px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.siteNavLinks {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.siteNavLink {
+  padding: 10px 12px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: #26332a;
+  font-weight: 700;
+  transition: background 0.16s ease, color 0.16s ease, transform 0.16s ease;
+}
+
+.siteNavLink:hover {
+  background: rgba(23, 117, 60, 0.06);
+  color: var(--mc-green-deep);
+}
+
+.siteNavLink.active {
+  color: var(--mc-green-deep);
+  background: rgba(23, 117, 60, 0.1);
+}
+
+/* ---------- LEADERSHIP GRID CARD ---------- */
+
+.leadershipCard {
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(219, 160, 76, 0.18);
+  border-radius: 24px;
+  padding: 0;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  overflow: hidden;
+}
+
+.leadershipCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.1);
+  border-color: rgba(219, 160, 76, 0.34);
+}
+
+.leadershipCardImageWrap {
+  width: 100%;
+  height: 240px;
+  background: linear-gradient(180deg, rgba(23,117,60,0.06), rgba(219,160,76,0.06));
+}
+
+.leadershipCardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.leadershipCardBody {
+  padding: 18px;
+}
+
+.leadershipCardName {
+  margin: 0 0 6px;
+  font-family: var(--mc-font-heading);
+  font-size: 1.65rem;
+  line-height: 1.05;
+  color: #18301f;
+}
+
+.leadershipCardRole {
+  margin-bottom: 8px;
+  color: var(--mc-green-deep);
+  font-size: 0.92rem;
+  font-weight: 800;
+}
+
+.leadershipCardBlurb {
+  color: var(--mc-text-soft);
+  line-height: 1.65;
+  min-height: 44px;
+}
+
+.leadershipCardFooter {
+  margin-top: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--mc-green-deep);
+  font-weight: 800;
+}
+
+/* ---------- LEADERSHIP MODAL ---------- */
+
+.leadershipModalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.62);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 18px;
+  z-index: 9999;
+}
+
+.leadershipModal {
+  width: min(980px, 100%);
+  background: linear-gradient(180deg, #fffdf9, #ffffff);
+  border-radius: 26px;
+  border: 1px solid rgba(219, 160, 76, 0.2);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+
+.leadershipModalTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 18px;
+  border-bottom: 1px solid rgba(219, 160, 76, 0.14);
+}
+
+.leadershipModalName {
+  margin: 0;
+  font-family: var(--mc-font-heading);
+  font-size: 2rem;
+  line-height: 1;
+  color: #18301f;
+}
+
+.leadershipModalRole {
+  margin-top: 8px;
+  color: var(--mc-green-deep);
+  font-weight: 800;
+}
+
+.leadershipModalClose {
+  border: 1px solid rgba(23, 117, 60, 0.14);
+  background: white;
+  border-radius: 14px;
+  padding: 10px 12px;
+  cursor: pointer;
+  font-weight: 900;
+}
+
+.leadershipModalBody {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 18px;
+  padding: 18px;
+  align-items: start;
+}
+
+.leadershipModalImage {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 18px;
+  background: #f2f2f2;
+}
+
+.leadershipModalText {
+  line-height: 1.8;
+  color: #2b2b2b;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+  max-height: 320px;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+/* ---------- PERSON CARD ---------- */
+
+.personCard {
+  display: flex;
+  gap: 22px;
+  align-items: center;
+  margin-bottom: 18px;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(219, 160, 76, 0.18);
+  border-radius: 24px;
+  padding: 20px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+}
+
+.personCard.reverse {
+  flex-direction: row-reverse;
+}
+
+.personCardImageWrap {
+  width: 280px;
+  max-width: 100%;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(219, 160, 76, 0.16);
+  background: #f3f3f3;
+  flex-shrink: 0;
+}
+
+.personCardImage {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  display: block;
+}
+
+.personCardContent {
+  flex: 1;
+}
+
+.personCardName {
+  margin: 0;
+  font-family: var(--mc-font-heading);
+  font-size: clamp(2rem, 3vw, 2.5rem);
+  line-height: 1.02;
+  color: #18301f;
+}
+
+.personCardTitle {
+  margin: 8px 0 0;
+  font-weight: 700;
+  color: var(--mc-green-deep);
+}
+
+.personCardText {
+  margin-top: 12px;
+  line-height: 1.8;
+  color: var(--mc-text-soft);
+}
+
+/* ---------- SECTION CARDS ---------- */
+
+.sectionCardsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.sectionCard {
+  text-decoration: none;
+  color: inherit;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(219, 160, 76, 0.18);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.sectionCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.1);
+  border-color: rgba(219, 160, 76, 0.34);
+}
+
+.sectionCardMedia {
+  position: relative;
+  height: 170px;
+  background: linear-gradient(180deg, rgba(23,117,60,0.06), rgba(219,160,76,0.06));
+}
+
+.sectionCardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.sectionCardOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.34), rgba(0,0,0,0));
+}
+
+.sectionCardFallback {
+  height: 170px;
+  background: linear-gradient(180deg, rgba(23,117,60,0.05), rgba(219,160,76,0.06));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.sectionCardFallbackIcon {
+  width: 58px;
+  height: 58px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.95);
+  border: 1px solid rgba(219, 160, 76, 0.22);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  color: var(--mc-green-deep);
+  letter-spacing: 0.05em;
+}
+
+.sectionCardBadgeRow {
+  display: flex;
+  gap: 8px;
+  position: absolute;
+  top: 12px;
+  left: 12px;
+}
+
+.sectionCardBadge {
+  font-size: 0.76rem;
+  font-weight: 800;
+  color: var(--mc-green-deep);
+  background: rgba(255,255,255,0.92);
+  border: 1px solid rgba(219, 160, 76, 0.16);
+  padding: 6px 10px;
+  border-radius: 999px;
+}
+
+.sectionCardBody {
+  padding: 18px;
+}
+
+.sectionCardTitle {
+  margin: 0;
+  font-family: var(--mc-font-heading);
+  font-size: 1.6rem;
+  line-height: 1.05;
+  color: #18301f;
+}
+
+.sectionCardSubtitle {
+  margin: 10px 0 0;
+  color: var(--mc-text-soft);
+  line-height: 1.65;
+}
+
+.sectionCardFooter {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--mc-green-deep);
+  font-weight: 800;
+}
+
+@media (max-width: 900px) {
+  .leadershipModalBody,
+  .personCard,
+  .personCard.reverse {
+    grid-template-columns: 1fr;
+    flex-direction: column;
+  }
+
+  .sectionCardsGrid {
+    grid-template-columns: 1fr;
+  }
+}

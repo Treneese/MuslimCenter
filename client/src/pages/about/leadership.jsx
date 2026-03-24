@@ -1,4 +1,5 @@
 import SectionCards from "../../component/sectioncard";
+import "../../styles/pages.css";
 
 import boardImg from "../../assets/leadership/board.jpg";
 import ecImg from "../../assets/leadership/ec.jpg";
@@ -8,7 +9,7 @@ export default function LeadershipIndex() {
   const items = [
     {
       to: "/about/leadership/imams",
-      title: "Meet the Imam’s",
+      title: "Meet the Imams",
       subtitle: "Resident and assistant imams.",
       image: imamImg,
     },
@@ -28,12 +29,14 @@ export default function LeadershipIndex() {
 
   return (
     <div className="page">
-      <h1 className="pageTitle">Leadership</h1>
-
-      <p className="pageSubtitle" style={{ maxWidth: 920 }}>
-        Learn about the leadership of the Muslim Center. Explore the Imam’s and the
-        committees that support our community and services.
-      </p>
+      <section className="learnHero">
+        <p className="learnEyebrow">Leadership</p>
+        <h1 className="pageTitle">Leadership</h1>
+        <p className="pageSubtitle pageIntro">
+          Learn about the leadership of the Muslim Center. Explore the Imams and
+          the committees that support our community and services.
+        </p>
+      </section>
 
       <SectionCards items={items} />
     </div>

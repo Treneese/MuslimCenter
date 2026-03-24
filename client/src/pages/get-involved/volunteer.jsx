@@ -1,4 +1,10 @@
+import { useState } from "react";
+import ServiceRequestModal from "../home/components/servicerequestmodal";
+import { getInvolvedConfig } from "../home/components/getinvolvedconfig";
+
 export default function Volunteer() {
+  const [openModal, setOpenModal] = useState(false);
+
   return (
     <div className="page">
       <header style={header}>
@@ -63,15 +69,27 @@ export default function Volunteer() {
           </div>
 
           <div style={ctaButtons}>
-            <a href="/contact" className="btn" style={btnPrimary}>
-              Volunteer Form
-            </a>
-            <a href="/get-involved" className="btn" style={btnSecondary}>
-              Back to Get Involved
-            </a>
-          </div>
+  <button
+    type="button"
+    className="btn"
+    style={btnPrimary}
+    onClick={() => setOpenModal(true)}
+  >
+    Volunteer Form
+  </button>
+
+  <a href="/get-involved" className="btn" style={btnSecondary}>
+    Back to Get Involved
+  </a>
+</div>
         </div>
       </section>
+      <ServiceRequestModal
+  serviceKey="volunteer"
+  open={openModal}
+  onClose={() => setOpenModal(false)}
+  configMap={getInvolvedConfig}
+/>
     </div>
   );
 }
@@ -210,6 +228,7 @@ const btnPrimary = {
   fontWeight: 900,
   textDecoration: "none",
   border: "1px solid rgba(255,255,255,0.35)",
+  cursor: "pointer",
 };
 
 const btnSecondary = {

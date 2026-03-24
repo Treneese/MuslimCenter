@@ -6,6 +6,7 @@ import LearningCard from "../home/components/learning/learningcard";
 import LearningModal from "../home/components/learning/learningmodal";
 import VideoLesson from "../home/components/learning/videolesson";
 import QuizGame from "../home/components/learning/quizgame";
+import MatchingGame from "../home/components/learning/matchinggame";
 import ListenButton from "../../component/listenbutton";
 import {
   speakText,
@@ -13,6 +14,11 @@ import {
   pauseSpeech,
   resumeSpeech,
 } from "../../utils/speech";
+
+const hasRealEmbed = (url = "") =>
+  typeof url === "string" &&
+  url.startsWith("https://www.youtube.com/embed/") &&
+  !url.includes("VIDEO_ID");
 
 export default function Kids68() {
   const [activeTopic, setActiveTopic] = useState(null);
@@ -25,103 +31,105 @@ export default function Kids68() {
         title: "The Five Pillars",
         subtitle: "Learn the main acts of worship in Islam",
         description:
-          "Explore the pillars through a short video, a simple reading lesson, and a quiz.",
-        speech:
-          "The Five Pillars. Learn the main acts of worship in Islam through watching, reading, and playing.",
+          "Explore the pillars through a short video, reading, matching, and a quick check quiz.",
         watch: [
           {
-          title: "Watch: The Five Pillars",
-          description:
-            "A short lesson introducing shahada, salah, zakat, sawm, and hajj in a simple way.",
-          embedUrl: "https://www.youtube.com/embed/mWJ-tlZdtK4?si=OOwM10LLOU6Cjm_X",
-          speechText:
-            "Watch the Five Pillars. A short lesson introducing Shahada, Salah, Zakat, Sawm, and Hajj in a simple way.",
-        },
-      ],
+            title: "Watch: The Five Pillars",
+            description:
+              "A short lesson introducing shahada, salah, zakat, sawm, and hajj.",
+            embedUrl: "https://www.youtube.com/embed/mWJ-tlZdtK4?si=OOwM10LLOU6Cjm_X",
+            speechText:
+              "Watch the Five Pillars. A short lesson introducing Shahada, Salah, Zakat, Sawm, and Hajj.",
+          },
+        ],
         read: {
           title: "Read: The Five Pillars",
-          text: "The Five Pillars are the main acts of worship in Islam. They are shahada, salah, zakat, sawm, and hajj. Muslims learn them so they can understand how faith is practiced in daily life and over time.",
+          text: "The Five Pillars are the main acts of worship in Islam. They are shahada, salah, zakat, sawm, and hajj. Muslims learn them so they can understand how faith is practiced in daily life.",
           speech:
-            "Read the Five Pillars. The Five Pillars are the main acts of worship in Islam. They are Shahada, Salah, Zakat, Sawm, and Hajj. Muslims learn them so they can understand how faith is practiced in daily life and over time.",
+            "Read the Five Pillars. The Five Pillars are Shahada, Salah, Zakat, Sawm, and Hajj.",
         },
         play: {
-          type: "quiz",
-          title: "Play: Five Pillars Quiz",
-          questions: [
-            {
-              question: "How many pillars are there in Islam?",
-              options: ["Three", "Five", "Seven"],
-              answer: "Five",
-            },
-            {
-              question: "Which pillar means prayer?",
-              options: ["Salah", "Zakat", "Hajj"],
-              answer: "Salah",
-            },
-            {
-              question: "Which pillar means fasting in Ramadan?",
-              options: ["Sawm", "Shahada", "Zakat"],
-              answer: "Sawm",
-            },
-          ],
+          game: {
+            type: "matching",
+            title: "Game: Match the Pillars",
+            pairs: [
+              { left: "Salah", right: "Prayer" },
+              { left: "Zakat", right: "Charity" },
+              { left: "Sawm", right: "Fasting" },
+              { left: "Hajj", right: "Pilgrimage" },
+            ],
+          },
+          quiz: {
+            title: "Quiz: Five Pillars Check",
+            questions: [
+              {
+                question: "How many pillars are there in Islam?",
+                options: ["Three", "Five", "Seven"],
+                answer: "Five",
+              },
+              {
+                question: "Which pillar means prayer?",
+                options: ["Salah", "Zakat", "Hajj"],
+                answer: "Salah",
+              },
+            ],
+          },
         },
       },
       {
         id: "prophet-stories",
         type: "Topic",
         title: "Prophet Stories",
-        subtitle: "Learn courage, patience, and trust in Allah",
+        subtitle: "Courage, patience, and trust in Allah",
         description:
-          "Watch a story lesson, read a simple faith-building summary, and answer questions.",
-        speech:
-          "Prophet Stories. Learn courage, patience, and trust in Allah through watching, reading, and playing.",
+          "Watch and reflect on what children can learn from the prophets.",
         watch: [
-  {
-    title: "Watch: Prophet Story Lesson",
-    description:
-      "A short story lesson that helps children connect with the lives and character of the prophets.",
-    embedUrl: "https://www.youtube.com/embed/2n6NbViZ8CU?si=TsJVmwDiN5XvCqhQ",
-    speechText:
-      "Watch a prophet story lesson. Learn from the lives and character of the prophets.",
-  },
-  {
-    title: "Watch: Trust Allah Song",
-    description:
-      "A children's song about trusting Allah and having faith even when things feel difficult.",
-    embedUrl: "https://www.youtube.com/embed/nBPVlcpl7Jg",
-    speechText:
-      "Watch the Trust Allah song. This song reminds children to trust Allah and stay strong in faith.",
-  }
-],
+          {
+            title: "Watch: Prophet Story Lesson",
+            description: "Learn from the lives and character of the prophets.",
+            embedUrl: "https://www.youtube.com/embed/2n6NbViZ8CU?si=TsJVmwDiN5XvCqhQ",
+          },
+          {
+            title: "Watch: Trust Allah Song",
+            description: "A song reminding children to trust Allah.",
+            embedUrl: "https://www.youtube.com/embed/nBPVlcpl7Jg",
+          },
+        ],
         read: {
           title: "Read: Trusting Allah",
-          text: "The prophets trusted Allah even when life was hard. They stayed patient, obeyed Allah, and kept doing what was right. Their stories teach children that strong faith includes courage, patience, and trust.",
+          text: "The prophets trusted Allah even when life was difficult. They stayed patient, obeyed Allah, and kept doing what was right.",
           speech:
-            "Read trusting Allah. The prophets trusted Allah even when life was hard. They stayed patient, obeyed Allah, and kept doing what was right. Their stories teach children that strong faith includes courage, patience, and trust.",
+            "The prophets trusted Allah even when life was difficult and stayed patient.",
         },
         play: {
-          type: "quiz",
-          title: "Play: Prophet Story Quiz",
-          questions: [
-            {
-              question: "What do prophet stories teach us?",
-              options: [
-                "Patience and trust in Allah",
-                "How to be rude",
-                "How to avoid helping others",
-              ],
-              answer: "Patience and trust in Allah",
-            },
-            {
-              question: "What should we do when life feels hard?",
-              options: [
-                "Give up right away",
-                "Trust Allah and keep trying",
-                "Blame everyone else",
-              ],
-              answer: "Trust Allah and keep trying",
-            },
-          ],
+          game: {
+            type: "matching",
+            title: "Game: Match the Lesson",
+            pairs: [
+              { left: "Prophets", right: "Trusted Allah" },
+              { left: "Patience", right: "Staying steady" },
+              { left: "Obedience", right: "Doing what is right" },
+            ],
+          },
+          quiz: {
+            title: "Quiz: Prophet Stories",
+            questions: [
+              {
+                question: "What do prophet stories teach us?",
+                options: [
+                  "Patience and trust in Allah",
+                  "How to be rude",
+                  "How to ignore others",
+                ],
+                answer: "Patience and trust in Allah",
+              },
+              {
+                question: "What did the prophets do when life was hard?",
+                options: ["Stayed patient", "Gave up", "Forgot Allah"],
+                answer: "Stayed patient",
+              },
+            ],
+          },
         },
       },
       {
@@ -130,103 +138,96 @@ export default function Kids68() {
         title: "Ramadan and Fasting",
         subtitle: "Why Ramadan matters",
         description:
-          "Learn what Ramadan teaches through video, reading, and a quick quiz.",
-        speech:
-          "Ramadan and fasting. Learn why Ramadan matters through watching, reading, and playing.",
+          "Learn what Ramadan teaches through video, reading, a game, and a quiz.",
         watch: [
           {
-          title: "Watch: Ramadan and Fasting",
-          description:
-            "A short lesson on fasting, gratitude, worship, and remembering Allah in Ramadan.",
-          embedUrl: "https://www.youtube.com/embed/2OEq51wKr9o?si=LhrNfs2m-wUqxp--",
-          speechText:
-            "Watch Ramadan and fasting. Learn about fasting, gratitude, worship, and remembering Allah in Ramadan.",
-        },
-      ],
+            title: "Watch: Ramadan and Fasting",
+            description:
+              "A short lesson on fasting, gratitude, and remembering Allah.",
+            embedUrl: "https://www.youtube.com/embed/2OEq51wKr9o?si=LhrNfs2m-wUqxp--",
+          },
+        ],
         read: {
           title: "Read: What Ramadan Teaches",
-          text: "Ramadan is a special month when Muslims fast, pray more, and remember Allah more often. Ramadan teaches gratitude, patience, self-control, and care for others.",
+          text: "Ramadan is a special month when Muslims fast, pray more, and remember Allah more often. It teaches gratitude, self-control, and caring for others.",
           speech:
-            "Read what Ramadan teaches. Ramadan is a special month when Muslims fast, pray more, and remember Allah more often. Ramadan teaches gratitude, patience, self-control, and care for others.",
+            "Ramadan is a special month when Muslims fast, pray more, and remember Allah. It teaches gratitude, self-control, and caring for others.",
         },
         play: {
-          type: "quiz",
-          title: "Play: Ramadan Quiz",
-          questions: [
-            {
-              question: "What do Muslims do in Ramadan?",
-              options: ["Fast", "Sleep all day", "Stop praying"],
-              answer: "Fast",
-            },
-            {
-              question: "What can Ramadan teach us?",
-              options: [
-                "Gratitude and self-control",
-                "Rudeness",
-                "Laziness",
-              ],
-              answer: "Gratitude and self-control",
-            },
-          ],
+          game: {
+            type: "matching",
+            title: "Game: Match Ramadan Words",
+            pairs: [
+              { left: "Ramadan", right: "Special month" },
+              { left: "Fast", right: "Do not eat all day" },
+              { left: "Gratitude", right: "Being thankful" },
+            ],
+          },
+          quiz: {
+            title: "Quiz: Ramadan",
+            questions: [
+              {
+                question: "What do Muslims do in Ramadan?",
+                options: ["Fast", "Sleep all day", "Stop praying"],
+                answer: "Fast",
+              },
+              {
+                question: "What can Ramadan teach?",
+                options: ["Gratitude", "Bad manners", "Selfishness"],
+                answer: "Gratitude",
+              },
+            ],
+          },
         },
       },
       {
-        id: "good-character",
+        id: "daily-manners",
         type: "Topic",
-        title: "Good Character",
-        subtitle: "Kindness, honesty, respect, and gratitude",
+        title: "Daily Manners",
+        subtitle: "Islam in everyday behavior",
         description:
-          "Learn how good character is part of Islam through a video, reading, and a quiz.",
-        speech:
-          "Good character. Learn kindness, honesty, respect, and gratitude through watching, reading, and playing.",
+          "Help children connect Islamic learning to kindness, greetings, and respect.",
         watch: [
           {
-          title: "Watch: Good Character",
-          description:
-            "A short lesson on Islamic manners, kindness, honesty, and respect.",
-          embedUrl: "https://www.youtube.com/embed/PTubULlSPog?si=iQ9kpbdnjvwbGq2X",
-          speechText:
-            "Watch good character. Learn about Islamic manners, kindness, honesty, and respect.",
-        },
-      ],
+            title: "Watch: Daily Manners",
+            description:
+              "Add a short manners video here if you find one you like later.",
+            embedUrl: "",
+            fallbackNote:
+              "Video coming soon. Add a short lesson on kind words, greetings, and respect.",
+          },
+        ],
         read: {
-          title: "Read: Character in Islam",
-          text: "Islam teaches Muslims to be kind, honest, respectful, patient, and grateful. Good character is not separate from faith. The way we treat people matters in Islam.",
+          title: "Read: Good Manners Matter",
+          text: "Islam teaches children to be kind, respectful, honest, and helpful. Saying salam, speaking well, and treating others gently are all part of Islamic character.",
           speech:
-            "Read character in Islam. Islam teaches Muslims to be kind, honest, respectful, patient, and grateful. Good character is not separate from faith. The way we treat people matters in Islam.",
+            "Islam teaches children to be kind, respectful, honest, and helpful. Saying salam and treating others gently are part of Islamic character.",
         },
         play: {
-          type: "quiz",
-          title: "Play: Good Character Quiz",
-          questions: [
-            {
-              question: "Which action shows kindness?",
-              options: [
-                "Helping someone who is struggling",
-                "Laughing at others",
-                "Ignoring someone in need",
-              ],
-              answer: "Helping someone who is struggling",
-            },
-            {
-              question: "Which choice shows honesty?",
-              options: [
-                "Telling the truth",
-                "Blaming someone else",
-                "Making up a story",
-              ],
-              answer: "Telling the truth",
-            },
-            {
-              question: "Which choice shows respect?",
-              options: [
-                "Listening when others speak",
-                "Using rude words",
-                "Pushing to get your way",
-              ],
-              answer: "Listening when others speak",
-            },
-          ],
+          game: {
+            type: "matching",
+            title: "Game: Match the Manners",
+            pairs: [
+              { left: "Salam", right: "Peaceful greeting" },
+              { left: "Kind words", right: "Good manners" },
+              { left: "Helping others", right: "Good character" },
+            ],
+          },
+          quiz: {
+            title: "Quiz: Daily Manners",
+            questions: [
+              {
+                question: "What is a good Islamic greeting?",
+                options: ["Salam", "Shouting", "Ignoring people"],
+                answer: "Salam",
+              },
+              {
+                question: "Which action shows good manners?",
+                options: ["Helping others", "Being rude", "Laughing at others"],
+                answer: "Helping others",
+              },
+            ],
+          },
         },
       },
     ],
@@ -234,53 +235,67 @@ export default function Kids68() {
   );
 
   const pageIntroSpeech = `
-    Islam for Kids. Ages 6 to 8.
-    Explore one topic at a time.
-    In each topic, children can watch, read, and play.
+    Islam for Kids. Ages six to eight.
+    Choose a topic. Then watch, read, and play.
   `;
+
+  function renderWatchSection(watchItems = []) {
+    return (
+      <div className="watchVideoGrid">
+        {watchItems.map((video) =>
+          hasRealEmbed(video.embedUrl) ? (
+            <VideoLesson
+              key={video.title}
+              title={video.title}
+              description={video.description}
+              embedUrl={video.embedUrl}
+              speechText={video.speechText}
+            />
+          ) : (
+            <div key={video.title} className="topicReadCard videoPendingCard">
+              <h4>{video.title}</h4>
+              <p>{video.description}</p>
+              <p>{video.fallbackNote}</p>
+            </div>
+          )
+        )}
+      </div>
+    );
+  }
+
+  function renderGame(game) {
+    if (!game) return null;
+
+    if (game.type === "matching") {
+      return <MatchingGame title={game.title} pairs={game.pairs} />;
+    }
+
+    return null;
+  }
+
+  function renderQuiz(quiz) {
+    if (!quiz) return null;
+    return <QuizGame title={quiz.title} questions={quiz.questions} />;
+  }
 
   function renderTopicModal(topic) {
     if (!topic) return null;
+
+    const watchItems = Array.isArray(topic.watch) ? topic.watch : [topic.watch];
 
     return (
       <div className="topicLessonFlow">
         <section className="topicFlowSection">
           <div className="topicFlowHeader">
             <h3>Watch</h3>
-            <ListenButton
-              text={topic.watch.speechText}
-              label="Listen"
-              rate={0.88}
-            />
           </div>
-
-          <section className="topicFlowSection">
-  <div className="topicFlowHeader">
-    <h3>Watch</h3>
-  </div>
-
-  <div className="watchVideoGrid">
-    {topic.watch.map((video) => (
-      <VideoLesson
-        key={video.title}
-        title={video.title}
-        description={video.description}
-        embedUrl={video.embedUrl}
-        speechText={video.speechText}
-      />
-    ))}
-  </div>
-</section>
+          {renderWatchSection(watchItems)}
         </section>
 
         <section className="topicFlowSection">
           <div className="topicFlowHeader">
             <h3>Read</h3>
-            <ListenButton
-              text={topic.read.speech}
-              label="Listen"
-              rate={0.88}
-            />
+            <ListenButton text={topic.read.speech} label="Listen" />
           </div>
 
           <div className="topicReadCard">
@@ -294,11 +309,16 @@ export default function Kids68() {
             <h3>Play</h3>
           </div>
 
-          <div className="topicPlayCard">
-            <QuizGame
-              title={topic.play.title}
-              questions={topic.play.questions}
-            />
+          <div className="playSplitGrid">
+            <div className="topicPlayCard">
+              <h4>Game</h4>
+              {renderGame(topic.play?.game)}
+            </div>
+
+            <div className="topicPlayCard">
+              <h4>Quiz</h4>
+              {renderQuiz(topic.play?.quiz)}
+            </div>
           </div>
         </section>
       </div>
@@ -311,15 +331,12 @@ export default function Kids68() {
         <p className="learnEyebrow">Islam for Kids</p>
         <h1 className="pageTitle">Ages 6–8</h1>
         <p className="pageSubtitle learnIntro">
-          Fun learning for early readers through short lessons, stories, simple
-          questions, and everyday Islamic habits.
+          Fun, clear Islamic learning for growing readers through simple
+          lessons, strong visuals, and interactive practice.
         </p>
 
         <div className="quoteBanner">
-          <p>
-            “At this age, children grow through curiosity, repetition, and
-            learning that feels active.”
-          </p>
+          <p>“This is the age where simple lessons can start becoming lasting habits.”</p>
         </div>
 
         <div className="pageReaderControls">
@@ -331,24 +348,16 @@ export default function Kids68() {
           >
             🔊 Read Page Intro
           </button>
-          <button type="button" onClick={pauseSpeech}>
-            ⏸ Pause
-          </button>
-          <button type="button" onClick={resumeSpeech}>
-            ▶ Resume
-          </button>
-          <button type="button" onClick={stopSpeech}>
-            ⏹ Stop
-          </button>
+          <button type="button" onClick={pauseSpeech}>⏸ Pause</button>
+          <button type="button" onClick={resumeSpeech}>▶ Resume</button>
+          <button type="button" onClick={stopSpeech}>⏹ Stop</button>
         </div>
       </section>
 
       <section className="learnSection">
         <div className="sectionHeading">
           <h2>Choose a Topic</h2>
-          <p>
-            Open one topic at a time, then watch, read, and play in order.
-          </p>
+          <p>Open one topic at a time, then watch, read, play the game, and take the quiz.</p>
         </div>
 
         <div className="learnGrid two">
@@ -358,7 +367,6 @@ export default function Kids68() {
               title={topic.title}
               subtitle={topic.subtitle}
               description={topic.description}
-              type={topic.type}
               onClick={() => setActiveTopic(topic)}
             />
           ))}
@@ -372,17 +380,15 @@ export default function Kids68() {
 
         <div className="infoCard">
           <div className="cardTopRow">
-            <h3>Keep It Short and Active</h3>
+            <h3>Let Children Explain Back</h3>
             <ListenButton
-              text="Keep it short and active. Children ages six to eight learn well through short lessons, repetition, simple questions, and encouragement."
+              text="Let children explain back what they learned. This helps lessons stick and shows what they really understood."
               label="Listen"
-              rate={0.9}
             />
           </div>
           <p>
-            Children in this age group learn well through short lessons,
-            repetition, simple questions, and active participation. Let them
-            answer aloud first, then guide them gently through the topic.
+            Children in this age group learn well when they repeat things back,
+            match ideas, and answer simple questions in their own words.
           </p>
         </div>
       </section>
@@ -391,7 +397,7 @@ export default function Kids68() {
         <div className="learnGrid three">
           <Link to="/learn/kids-3-5" className="navCard">
             <h3>Previous Age Group</h3>
-            <p>Go back to ages 3–5 for preschool learning.</p>
+            <p>Go back to ages 3–5 for earlier learning.</p>
             <span>Go to ages 3–5 →</span>
           </Link>
 
@@ -403,7 +409,7 @@ export default function Kids68() {
 
           <Link to="/learn/kids-9-12" className="navCard">
             <h3>Next Age Group</h3>
-            <p>Move to ages 9–12 for deeper understanding and reflection.</p>
+            <p>Move forward to ages 9–12 for deeper learning.</p>
             <span>Go to ages 9–12 →</span>
           </Link>
         </div>

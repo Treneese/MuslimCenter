@@ -1,0 +1,340 @@
+.pageIntro {
+  max-width: 900px;
+  line-height: 1.8;
+  color: var(--mc-text-soft);
+}
+
+.pageStack {
+  display: grid;
+  gap: 18px;
+}
+
+.pageCardsGrid {
+  display: grid;
+  gap: 18px;
+}
+
+.pageCardsGrid.two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.pageCard {
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(219, 160, 76, 0.18);
+  border-radius: 24px;
+  padding: 22px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+}
+
+.pageCardTitle {
+  margin: 0;
+  font-family: var(--mc-font-heading);
+  font-size: 2rem;
+  line-height: 1.05;
+  color: #18301f;
+}
+
+.pageCardText {
+  margin: 10px 0 0;
+  line-height: 1.75;
+  color: var(--mc-text-soft);
+}
+
+.formShell {
+  max-width: 720px;
+}
+
+.formGrid {
+  display: grid;
+  gap: 14px;
+}
+
+.formGrid.two {
+  grid-template-columns: 1fr 1fr;
+}
+
+.formField,
+.formTextarea {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(23, 117, 60, 0.16);
+  background: rgba(255, 255, 255, 0.96);
+  color: #1f2937;
+  outline: none;
+  transition: border-color 0.16s ease, box-shadow 0.16s ease;
+}
+
+.formField:focus,
+.formTextarea:focus {
+  border-color: rgba(219, 160, 76, 0.5);
+  box-shadow: 0 0 0 4px rgba(219, 160, 76, 0.12);
+}
+
+.formTextarea {
+  min-height: 160px;
+  resize: vertical;
+}
+
+.formStatus {
+  margin: 0;
+  font-weight: 700;
+  color: var(--mc-green-deep);
+}
+
+.formStatus.error {
+  color: #b42318;
+}
+
+.pageTopRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.backPillBtn {
+  padding: 9px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(23, 117, 60, 0.14);
+  background: rgba(255, 255, 255, 0.96);
+  color: var(--mc-green-deep);
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.paymentActions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+
+@media (max-width: 768px) {
+  .pageCardsGrid.two,
+  .formGrid.two {
+    grid-template-columns: 1fr;
+  }
+}
+.pageHeroCard {
+  background: linear-gradient(135deg, rgba(255,255,255,0.96), rgba(247,243,235,0.92));
+  border: 1px solid rgba(219, 160, 76, 0.18);
+  border-radius: 28px;
+  padding: 28px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+  margin-bottom: 22px;
+}
+
+.pageBadge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--mc-green-deep);
+  background: rgba(23, 117, 60, 0.08);
+  border: 1px solid rgba(23, 117, 60, 0.14);
+  padding: 7px 12px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+}
+
+.quickFactsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.quickFactCard {
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(219, 160, 76, 0.18);
+  border-radius: 18px;
+  padding: 14px;
+}
+
+.quickFactLabel {
+  font-size: 0.78rem;
+  color: #6e5a33;
+  font-weight: 800;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.quickFactValue {
+  font-size: 0.96rem;
+  color: #1b1b1b;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.pageContentCard {
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(219, 160, 76, 0.18);
+  border-radius: 24px;
+  padding: 22px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+  margin-bottom: 16px;
+}
+
+.pageContentCard h2 {
+  margin-top: 0;
+}
+
+.pageList {
+  margin: 12px 0 0;
+  padding-left: 20px;
+  line-height: 1.8;
+  color: var(--mc-text-soft);
+}
+
+.pageActionRow {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+.pageCtaDark {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: center;
+  background: linear-gradient(135deg, #18301f, #0f2418);
+  border-radius: 24px;
+  padding: 22px;
+  color: white;
+}
+
+.pageCtaDark h3 {
+  margin: 0;
+  color: white;
+}
+
+.pageCtaDark p {
+  margin: 8px 0 0;
+  opacity: 0.92;
+  line-height: 1.7;
+  max-width: 760px;
+}
+
+.pageModalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  z-index: 9999;
+}
+
+.pageModal {
+  width: min(920px, 100%);
+  background: linear-gradient(180deg, #fffdf9, #ffffff);
+  border-radius: 24px;
+  border: 1px solid rgba(219, 160, 76, 0.18);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+
+.pageModalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 18px;
+  border-bottom: 1px solid rgba(219, 160, 76, 0.14);
+  background: rgba(247,243,235,0.7);
+}
+
+.pageModalBody {
+  padding: 18px;
+  max-height: 65vh;
+  overflow-y: auto;
+}
+
+.pageModalFooter {
+  padding: 16px 18px 18px;
+  border-top: 1px solid rgba(219, 160, 76, 0.14);
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.pageModalClose {
+  border: 1px solid rgba(23, 117, 60, 0.14);
+  background: white;
+  border-radius: 14px;
+  width: 42px;
+  height: 42px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 900;
+}
+
+.pageModalText {
+  line-height: 1.8;
+  color: #2b2b2b;
+}
+
+.partnersGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.partnerCard {
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(219, 160, 76, 0.18);
+  border-radius: 24px;
+  padding: 22px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+}
+
+.partnerLogo {
+  width: 100%;
+  max-width: 220px;
+  height: 90px;
+  object-fit: contain;
+  margin-bottom: 16px;
+}
+
+.partnerCard h3 {
+  margin: 0 0 10px;
+}
+
+.partnerCard p {
+  margin: 0;
+  line-height: 1.75;
+  color: var(--mc-text-soft);
+}
+
+.partnerLink {
+  display: inline-block;
+  margin-top: 14px;
+  color: var(--mc-green-deep);
+  font-weight: 800;
+}
+
+.leadershipGridPage {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+@media (max-width: 900px) {
+  .quickFactsGrid,
+  .partnersGrid,
+  .leadershipGridPage {
+    grid-template-columns: 1fr;
+  }
+
+  .pageCtaDark {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

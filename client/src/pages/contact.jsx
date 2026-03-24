@@ -1,7 +1,13 @@
 import { useState } from "react";
+import "../styles/pages.css";
 
 export default function Contact() {
-  const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
   const [status, setStatus] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -38,67 +44,65 @@ export default function Contact() {
     }
   }
 
+  const isError =
+    status &&
+    !status.includes("✅") &&
+    !status.toLowerCase().includes("sent");
+
   return (
-    <div style={{ padding: 24 }}>
-      <h1 style={{ marginTop: 0, color: "#1e6b3a" }}>Contact</h1>
+    <div className="page">
+      <section className="learnHero">
+        <p className="learnEyebrow">Contact</p>
+        <h1 className="pageTitle">Contact Us</h1>
+        <p className="pageSubtitle pageIntro">
+          Have a question, want to volunteer, need support, or want to connect
+          with the masjid? Send us a message and we’ll do our best to respond
+          soon.
+        </p>
+      </section>
 
-      <p style={{ maxWidth: 820, lineHeight: 1.6 }}>
-        Have a question, want to volunteer, or need support? Send us a message.
-      </p>
+      <section className="learnSection">
+        <div className="pageCard formShell">
+          <form onSubmit={submit} className="formGrid">
+            <div className="formGrid two">
+              <input
+                className="formField"
+                placeholder="Name"
+                value={form.name}
+                onChange={(e) => setField("name", e.target.value)}
+              />
+              <input
+                className="formField"
+                placeholder="Email"
+                value={form.email}
+                onChange={(e) => setField("email", e.target.value)}
+              />
+            </div>
 
-      <form onSubmit={submit} style={{ display: "grid", gap: 12, maxWidth: 640 }}>
-        <div style={{ display: "grid", gap: 12, gridTemplateColumns: "1fr 1fr" }}>
-          <input
-            placeholder="Name"
-            value={form.name}
-            onChange={(e) => setField("name", e.target.value)}
-            style={input}
-          />
-          <input
-            placeholder="Email"
-            value={form.email}
-            onChange={(e) => setField("email", e.target.value)}
-            style={input}
-          />
+            <input
+              className="formField"
+              placeholder="Subject"
+              value={form.subject}
+              onChange={(e) => setField("subject", e.target.value)}
+            />
+
+            <textarea
+              className="formTextarea"
+              placeholder="Message *"
+              value={form.message}
+              onChange={(e) => setField("message", e.target.value)}
+            />
+
+            <button type="submit" disabled={loading} className="secondaryBtn">
+              {loading ? "Sending…" : "Send Message"}
+            </button>
+
+            {status && (
+              <p className={`formStatus${isError ? " error" : ""}`}>{status}</p>
+            )}
+          </form>
         </div>
-
-        <input
-          placeholder="Subject"
-          value={form.subject}
-          onChange={(e) => setField("subject", e.target.value)}
-          style={input}
-        />
-
-        <textarea
-          placeholder="Message *"
-          value={form.message}
-          onChange={(e) => setField("message", e.target.value)}
-          style={{ ...input, minHeight: 140 }}
-        />
-
-        <button type="submit" disabled={loading} style={button}>
-          {loading ? "Sending…" : "Send Message"}
-        </button>
-
-        {status && <p style={{ marginTop: 0 }}>{status}</p>}
-      </form>
+      </section>
     </div>
   );
 }
-
-const input = {
-  padding: 12,
-  borderRadius: 10,
-  border: "1px solid #cfe4d6",
-  outline: "none",
-};
-
-const button = {
-  padding: "12px 14px",
-  borderRadius: 10,
-  border: "1px solid #1e6b3a",
-  background: "#1e6b3a",
-  color: "white",
-  fontWeight: 700,
-  width: 180,
-};
