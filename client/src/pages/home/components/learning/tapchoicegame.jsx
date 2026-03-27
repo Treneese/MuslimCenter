@@ -1,13 +1,14 @@
 import { useState } from "react";
+import "../../../../styles/components.css"
 
 export default function TapChoiceGame({ title, prompt, choices }) {
   const [feedback, setFeedback] = useState("");
 
   function handleChoice(choice) {
     if (choice.correct) {
-      setFeedback("Great job!");
+      setFeedback("Great job! That’s the right choice.");
     } else {
-      setFeedback("Try again!");
+      setFeedback("Not quite. Try again.");
     }
   }
 

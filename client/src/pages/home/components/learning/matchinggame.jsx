@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import "../../../../styles/components.css"
 
 function shuffleArray(items) {
   const copy = [...items];

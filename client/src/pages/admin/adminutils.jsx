@@ -1,16 +1,11 @@
+import "../../styles/pages.css";
+
 export function TabButton({ active, onClick, children }) {
   return (
     <button
-      onClick={onClick}
-      style={{
-        padding: "10px 12px",
-        borderRadius: 10,
-        border: "1px solid #ddd",
-        background: active ? "#111" : "#fff",
-        color: active ? "#fff" : "#111",
-        cursor: "pointer",
-      }}
       type="button"
+      onClick={onClick}
+      className={active ? "secondaryBtn" : "ghostBtn"}
     >
       {children}
     </button>
@@ -29,7 +24,7 @@ export async function uploadAdminImage({ adminKey, file }) {
 
   const json = await res.json().catch(() => ({}));
   if (!res.ok) throw new Error(json.error || "Upload failed");
-  return json.url; // "/static/uploads/..."
+  return json.url;
 }
 
 export function parseCap(v) {

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "../../../../styles/components.css"
 
 export default function ScenarioGame({ title, question, options }) {
   const [selectedIndex, setSelectedIndex] = useState(null);
@@ -64,10 +65,10 @@ export default function ScenarioGame({ title, question, options }) {
 
         {showFeedback && (
           <div className="scenarioActions">
-            <button type="button" onClick={restartGame}>
-              Try Again
-            </button>
-          </div>
+  <button type="button" className="gameActionBtn" onClick={restartGame}>
+    Try Again
+  </button>
+</div>
         )}
       </div>
     </div>

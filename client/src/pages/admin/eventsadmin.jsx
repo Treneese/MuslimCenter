@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { parseCap, uploadAdminImage } from "./adminutils";
+import "../../styles/pages.css";
 
 export default function EventsAdmin({ adminKey }) {
   const [status, setStatus] = useState("");
@@ -211,24 +212,34 @@ export default function EventsAdmin({ adminKey }) {
   }
 
   return (
-    <div>
-      {status ? <p style={{ marginTop: 0 }}>{status}</p> : null}
+  <div className="adminPage">
+    {status && (
+      <p className={`adminStatus ${status.includes("✅") ? "success" : "error"}`}>
+        {status}
+      </p>
+    )}
 
-      <h2>Create Event</h2>
-      <form onSubmit={createEvent} style={{ display: "grid", gap: 10, maxWidth: 720 }}>
+    {/* ================= CREATE ================= */}
+    <section className="adminSectionCard">
+      <h2 className="adminSectionTitle">Create Event</h2>
+
+      <form onSubmit={createEvent} className="adminForm">
         <input
+          className="adminInput"
           placeholder="Title *"
           value={newEvent.title}
           onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })}
         />
 
-        <div style={{ display: "grid", gap: 10, gridTemplateColumns: "1fr 1fr" }}>
+        <div className="adminGrid2">
           <input
+            className="adminInput"
             placeholder="Day (Friday)"
             value={newEvent.day}
             onChange={(e) => setNewEvent({ ...newEvent, day: e.target.value })}
           />
           <input
+            className="adminInput"
             placeholder="Time (1:30 PM)"
             value={newEvent.time}
             onChange={(e) => setNewEvent({ ...newEvent, time: e.target.value })}
@@ -236,288 +247,195 @@ export default function EventsAdmin({ adminKey }) {
         </div>
 
         <input
-          placeholder="Category (Weekly / Youth / Program / Special)"
+          className="adminInput"
+          placeholder="Category"
           value={newEvent.category}
           onChange={(e) => setNewEvent({ ...newEvent, category: e.target.value })}
         />
 
         <input
-          placeholder="Location (optional)"
+          className="adminInput"
+          placeholder="Location"
           value={newEvent.location}
           onChange={(e) => setNewEvent({ ...newEvent, location: e.target.value })}
         />
 
-        <label style={{ display: "grid", gap: 6 }}>
-          <span>Event Image (upload)</span>
+        <label className="adminFileLabel">
+          Event Image
           <input
             type="file"
-            accept="image/*"
             onChange={(e) => setNewEventFile(e.target.files?.[0] || null)}
           />
         </label>
 
-        {newEventFile ? (
+        {newEventFile && (
           <img
             src={URL.createObjectURL(newEventFile)}
-            alt="preview"
-            style={{ width: "100%", maxWidth: 420, borderRadius: 10, border: "1px solid #e5e7eb" }}
+            className="adminImagePreview"
           />
-        ) : null}
+        )}
 
-        <div style={{ display: "flex", gap: 16, alignItems: "center", flexWrap: "wrap" }}>
-          <label style={{ display: "flex", gap: 8, alignItems: "center" }}>
+        <div className="adminRow">
+          <label>
             <input
               type="checkbox"
               checked={newEvent.is_special}
-              onChange={(e) => setNewEvent({ ...newEvent, is_special: e.target.checked })}
+              onChange={(e) =>
+                setNewEvent({ ...newEvent, is_special: e.target.checked })
+              }
             />
-            Special event
+            Special
           </label>
 
-          <label style={{ display: "flex", gap: 8, alignItems: "center" }}>
+          <label>
             <input
               type="checkbox"
               checked={newEvent.rsvp_enabled}
               disabled={!newEvent.is_special}
-              onChange={(e) => setNewEvent({ ...newEvent, rsvp_enabled: e.target.checked })}
+              onChange={(e) =>
+                setNewEvent({ ...newEvent, rsvp_enabled: e.target.checked })
+              }
             />
-            RSVP enabled
+            RSVP
           </label>
 
           <input
-            placeholder="RSVP capacity (optional)"
+            className="adminInput"
+            placeholder="Capacity"
             value={newEvent.rsvp_capacity}
-            disabled={!newEvent.is_special || !newEvent.rsvp_enabled}
-            onChange={(e) => setNewEvent({ ...newEvent, rsvp_capacity: e.target.value })}
-            style={{ width: 220 }}
+            disabled={!newEvent.rsvp_enabled}
+            onChange={(e) =>
+              setNewEvent({ ...newEvent, rsvp_capacity: e.target.value })
+            }
           />
         </div>
 
         <textarea
+          className="adminTextarea"
           placeholder="Description"
           value={newEvent.description}
-          onChange={(e) => setNewEvent({ ...newEvent, description: e.target.value })}
-          rows={3}
+          onChange={(e) =>
+            setNewEvent({ ...newEvent, description: e.target.value })
+          }
         />
 
-        <button type="submit" style={{ padding: "10px 14px", width: 180 }}>
-          Create Event
-        </button>
+        <button className="primaryBtn">Create Event</button>
       </form>
+    </section>
 
-      <h2 style={{ marginTop: 26 }}>Existing Events</h2>
-      <div style={{ display: "grid", gap: 10, maxWidth: 920 }}>
+    {/* ================= EXISTING ================= */}
+    <section className="adminSectionCard">
+      <h2 className="adminSectionTitle">Existing Events</h2>
+
+      <div className="adminList">
         {events.map((ev) => {
           const editing = editingEventId === ev.id;
           const rsvpOpen = rsvpOpenForEventId === ev.id;
 
           return (
-            <div key={ev.id} style={{ border: "1px solid #ddd", borderRadius: 12, padding: 12 }}>
-              <div style={{ display: "flex", justifyContent: "space-between", gap: 10 }}>
-                <div style={{ display: "grid", gap: 6 }}>
+            <div key={ev.id} className="adminEventCard">
+              <div className="adminEventHeader">
+                <div>
                   <strong>{ev.title}</strong>
-                  <div style={{ opacity: 0.85 }}>
-                    {ev.day || "-"} • {ev.time || "-"} • {ev.category || "-"}
+                  <div className="adminMeta">
+                    {ev.day} • {ev.time} • {ev.category}
                   </div>
-
-                  {(ev.location || ev.is_special || ev.rsvp_enabled) && (
-                    <div style={{ opacity: 0.85, fontSize: 13 }}>
-                      {ev.location ? `📍 ${ev.location}` : null}
-                      {ev.is_special ? " • ⭐ Special" : ""}
-                      {ev.rsvp_enabled ? ` • RSVP: ON (${ev.rsvp_count || 0})` : ""}
-                      {ev.rsvp_capacity != null ? ` • Cap: ${ev.rsvp_capacity}` : ""}
-                    </div>
-                  )}
                 </div>
 
-                <div style={{ display: "flex", gap: 8, alignItems: "start" }}>
-                  {ev.is_special && ev.rsvp_enabled ? (
-                    <button
-                      onClick={() => (rsvpOpen ? setRsvpOpenForEventId(null) : loadRsvps(ev.id))}
-                      style={{ padding: "6px 10px" }}
-                      type="button"
-                    >
-                      {rsvpOpen ? "Hide RSVPs" : "View RSVPs"}
-                    </button>
-                  ) : null}
+                <div className="adminActions">
+                  <button
+                    className="ghostBtn"
+                    onClick={() =>
+                      rsvpOpen
+                        ? setRsvpOpenForEventId(null)
+                        : loadRsvps(ev.id)
+                    }
+                  >
+                    RSVPs
+                  </button>
 
-                  <button onClick={() => startEdit(ev)} style={{ padding: "6px 10px" }} type="button">
+                  <button
+                    className="secondaryBtn"
+                    onClick={() => startEdit(ev)}
+                  >
                     Edit
                   </button>
 
-                  <button onClick={() => deleteEvent(ev.id)} style={{ padding: "6px 10px" }} type="button">
+                  <button
+                    className="dangerBtn"
+                    onClick={() => deleteEvent(ev.id)}
+                  >
                     Delete
                   </button>
                 </div>
               </div>
 
-              {ev.image_url ? (
-                <img
-                  src={ev.image_url}
-                  alt={ev.title}
-                  style={{
-                    marginTop: 10,
-                    width: "100%",
-                    maxWidth: 520,
-                    borderRadius: 10,
-                    border: "1px solid #e5e7eb",
-                  }}
-                />
-              ) : null}
+              {ev.image_url && (
+                <img src={ev.image_url} className="adminImagePreview" />
+              )}
 
-              {ev.description ? <div style={{ marginTop: 10 }}>{ev.description}</div> : null}
+              {ev.description && (
+                <p className="adminDescription">{ev.description}</p>
+              )}
 
-              {editing && editEvent ? (
-                <div style={{ marginTop: 12, paddingTop: 12, borderTop: "1px solid #eee" }}>
-                  <strong>Edit Event</strong>
+              {/* EDIT */}
+              {editing && editEvent && (
+                <div className="adminEditSection">
+                  <input
+                    className="adminInput"
+                    value={editEvent.title}
+                    onChange={(e) =>
+                      setEditEvent({ ...editEvent, title: e.target.value })
+                    }
+                  />
 
-                  <div style={{ display: "grid", gap: 10, marginTop: 10, maxWidth: 720 }}>
+                  <div className="adminGrid2">
                     <input
-                      value={editEvent.title}
-                      onChange={(e) => setEditEvent({ ...editEvent, title: e.target.value })}
-                      placeholder="Title *"
+                      className="adminInput"
+                      value={editEvent.day}
+                      onChange={(e) =>
+                        setEditEvent({ ...editEvent, day: e.target.value })
+                      }
                     />
-
-                    <div style={{ display: "grid", gap: 10, gridTemplateColumns: "1fr 1fr" }}>
-                      <input
-                        value={editEvent.day}
-                        onChange={(e) => setEditEvent({ ...editEvent, day: e.target.value })}
-                        placeholder="Day"
-                      />
-                      <input
-                        value={editEvent.time}
-                        onChange={(e) => setEditEvent({ ...editEvent, time: e.target.value })}
-                        placeholder="Time"
-                      />
-                    </div>
-
                     <input
-                      value={editEvent.category}
-                      onChange={(e) => setEditEvent({ ...editEvent, category: e.target.value })}
-                      placeholder="Category"
+                      className="adminInput"
+                      value={editEvent.time}
+                      onChange={(e) =>
+                        setEditEvent({ ...editEvent, time: e.target.value })
+                      }
                     />
+                  </div>
 
-                    <input
-                      value={editEvent.location}
-                      onChange={(e) => setEditEvent({ ...editEvent, location: e.target.value })}
-                      placeholder="Location"
-                    />
+                  <textarea
+                    className="adminTextarea"
+                    value={editEvent.description}
+                    onChange={(e) =>
+                      setEditEvent({
+                        ...editEvent,
+                        description: e.target.value,
+                      })
+                    }
+                  />
 
-                    <label style={{ display: "grid", gap: 6 }}>
-                      <span>Replace Image (upload)</span>
-                      <input
-                        type="file"
-                        accept="image/*"
-                        onChange={(e) => setEditEventFile(e.target.files?.[0] || null)}
-                      />
-                    </label>
+                  <div className="adminActions">
+                    <button
+                      className="primaryBtn"
+                      onClick={() => saveEdit(ev.id)}
+                    >
+                      Save
+                    </button>
 
-                    {editEventFile ? (
-                      <img
-                        src={URL.createObjectURL(editEventFile)}
-                        alt="preview"
-                        style={{ width: "100%", maxWidth: 420, borderRadius: 10, border: "1px solid #e5e7eb" }}
-                      />
-                    ) : editEvent.image_url ? (
-                      <img
-                        src={editEvent.image_url}
-                        alt="current"
-                        style={{ width: "100%", maxWidth: 420, borderRadius: 10, border: "1px solid #e5e7eb" }}
-                      />
-                    ) : null}
-
-                    <div style={{ display: "flex", gap: 16, alignItems: "center", flexWrap: "wrap" }}>
-                      <label style={{ display: "flex", gap: 8, alignItems: "center" }}>
-                        <input
-                          type="checkbox"
-                          checked={editEvent.is_special}
-                          onChange={(e) => setEditEvent({ ...editEvent, is_special: e.target.checked })}
-                        />
-                        Special event
-                      </label>
-
-                      <label style={{ display: "flex", gap: 8, alignItems: "center" }}>
-                        <input
-                          type="checkbox"
-                          checked={editEvent.rsvp_enabled}
-                          disabled={!editEvent.is_special}
-                          onChange={(e) => setEditEvent({ ...editEvent, rsvp_enabled: e.target.checked })}
-                        />
-                        RSVP enabled
-                      </label>
-
-                      <input
-                        placeholder="RSVP capacity (optional)"
-                        value={editEvent.rsvp_capacity}
-                        disabled={!editEvent.is_special || !editEvent.rsvp_enabled}
-                        onChange={(e) => setEditEvent({ ...editEvent, rsvp_capacity: e.target.value })}
-                        style={{ width: 220 }}
-                      />
-                    </div>
-
-                    <textarea
-                      value={editEvent.description}
-                      onChange={(e) => setEditEvent({ ...editEvent, description: e.target.value })}
-                      rows={3}
-                      placeholder="Description"
-                    />
-
-                    <div style={{ display: "flex", gap: 10 }}>
-                      <button type="button" onClick={() => saveEdit(ev.id)} style={{ padding: "10px 14px" }}>
-                        Save
-                      </button>
-                      <button type="button" onClick={cancelEdit} style={{ padding: "10px 14px" }}>
-                        Cancel
-                      </button>
-                    </div>
+                    <button className="ghostBtn" onClick={cancelEdit}>
+                      Cancel
+                    </button>
                   </div>
                 </div>
-              ) : null}
-
-              {rsvpOpen ? (
-                <div style={{ marginTop: 12, paddingTop: 12, borderTop: "1px solid #eee" }}>
-                  <strong>RSVPs</strong>
-                  {rsvpStatus ? <div style={{ marginTop: 6 }}>{rsvpStatus}</div> : null}
-
-                  {rsvps.length === 0 ? (
-                    <div style={{ marginTop: 8, opacity: 0.75 }}>No RSVPs yet.</div>
-                  ) : (
-                    <div style={{ display: "grid", gap: 10, marginTop: 10 }}>
-                      {rsvps.map((r) => (
-                        <div
-                          key={r.id}
-                          style={{
-                            border: "1px solid #e5e7eb",
-                            borderRadius: 10,
-                            padding: 10,
-                            display: "flex",
-                            justifyContent: "space-between",
-                            gap: 10,
-                          }}
-                        >
-                          <div style={{ display: "grid", gap: 4 }}>
-                            <div style={{ fontWeight: 700 }}>
-                              {r.name} {r.guests ? `(+${r.guests - 1} guests)` : ""}
-                            </div>
-                            <div style={{ opacity: 0.85, fontSize: 13 }}>
-                              {r.email || "-"} • {r.phone || "-"}
-                            </div>
-                            {r.note ? <div style={{ marginTop: 4 }}>{r.note}</div> : null}
-                          </div>
-
-                          <button onClick={() => deleteRsvp(r.id)} style={{ padding: "6px 10px" }} type="button">
-                            Delete
-                          </button>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ) : null}
+              )}
             </div>
           );
         })}
       </div>
-    </div>
-  );
+    </section>
+  </div>
+);
 }

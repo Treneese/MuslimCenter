@@ -3,6 +3,7 @@ import EventsAdmin from "./eventsadmin";
 import ProgramsAdmin from "./programsadmin";
 import IqamahAdmin from "./iqamahadmin";
 import { TabButton } from "./adminutils";
+import "../../styles/pages.css";
 
 export default function Admin() {
   const [adminKey, setAdminKey] = useState("");
@@ -18,20 +19,26 @@ export default function Admin() {
   );
 
   return (
-    <div style={{ padding: 24 }}>
-      <h1 style={{ marginTop: 0 }}>Admin</h1>
+    <div className="page adminPage">
+      <section className="adminHeaderCard">
+        <h1 className="pageTitle">Admin</h1>
 
-      <label style={{ display: "block", marginBottom: 12 }}>
-        Admin Key:
-        <input
-          value={adminKey}
-          onChange={(e) => setAdminKey(e.target.value)}
-          type="password"
-          style={{ marginLeft: 10, padding: 8, width: 280 }}
-        />
-      </label>
+        <div className="adminKeyRow">
+          <label className="adminLabel" htmlFor="admin-key">
+            Admin Key
+          </label>
+          <input
+            id="admin-key"
+            value={adminKey}
+            onChange={(e) => setAdminKey(e.target.value)}
+            type="password"
+            className="adminInput"
+            placeholder="Enter admin key"
+          />
+        </div>
+      </section>
 
-      <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginBottom: 18 }}>
+      <div className="adminTabs">
         {tabs.map((t) => (
           <TabButton key={t.id} active={tab === t.id} onClick={() => setTab(t.id)}>
             {t.label}
@@ -39,7 +46,7 @@ export default function Admin() {
         ))}
       </div>
 
-      <hr />
+      <hr className="adminDivider" />
 
       {tab === "events" ? <EventsAdmin adminKey={adminKey} /> : null}
       {tab === "programs" ? <ProgramsAdmin adminKey={adminKey} /> : null}

@@ -1,21 +1,42 @@
 import { useState } from "react";
+import "../../styles/pages.css";
 
 export default function IqamahAdmin({ adminKey }) {
-  const [iqamah, setIqamah] = useState({ fajr: "", dhuhr: "", asr: "", maghrib: "", isha: "" });
+  const [iqamah, setIqamah] = useState({
+    fajr: "",
+    dhuhr: "",
+    asr: "",
+    maghrib: "",
+    isha: "",
+  });
   const [status, setStatus] = useState("");
   const [loading, setLoading] = useState(false);
 
   async function loadIqamah() {
-    if (!adminKey) return setStatus("Enter admin key first.");
+    if (!adminKey) {
+      setStatus("Enter admin key first.");
+      return;
+    }
+
     setStatus("");
     setLoading(true);
 
     try {
-      const res = await fetch("/api/admin/iqamah", { headers: { "x-admin-key": adminKey } });
+      const res = await fetch("/api/admin/iqamah", {
+        headers: { "x-admin-key": adminKey },
+      });
+
       const json = await res.json().catch(() => ({}));
-      if (!res.ok || json.ok === false) return setStatus(json.error || "Failed to load iqamah");
+
+      if (!res.ok || json.ok === false) {
+        setStatus(json.error || "Failed to load iqamah");
+        return;
+      }
+
       setIqamah(json.iqamah || json);
       setStatus("✅ Loaded iqamah times");
+    } catch {
+      setStatus("Failed to load iqamah");
     } finally {
       setLoading(false);
     }
@@ -23,50 +44,80 @@ export default function IqamahAdmin({ adminKey }) {
 
   async function saveIqamah(e) {
     e.preventDefault();
-    if (!adminKey) return setStatus("Enter admin key first.");
+
+    if (!adminKey) {
+      setStatus("Enter admin key first.");
+      return;
+    }
+
     setStatus("");
     setLoading(true);
 
     try {
       const res = await fetch("/api/admin/iqamah", {
         method: "PUT",
-        headers: { "Content-Type": "application/json", "x-admin-key": adminKey },
+        headers: {
+          "Content-Type": "application/json",
+          "x-admin-key": adminKey,
+        },
         body: JSON.stringify(iqamah),
       });
+
       const json = await res.json().catch(() => ({}));
-      if (!res.ok || json.ok === false) return setStatus(json.error || "Save failed");
+
+      if (!res.ok || json.ok === false) {
+        setStatus(json.error || "Save failed");
+        return;
+      }
+
       setStatus("✅ Saved iqamah times");
+    } catch {
+      setStatus("Save failed");
     } finally {
       setLoading(false);
     }
   }
 
+  const isError =
+    status &&
+    !status.includes("✅");
+
   return (
-    <div>
-      <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
-        <button type="button" onClick={loadIqamah} style={{ padding: "10px 14px" }}>
-          Load Current Iqamah
-        </button>
-        {loading ? <span>Working…</span> : null}
-        {status ? <span>{status}</span> : null}
-      </div>
+    <div className="adminPage">
+      <section className="adminSectionCard">
+        <div className="adminButtonRow" style={{ marginBottom: 14 }}>
+          <button type="button" className="ghostBtn" onClick={loadIqamah}>
+            Load Current Iqamah
+          </button>
 
-      <form onSubmit={saveIqamah} style={{ marginTop: 12, display: "grid", gap: 10, maxWidth: 420 }}>
-        {["fajr", "dhuhr", "asr", "maghrib", "isha"].map((k) => (
-          <label key={k}>
-            {k.toUpperCase()}
-            <input
-              value={iqamah[k] || ""}
-              onChange={(e) => setIqamah({ ...iqamah, [k]: e.target.value })}
-              style={{ width: "100%", padding: 8, marginTop: 6 }}
-            />
-          </label>
-        ))}
+          {loading ? <span className="adminStatus">Working…</span> : null}
+        </div>
 
-        <button type="submit" style={{ padding: "10px 14px", width: 180 }}>
-          Save Iqamah
-        </button>
-      </form>
+        {status ? (
+          <p className={`adminStatus${isError ? " error" : ""}`}>{status}</p>
+        ) : null}
+
+        <h2 className="adminSectionTitle">Edit Iqamah Times</h2>
+
+        <form onSubmit={saveIqamah} className="adminForm" style={{ maxWidth: 420 }}>
+          {["fajr", "dhuhr", "asr", "maghrib", "isha"].map((k) => (
+            <label key={k} className="adminFileLabel">
+              <span className="adminLabel">{k.toUpperCase()}</span>
+              <input
+                className="adminInput"
+                value={iqamah[k] || ""}
+                onChange={(e) =>
+                  setIqamah({ ...iqamah, [k]: e.target.value })
+                }
+              />
+            </label>
+          ))}
+
+          <button type="submit" className="secondaryBtn" style={{ width: 180 }}>
+            Save Iqamah
+          </button>
+        </form>
+      </section>
     </div>
   );
 }

@@ -38,7 +38,7 @@ export default function Kids35() {
             title: "Watch: Allah Made Everything",
             description:
               "Add your chosen preschool video here about Allah creating the world.",
-            embedUrl: "",
+            embedUrl: "https://www.youtube.com/embed/RWn5WxIcp4Y?si=kEyMgi_LYLudkEvn",
             fallbackNote:
               "Video coming soon. Add a short gentle video about Allah creating the sky, earth, animals, and people.",
             speechText:
@@ -80,7 +80,7 @@ export default function Kids35() {
             title: "Watch: We Love Allah",
             description:
               "Add your chosen song or short lesson about loving and thanking Allah.",
-            embedUrl: "",
+            embedUrl: "https://www.youtube.com/embed/-9N91KTahvU?si=8MwDh2FAID283cAw",
             fallbackNote:
               "Video coming soon. Add a joyful short video or song that helps children remember Allah with love.",
             speechText:
@@ -131,7 +131,7 @@ export default function Kids35() {
             title: "Watch: What is a Masjid?",
             description:
               "Add a preschool-friendly introduction to the masjid here.",
-            embedUrl: "",
+            embedUrl: "https://www.youtube.com/embed/PjHNNPwfOWA?si=xjdLNIoGRA502WFA",
             fallbackNote:
               "Video coming soon. Add a short preschool-friendly video introducing the masjid.",
             speechText:
@@ -173,7 +173,7 @@ export default function Kids35() {
             title: "Watch: Daily Islamic Words",
             description:
               "Add a short song or children’s lesson for Bismillah and Alhamdulillah.",
-            embedUrl: "",
+            embedUrl: "https://www.youtube.com/embed/H8qsicHveGE?si=hCe75KdfOx9_bTw_",
             fallbackNote:
               "Video coming soon. Add a short children’s video or song teaching Bismillah and Alhamdulillah.",
             speechText:

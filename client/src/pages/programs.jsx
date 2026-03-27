@@ -28,10 +28,14 @@ export default function Programs() {
 
   return (
     <div className="page featurePage">
-      <h1 className="pageTitle">Programs</h1>
-      <p className="pageSubtitle featureIntro">
-        Explore our ongoing programs for youth, families, and the community.
-      </p>
+      <section className="learnHero">
+        <p className="learnEyebrow">Programs</p>
+        <h1 className="pageTitle">Programs</h1>
+        <p className="pageSubtitle featureIntro">
+          Explore our ongoing programs for youth, families, and the wider
+          community.
+        </p>
+      </section>
 
       {loading && <p className="featureStatus">Loading...</p>}
       {err && <p className="featureError">{err}</p>}
@@ -49,7 +53,9 @@ export default function Programs() {
                 }}
               />
             ) : (
-              <div className="featureCardPlaceholder">Program image coming soon</div>
+              <div className="featureCardPlaceholder">
+                Program image coming soon
+              </div>
             )}
 
             <div className="featureCardBody">

@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import "../../../../styles/components.css"
 
 export default function LearningModal({ isOpen, onClose, title, children }) {
   useEffect(() => {

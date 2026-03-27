@@ -15,7 +15,7 @@ export default function AdultDeepeningKnowledge() {
       id: "heart",
       title: "Purification of the Heart",
       subtitle: "Inner refinement and spiritual honesty",
-      video: "https://www.youtube.com/embed/VIDEO_ID",
+      video: "https://www.youtube.com/embed/IiKHifXKS0s?si=-4RfXZjitZdzD9Zj",
       content: `
 At a deeper level of learning, a Muslim must begin paying serious attention to the condition of the heart.
 
@@ -45,7 +45,7 @@ Islam does not only teach outward obedience. It also teaches inner refinement.
       id: "sincerity",
       title: "Sincerity and the Danger of Showing Off",
       subtitle: "Protecting worship from ego",
-      video: "https://www.youtube.com/embed/VIDEO_ID",
+      video: "https://www.youtube.com/embed/wZJBgzYxDiU?si=JWjIAPzZnqI7yD6W",
       content: `
 One of the greatest spiritual dangers is doing good while quietly seeking the attention, praise, or approval of people.
 
@@ -73,7 +73,7 @@ The more a person grows, the more carefully they must guard intention.
       id: "adab-knowledge",
       title: "Adab of Seeking Knowledge",
       subtitle: "How to learn with humility",
-      video: "https://www.youtube.com/embed/VIDEO_ID",
+      video: "https://www.youtube.com/embed/Lz8hC4C2SWA?si=xYaoI5baKoDxbMKB",
       content: `
 Seeking knowledge in Islam is not only about collecting information. It is also about adab, humility, patience, and responsibility.
 
@@ -103,7 +103,7 @@ Knowledge without adab can become spiritually dangerous.
       id: "history",
       title: "Islamic History and the Preservation of Knowledge",
       subtitle: "Learning how Islam was carried forward",
-      video: "https://www.youtube.com/embed/VIDEO_ID",
+      video: "https://www.youtube.com/embed/UIwaJb6Ce-4?si=yUjjrEqaHZnQjfbe",
       content: `
 A deeper Muslim learner should begin understanding how Islam was preserved, taught, defended, and transmitted across generations.
 
@@ -129,7 +129,7 @@ It reminds the learner that Islam did not arrive casually. It was preserved by p
       id: "quran-themes",
       title: "Deeper Quran Study",
       subtitle: "Themes, patterns, and layered reflection",
-      video: "https://www.youtube.com/embed/VIDEO_ID",
+      video: "https://www.youtube.com/embed/fcHClR5yO5Q?si=_Q44GyASk5INcWwA",
       content: `
 At this stage, Quran study should begin moving beyond occasional reflection into deeper engagement with themes, patterns, and meaning.
 
@@ -155,7 +155,7 @@ The Quran is not shallow. A deeper learner returns again and again and continues
       id: "ethics",
       title: "Ethics, Justice, and Responsibility",
       subtitle: "Faith beyond the personal level",
-      video: "https://www.youtube.com/embed/VIDEO_ID",
+      video: "https://www.youtube.com/embed/Fxn18YHB6NU?si=3D5za_2650sANr1N",
       content: `
 At a deeper stage, Islam must be understood not only as personal worship, but also as a way of carrying justice, responsibility, and moral seriousness into the world.
 
@@ -183,7 +183,7 @@ A mature Muslim should become more trustworthy, more principled, and more benefi
       id: "lifelong",
       title: "Lifelong Learning and Spiritual Maturity",
       subtitle: "Growing without arrogance",
-      video: "https://www.youtube.com/embed/VIDEO_ID",
+      video: "https://www.youtube.com/embed/dReWt-xk4oI?si=2zGoDWowG-w0sBPv",
       content: `
 The deeper a person goes in Islam, the more they should realize how much they still need Allah.
 
@@ -248,7 +248,12 @@ A person is not “done” because they have learned more. In many ways, deeper 
 >
   {activeLesson && (
     <>
-      {activeLesson.video && <VideoLesson src={activeLesson.video} />}
+      <VideoLesson
+  title={`Watch: ${activeLesson.title}`}
+  description="Watch this lesson to support your learning."
+  embedUrl={activeLesson.video}
+  speechText={activeLesson.content}
+/>
 
       <ListenButton text={activeLesson.content} />
 

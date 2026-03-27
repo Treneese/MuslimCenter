@@ -192,7 +192,7 @@ export default function Kids68() {
             title: "Watch: Daily Manners",
             description:
               "Add a short manners video here if you find one you like later.",
-            embedUrl: "",
+            embedUrl: "https://www.youtube.com/embed/0RMLaWwIkxU?si=kWMHTKCQGGcHL7wT",
             fallbackNote:
               "Video coming soon. Add a short lesson on kind words, greetings, and respect.",
           },

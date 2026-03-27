@@ -338,3 +338,459 @@
     align-items: stretch;
   }
 }
+/* ===== ABOUT / LEADERSHIP ===== */
+
+.pageHeader {
+  background: #f8f6f2;
+  border-radius: 20px;
+  padding: 28px 24px;
+  border: 1px solid rgba(0,0,0,0.06);
+  margin-bottom: 24px;
+}
+
+.pageBadge {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--primary-green);
+  background: rgba(23,117,60,0.1);
+  border: 1px solid rgba(23,117,60,0.2);
+  padding: 6px 10px;
+  border-radius: 999px;
+  margin-bottom: 10px;
+}
+
+.leadershipGridPage {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+@media (max-width: 900px) {
+  .leadershipGridPage {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== GET INVOLVED ===== */
+
+.getInvolvedHero {
+  background: linear-gradient(135deg, rgba(255,255,255,0.96), rgba(247,243,235,0.92));
+  border: 1px solid rgba(219, 160, 76, 0.18);
+  border-radius: 28px;
+  padding: 28px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+  margin-bottom: 22px;
+}
+
+.getInvolvedFacts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.getInvolvedFactCard {
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(219, 160, 76, 0.16);
+  border-radius: 18px;
+  padding: 14px;
+}
+
+.getInvolvedFactLabel {
+  font-size: 0.76rem;
+  color: #6e5a33;
+  font-weight: 800;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.getInvolvedFactValue {
+  font-size: 0.96rem;
+  color: #1b1b1b;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.getInvolvedSectionCard {
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(219, 160, 76, 0.18);
+  border-radius: 24px;
+  padding: 22px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+  margin-bottom: 16px;
+}
+
+.getInvolvedSectionTitle {
+  margin: 0;
+  font-family: var(--mc-font-heading);
+  font-size: 1.8rem;
+  line-height: 1.05;
+  color: #18301f;
+}
+
+.getInvolvedBodyText {
+  margin-top: 10px;
+  margin-bottom: 0;
+  line-height: 1.75;
+  color: var(--mc-text-soft);
+  max-width: 920px;
+}
+
+.getInvolvedList {
+  margin-top: 12px;
+  margin-bottom: 0;
+  padding-left: 20px;
+  color: var(--mc-text-soft);
+  line-height: 1.8;
+  max-width: 920px;
+}
+
+.getInvolvedList li {
+  margin-bottom: 8px;
+}
+
+.getInvolvedNote {
+  margin-top: 12px;
+  margin-bottom: 0;
+  line-height: 1.65;
+  color: #6d6d6d;
+  max-width: 920px;
+  font-size: 0.92rem;
+}
+
+.getInvolvedCtaWrap {
+  margin-top: 12px;
+}
+
+.getInvolvedCtaCard {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: center;
+  background: linear-gradient(135deg, #18301f, #0f2418);
+  border-radius: 24px;
+  padding: 22px;
+  color: white;
+}
+
+.getInvolvedCtaTitle {
+  margin: 0;
+  font-size: 1.3rem;
+  font-family: var(--mc-font-heading);
+  color: white;
+}
+
+.getInvolvedCtaText {
+  margin: 8px 0 0;
+  opacity: 0.92;
+  line-height: 1.65;
+  max-width: 720px;
+}
+
+.getInvolvedCtaButtons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.getInvolvedBackLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: transparent;
+  color: white;
+  font-weight: 800;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.45);
+}
+
+@media (max-width: 900px) {
+  .getInvolvedFacts {
+    grid-template-columns: 1fr;
+  }
+
+  .getInvolvedCtaCard {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .getInvolvedCtaButtons {
+    justify-content: flex-start;
+  }
+}
+/* ===== ADMIN ===== */
+
+.adminPage {
+  display: grid;
+  gap: 22px;
+}
+
+.adminHeaderCard {
+  background: linear-gradient(135deg, rgba(255,255,255,0.96), rgba(247,243,235,0.92));
+  border: 1px solid rgba(219, 160, 76, 0.18);
+  border-radius: 28px;
+  padding: 24px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+}
+
+.adminHeaderCard h1 {
+  margin: 0 0 8px;
+}
+
+.adminKeyRow {
+  display: grid;
+  gap: 8px;
+  max-width: 380px;
+}
+
+.adminLabel {
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: var(--mc-green-deep);
+}
+
+.adminInput,
+.adminTextarea,
+.adminSelect {
+  width: 100%;
+  padding: 13px 14px;
+  border-radius: 16px;
+  border: 1px solid rgba(23, 117, 60, 0.16);
+  background: rgba(255,255,255,0.96);
+  color: #1f2937;
+  outline: none;
+}
+
+.adminInput:focus,
+.adminTextarea:focus,
+.adminSelect:focus {
+  border-color: rgba(219, 160, 76, 0.42);
+  box-shadow: 0 0 0 4px rgba(219, 160, 76, 0.12);
+}
+
+.adminTabs {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.adminDivider {
+  border: none;
+  border-top: 1px solid rgba(219, 160, 76, 0.18);
+  margin: 0;
+}
+
+.adminSectionCard {
+  background: rgba(255,255,255,0.96);
+  border: 1px solid rgba(219, 160, 76, 0.18);
+  border-radius: 24px;
+  padding: 22px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+}
+
+.adminSectionTitle {
+  margin: 0 0 14px;
+  font-family: var(--mc-font-heading);
+  font-size: 2rem;
+  line-height: 1.05;
+  color: #18301f;
+}
+
+.adminStatus {
+  margin: 0 0 12px;
+  font-weight: 700;
+  color: var(--mc-green-deep);
+}
+
+.adminStatus.error {
+  color: #b42318;
+}
+
+.adminForm {
+  display: grid;
+  gap: 12px;
+  max-width: 760px;
+}
+
+.adminFormRow {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1fr 1fr;
+}
+
+.adminFileLabel {
+  display: grid;
+  gap: 6px;
+}
+
+.adminPreview {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 16px;
+  border: 1px solid rgba(219, 160, 76, 0.18);
+  display: block;
+}
+
+.adminList {
+  display: grid;
+  gap: 12px;
+}
+
+.adminItemCard {
+  border: 1px solid rgba(219, 160, 76, 0.18);
+  border-radius: 20px;
+  padding: 16px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(247,243,235,0.9));
+}
+
+.adminItemTop {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.adminItemMeta {
+  display: grid;
+  gap: 6px;
+}
+
+.adminItemMeta strong {
+  color: #18301f;
+  font-size: 1.05rem;
+}
+
+.adminItemSubtext {
+  color: var(--mc-text-soft);
+  line-height: 1.6;
+}
+
+.adminButtonRow {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.adminEditArea {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(219, 160, 76, 0.16);
+}
+
+.adminMiniTitle {
+  font-weight: 800;
+  color: #18301f;
+}
+
+@media (max-width: 768px) {
+  .adminFormRow {
+    grid-template-columns: 1fr;
+  }
+}
+.adminPage {
+  display: grid;
+  gap: 20px;
+}
+
+.adminSectionCard {
+  background: #fff;
+  border: 1px solid #dbe7dd;
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.adminSectionTitle {
+  margin: 0 0 12px;
+  color: #1e6b3a;
+}
+
+.adminForm {
+  display: grid;
+  gap: 12px;
+  max-width: 720px;
+}
+
+.adminInput,
+.adminTextarea {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #cfe4d6;
+}
+
+.adminTextarea {
+  min-height: 100px;
+}
+
+.adminGrid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.adminRow {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.adminImagePreview {
+  max-width: 420px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+}
+
+.adminList {
+  display: grid;
+  gap: 12px;
+}
+
+.adminEventCard {
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 14px;
+  background: #fafafa;
+}
+
+.adminEventHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.adminMeta {
+  font-size: 13px;
+  opacity: 0.7;
+}
+
+.adminActions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.adminStatus {
+  font-weight: 600;
+}
+
+.adminStatus.success {
+  color: #1e6b3a;
+}
+
+.adminStatus.error {
+  color: #b42318;
+}
+
+.dangerBtn {
+  background: #b42318;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 8px 12px;
+}

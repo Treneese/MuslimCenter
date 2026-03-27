@@ -14,7 +14,7 @@ export default function AdultGrowingInFaith() {
       id: "khushu",
       title: "Khushu in Prayer",
       subtitle: "Improve the quality of salah",
-      video: "https://www.youtube.com/embed/VIDEO_ID",
+      video: "https://www.youtube.com/embed/gUZCREmNX6k?si=AO3I6aspVr6tsfHL",
       content: `
 At this stage, the goal is not just to pray, but to improve the quality of prayer.
 
@@ -39,7 +39,7 @@ Better prayer usually comes through effort, patience, and repetition.
       id: "discipline",
       title: "Discipline, Habits, and Self-Control",
       subtitle: "Strengthen your daily practice",
-      video: "https://www.youtube.com/embed/VIDEO_ID",
+      video: "https://www.youtube.com/embed/8tz94txFjgA?si=rYJiCKEYwOCQIoj_",
       content: `
 Faith grows when actions become disciplined.
 
@@ -64,7 +64,7 @@ A Muslim who is growing learns that consistency is not automatic. It has to be g
       id: "imaan-dips",
       title: "When Iman Rises and Falls",
       subtitle: "Understanding fluctuation without giving up",
-      video: "https://www.youtube.com/embed/VIDEO_ID",
+      video: "https://www.youtube.com/embed/L9PDXYXOCmQ?si=a7jiuiXDEzd3lRby",
       content: `
 Iman does not stay at one level all the time.
 
@@ -89,7 +89,7 @@ The believer is not the one who never struggles. The believer is the one who kee
       id: "character",
       title: "Islamic Character in Real Life",
       subtitle: "Carry faith into behavior",
-      video: "https://www.youtube.com/embed/VIDEO_ID",
+      video: "https://www.youtube.com/embed/MuWzqB9wOh8?si=dy3brJ9oTCsgj5Cp",
       content: `
 Growth in Islam must show up in character.
 
@@ -117,7 +117,7 @@ Islamic character is not decorative. It is part of faith.
       id: "relationships",
       title: "Family, Community, and Responsibility",
       subtitle: "Living Islam with others",
-      video: "https://www.youtube.com/embed/VIDEO_ID",
+      video: "https://www.youtube.com/embed/1Y8HIWTIe8I?si=XrKirEa_ggdmkKWN",
       content: `
 Growing in faith also means learning how Islam shapes relationships.
 
@@ -142,7 +142,7 @@ A mature Muslim does not only focus on private worship. They also learn how to b
       id: "quran-reflection",
       title: "Quran Reflection and Personal Change",
       subtitle: "Move beyond recitation alone",
-      video: "https://www.youtube.com/embed/VIDEO_ID",
+      video: "https://www.youtube.com/embed/zIw5sJlnjcM?si=uD7uVsUymZGOWXi6",
       content: `
 At this stage, Quran should become more than something recited occasionally.
 
@@ -204,7 +204,12 @@ Reflection turns Quran from a page into a relationship.
 >
   {activeLesson && (
     <>
-      {activeLesson.video && <VideoLesson src={activeLesson.video} />}
+      <VideoLesson
+  title={`Watch: ${activeLesson.title}`}
+  description="Watch this lesson to support your learning."
+  embedUrl={activeLesson.video}
+  speechText={activeLesson.content}
+/>
 
       <ListenButton text={activeLesson.content} />
 

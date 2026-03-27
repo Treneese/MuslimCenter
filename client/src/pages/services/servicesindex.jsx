@@ -1,6 +1,6 @@
 import SectionCards from "../../component/sectioncard";
+import "../../styles/pages.css";
 
-// optional: add images for each service card
 import marriageImg from "../../assets/services/marriage.jpg";
 import familyImg from "../../assets/services/family.jpg";
 import shahadaImg from "../../assets/services/shahada.png";
@@ -43,10 +43,14 @@ export default function ServicesIndex() {
 
   return (
     <div className="page">
-      <h1 className="pageTitle">Services</h1>
-      <p className="pageSubtitle" style={{ maxWidth: 900 }}>
-        Community services and support offered by the masjid.
-      </p>
+      <section className="learnHero">
+        <p className="learnEyebrow">Services</p>
+        <h1 className="pageTitle">Services</h1>
+        <p className="pageSubtitle pageIntro">
+          Community services and support offered through the Muslim Center.
+          Explore the options below and choose the one that best fits your need.
+        </p>
+      </section>
 
       <SectionCards items={items} />
     </div>

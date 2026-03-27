@@ -38,7 +38,7 @@ export default function Kids912() {
             title: "Watch: Why Muslims Pray",
             description:
               "Add your chosen older-kids prayer lesson here.",
-            embedUrl: "",
+            embedUrl: "https://www.youtube.com/embed/49LVsooyn_w?si=0OdRNEs9ng4fWi6F",
             fallbackNote:
               "Video coming soon. Add a strong older-kids lesson explaining why salah matters in daily life.",
             speechText:
@@ -84,7 +84,7 @@ export default function Kids912() {
             title: "Watch: The Quran",
             description:
               "Add your chosen Quran lesson here for older children.",
-            embedUrl: "",
+            embedUrl: "https://www.youtube.com/embed/tr7aZowQxUc?si=sHD3qaaQ7SG35Z3D",
             fallbackNote:
               "Video coming soon. Add a short lesson about what the Quran is and why it matters.",
             speechText:
@@ -130,7 +130,7 @@ export default function Kids912() {
             title: "Watch: What Ramadan Teaches",
             description:
               "Add your chosen Ramadan lesson here for older children.",
-            embedUrl: "",
+            embedUrl: "https://www.youtube.com/embed/j-6nDOLkjqs?si=BaTi1T_q3kr4GR5f",
             fallbackNote:
               "Video coming soon. Add a short lesson on fasting, self-control, gratitude, and care for others.",
             speechText:
@@ -176,7 +176,7 @@ export default function Kids912() {
             title: "Watch: Faith and Character",
             description:
               "Add your chosen lesson on Islamic character here.",
-            embedUrl: "",
+            embedUrl: "https://www.youtube.com/embed/94AKzZLWEMY?si=TLjzhr6G-2WYoJUr",
             fallbackNote:
               "Video coming soon. Add a lesson on how Islamic belief shapes the way Muslims treat others.",
             speechText:
@@ -228,7 +228,7 @@ export default function Kids912() {
             title: "Watch: Responsibility and Good Choices",
             description:
               "Add a short lesson here about honesty, responsibility, and making the right choice.",
-            embedUrl: "",
+            embedUrl: "https://www.youtube.com/embed/okq9LPqkn6c?si=ukguhcAsI15kPbpc",
             fallbackNote:
               "Video coming soon. Add a short lesson on honesty, responsibility, and good decisions.",
           },

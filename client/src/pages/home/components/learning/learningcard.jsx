@@ -1,17 +1,25 @@
+import "../../../../styles/components.css"
 export default function LearningCard({
   title,
   subtitle,
   description,
-  type,
+  type = "Lesson",
   image,
   onClick,
 }) {
+  const firstWord = title?.split(" ")?.[0] || "Learn";
+
   return (
     <button type="button" className="learningCard" onClick={onClick}>
       {image ? (
         <img src={image} alt={title} className="learningCardImage" />
       ) : (
-        <div className="learningCardImagePlaceholder">{type}</div>
+        <div className="learningCardImagePlaceholder">
+          <div className="learningCardPlaceholderInner">
+            <span className="learningCardPlaceholderBadge">{type}</span>
+            <h4>{firstWord}</h4>
+          </div>
+        </div>
       )}
 
       <div className="learningCardContent">

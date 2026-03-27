@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { uploadAdminImage } from "./adminutils";
+import "../../styles/pages.css";
 
 export default function ProgramsAdmin({ adminKey }) {
   const [programs, setPrograms] = useState([]);
   const [status, setStatus] = useState("");
 
-  // Create
   const [newProgram, setNewProgram] = useState({
     title: "",
     audience: "",
@@ -15,7 +15,6 @@ export default function ProgramsAdmin({ adminKey }) {
   });
   const [newProgramFile, setNewProgramFile] = useState(null);
 
-  // Edit
   const [editingProgramId, setEditingProgramId] = useState(null);
   const [editProgram, setEditProgram] = useState(null);
   const [editProgramFile, setEditProgramFile] = useState(null);
@@ -81,7 +80,13 @@ export default function ProgramsAdmin({ adminKey }) {
       if (!res.ok) return setStatus(json.error || "Create failed");
 
       setStatus("✅ Program created");
-      setNewProgram({ title: "", audience: "", schedule: "", description: "", image_url: "" });
+      setNewProgram({
+        title: "",
+        audience: "",
+        schedule: "",
+        description: "",
+        image_url: "",
+      });
       setNewProgramFile(null);
       loadPrograms();
     } catch (err) {
@@ -142,166 +147,236 @@ export default function ProgramsAdmin({ adminKey }) {
     loadPrograms();
   }
 
+  const isError =
+    status &&
+    !status.includes("✅") &&
+    !status.includes("🗑️");
+
   return (
-    <div>
-      {status ? <p style={{ marginTop: 0 }}>{status}</p> : null}
-
-      <h2>Create Program</h2>
-      <form onSubmit={createProgram} style={{ display: "grid", gap: 10, maxWidth: 720 }}>
-        <input
-          placeholder="Title *"
-          value={newProgram.title}
-          onChange={(e) => setNewProgram({ ...newProgram, title: e.target.value })}
-        />
-
-        <div style={{ display: "grid", gap: 10, gridTemplateColumns: "1fr 1fr" }}>
-          <input
-            placeholder="Audience (Youth / Adults / Family)"
-            value={newProgram.audience}
-            onChange={(e) => setNewProgram({ ...newProgram, audience: e.target.value })}
-          />
-          <input
-            placeholder="Schedule (Saturdays 10:00 AM)"
-            value={newProgram.schedule}
-            onChange={(e) => setNewProgram({ ...newProgram, schedule: e.target.value })}
-          />
-        </div>
-
-        <label style={{ display: "grid", gap: 6 }}>
-          <span>Program Image (upload)</span>
-          <input type="file" accept="image/*" onChange={(e) => setNewProgramFile(e.target.files?.[0] || null)} />
-        </label>
-
-        {newProgramFile ? (
-          <img
-            src={URL.createObjectURL(newProgramFile)}
-            alt="preview"
-            style={{ width: "100%", maxWidth: 420, borderRadius: 10, border: "1px solid #e5e7eb" }}
-          />
+    <div className="adminPage">
+      <section className="adminSectionCard">
+        {status ? (
+          <p className={`adminStatus${isError ? " error" : ""}`}>{status}</p>
         ) : null}
 
-        <textarea
-          placeholder="Description"
-          value={newProgram.description}
-          onChange={(e) => setNewProgram({ ...newProgram, description: e.target.value })}
-          rows={3}
-        />
+        <h2 className="adminSectionTitle">Create Program</h2>
 
-        <button type="submit" style={{ padding: "10px 14px", width: 180 }}>
-          Create Program
-        </button>
-      </form>
+        <form onSubmit={createProgram} className="adminForm">
+          <input
+            className="adminInput"
+            placeholder="Title *"
+            value={newProgram.title}
+            onChange={(e) =>
+              setNewProgram({ ...newProgram, title: e.target.value })
+            }
+          />
 
-      <h2 style={{ marginTop: 26 }}>Existing Programs</h2>
-      <div style={{ display: "grid", gap: 10, maxWidth: 920 }}>
-        {programs.map((p) => {
-          const editing = editingProgramId === p.id;
+          <div className="adminFormRow">
+            <input
+              className="adminInput"
+              placeholder="Audience (Youth / Adults / Family)"
+              value={newProgram.audience}
+              onChange={(e) =>
+                setNewProgram({ ...newProgram, audience: e.target.value })
+              }
+            />
+            <input
+              className="adminInput"
+              placeholder="Schedule (Saturdays 10:00 AM)"
+              value={newProgram.schedule}
+              onChange={(e) =>
+                setNewProgram({ ...newProgram, schedule: e.target.value })
+              }
+            />
+          </div>
 
-          return (
-            <div key={p.id} style={{ border: "1px solid #ddd", borderRadius: 12, padding: 12 }}>
-              <div style={{ display: "flex", justifyContent: "space-between", gap: 10 }}>
-                <div style={{ display: "grid", gap: 6 }}>
-                  <strong>{p.title}</strong>
-                  <div style={{ opacity: 0.85 }}>
-                    {p.audience || "-"} • {p.schedule || "-"}
+          <label className="adminFileLabel">
+            <span className="adminLabel">Program Image (upload)</span>
+            <input
+              type="file"
+              accept="image/*"
+              onChange={(e) => setNewProgramFile(e.target.files?.[0] || null)}
+            />
+          </label>
+
+          {newProgramFile ? (
+            <img
+              src={URL.createObjectURL(newProgramFile)}
+              alt="preview"
+              className="adminPreview"
+            />
+          ) : null}
+
+          <textarea
+            className="adminTextarea"
+            placeholder="Description"
+            value={newProgram.description}
+            onChange={(e) =>
+              setNewProgram({ ...newProgram, description: e.target.value })
+            }
+            rows={4}
+          />
+
+          <button type="submit" className="secondaryBtn">
+            Create Program
+          </button>
+        </form>
+      </section>
+
+      <section className="adminSectionCard">
+        <h2 className="adminSectionTitle">Existing Programs</h2>
+
+        <div className="adminList">
+          {programs.map((p) => {
+            const editing = editingProgramId === p.id;
+
+            return (
+              <div key={p.id} className="adminItemCard">
+                <div className="adminItemTop">
+                  <div className="adminItemMeta">
+                    <strong>{p.title}</strong>
+                    <div className="adminItemSubtext">
+                      {p.audience || "-"} • {p.schedule || "-"}
+                    </div>
+                  </div>
+
+                  <div className="adminButtonRow">
+                    <button
+                      type="button"
+                      className="ghostBtn"
+                      onClick={() => startEdit(p)}
+                    >
+                      Edit
+                    </button>
+                    <button
+                      type="button"
+                      className="ghostBtn"
+                      onClick={() => deleteProgram(p.id)}
+                    >
+                      Delete
+                    </button>
                   </div>
                 </div>
 
-                <div style={{ display: "flex", gap: 8 }}>
-                  <button type="button" onClick={() => startEdit(p)} style={{ padding: "6px 10px" }}>
-                    Edit
-                  </button>
-                  <button type="button" onClick={() => deleteProgram(p.id)} style={{ padding: "6px 10px" }}>
-                    Delete
-                  </button>
-                </div>
+                {p.image_url ? (
+                  <img
+                    src={p.image_url}
+                    alt={p.title}
+                    className="adminPreview"
+                    style={{ marginTop: 12, maxWidth: 520 }}
+                  />
+                ) : null}
+
+                {p.description ? (
+                  <div className="adminItemSubtext" style={{ marginTop: 12 }}>
+                    {p.description}
+                  </div>
+                ) : null}
+
+                {editing && editProgram ? (
+                  <div className="adminEditArea">
+                    <div className="adminMiniTitle">Edit Program</div>
+
+                    <div className="adminForm" style={{ marginTop: 12 }}>
+                      <input
+                        className="adminInput"
+                        value={editProgram.title}
+                        onChange={(e) =>
+                          setEditProgram({
+                            ...editProgram,
+                            title: e.target.value,
+                          })
+                        }
+                        placeholder="Title *"
+                      />
+
+                      <div className="adminFormRow">
+                        <input
+                          className="adminInput"
+                          value={editProgram.audience}
+                          onChange={(e) =>
+                            setEditProgram({
+                              ...editProgram,
+                              audience: e.target.value,
+                            })
+                          }
+                          placeholder="Audience"
+                        />
+                        <input
+                          className="adminInput"
+                          value={editProgram.schedule}
+                          onChange={(e) =>
+                            setEditProgram({
+                              ...editProgram,
+                              schedule: e.target.value,
+                            })
+                          }
+                          placeholder="Schedule"
+                        />
+                      </div>
+
+                      <label className="adminFileLabel">
+                        <span className="adminLabel">Replace Image (upload)</span>
+                        <input
+                          type="file"
+                          accept="image/*"
+                          onChange={(e) =>
+                            setEditProgramFile(e.target.files?.[0] || null)
+                          }
+                        />
+                      </label>
+
+                      {editProgramFile ? (
+                        <img
+                          src={URL.createObjectURL(editProgramFile)}
+                          alt="preview"
+                          className="adminPreview"
+                        />
+                      ) : editProgram.image_url ? (
+                        <img
+                          src={editProgram.image_url}
+                          alt="current"
+                          className="adminPreview"
+                        />
+                      ) : null}
+
+                      <textarea
+                        className="adminTextarea"
+                        value={editProgram.description}
+                        onChange={(e) =>
+                          setEditProgram({
+                            ...editProgram,
+                            description: e.target.value,
+                          })
+                        }
+                        rows={4}
+                        placeholder="Description"
+                      />
+
+                      <div className="adminButtonRow">
+                        <button
+                          type="button"
+                          className="secondaryBtn"
+                          onClick={() => saveProgram(p.id)}
+                        >
+                          Save
+                        </button>
+                        <button
+                          type="button"
+                          className="ghostBtn"
+                          onClick={cancelEdit}
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ) : null}
               </div>
-
-              {p.image_url ? (
-                <img
-                  src={p.image_url}
-                  alt={p.title}
-                  style={{
-                    marginTop: 10,
-                    width: "100%",
-                    maxWidth: 520,
-                    borderRadius: 10,
-                    border: "1px solid #e5e7eb",
-                  }}
-                />
-              ) : null}
-
-              {p.description ? <div style={{ marginTop: 10 }}>{p.description}</div> : null}
-
-              {editing && editProgram ? (
-                <div style={{ marginTop: 12, paddingTop: 12, borderTop: "1px solid #eee" }}>
-                  <strong>Edit Program</strong>
-
-                  <div style={{ display: "grid", gap: 10, marginTop: 10, maxWidth: 720 }}>
-                    <input
-                      value={editProgram.title}
-                      onChange={(e) => setEditProgram({ ...editProgram, title: e.target.value })}
-                      placeholder="Title *"
-                    />
-
-                    <div style={{ display: "grid", gap: 10, gridTemplateColumns: "1fr 1fr" }}>
-                      <input
-                        value={editProgram.audience}
-                        onChange={(e) => setEditProgram({ ...editProgram, audience: e.target.value })}
-                        placeholder="Audience"
-                      />
-                      <input
-                        value={editProgram.schedule}
-                        onChange={(e) => setEditProgram({ ...editProgram, schedule: e.target.value })}
-                        placeholder="Schedule"
-                      />
-                    </div>
-
-                    <label style={{ display: "grid", gap: 6 }}>
-                      <span>Replace Image (upload)</span>
-                      <input
-                        type="file"
-                        accept="image/*"
-                        onChange={(e) => setEditProgramFile(e.target.files?.[0] || null)}
-                      />
-                    </label>
-
-                    {editProgramFile ? (
-                      <img
-                        src={URL.createObjectURL(editProgramFile)}
-                        alt="preview"
-                        style={{ width: "100%", maxWidth: 420, borderRadius: 10, border: "1px solid #e5e7eb" }}
-                      />
-                    ) : editProgram.image_url ? (
-                      <img
-                        src={editProgram.image_url}
-                        alt="current"
-                        style={{ width: "100%", maxWidth: 420, borderRadius: 10, border: "1px solid #e5e7eb" }}
-                      />
-                    ) : null}
-
-                    <textarea
-                      value={editProgram.description}
-                      onChange={(e) => setEditProgram({ ...editProgram, description: e.target.value })}
-                      rows={3}
-                      placeholder="Description"
-                    />
-
-                    <div style={{ display: "flex", gap: 10 }}>
-                      <button type="button" onClick={() => saveProgram(p.id)} style={{ padding: "10px 14px" }}>
-                        Save
-                      </button>
-                      <button type="button" onClick={cancelEdit} style={{ padding: "10px 14px" }}>
-                        Cancel
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              ) : null}
-            </div>
-          );
-        })}
-      </div>
+            );
+          })}
+        </div>
+      </section>
     </div>
   );
 }

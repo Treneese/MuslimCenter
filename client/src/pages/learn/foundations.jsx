@@ -14,7 +14,7 @@ export default function AdultFoundations() {
       id: "shahada",
       title: "Step 1: Shahada",
       subtitle: "Entering Islam",
-      video: "https://www.youtube.com/embed/VIDEO_ID",
+      video: "https://www.youtube.com/embed/SsXHcObCLJw?si=P6VLM4AxlWdQ_MqQ",
       content: `
 The Shahada is the declaration of faith:
 
@@ -60,7 +60,7 @@ A strong beginning is not about speed. It is about sincerity and consistency.
       id: "purification",
       title: "Step 3: Purification",
       subtitle: "Wudu, ghusl, and preparing for prayer",
-      video: "https://www.youtube.com/embed/VIDEO_ID",
+      video: "https://www.youtube.com/embed/gkXsvKU7tJs?si=cVvo-7XgPZNQ7x_y",
       content: `
 Purification is an important part of worship in Islam.
 
@@ -86,7 +86,7 @@ A new Muslim should learn the basics clearly without making purification feel ha
       id: "prayer",
       title: "Step 4: Prayer",
       subtitle: "Begin learning salah",
-      video: "https://www.youtube.com/embed/VIDEO_ID",
+      video: "https://www.youtube.com/embed/4zr6tNgmKSI?si=Zh2SaC27N4TSaLrw",
       content: `
 Prayer is the most important daily act of worship in Islam.
 
@@ -155,7 +155,7 @@ The goal is not to do everything. The goal is to keep building.
       id: "consistency",
       title: "Building Consistency in Prayer",
       subtitle: "Move from learning prayer to protecting it",
-      video: "https://www.youtube.com/embed/VIDEO_ID",
+      video: "https://www.youtube.com/embed/s2mqy3dxOjk?si=eZmsUbyRDjoSsPJA",
       content: `
 After learning the basics of prayer, the next challenge is consistency.
 
@@ -306,7 +306,12 @@ You do not need to know everything socially right away. Belonging also grows wit
 >
   {activeLesson && (
     <>
-      {activeLesson.video && <VideoLesson src={activeLesson.video} />}
+      <VideoLesson
+  title={`Watch: ${activeLesson.title}`}
+  description="Watch this lesson to support your learning."
+  embedUrl={activeLesson.video}
+  speechText={activeLesson.content}
+/>
 
       <ListenButton text={activeLesson.content} />
 

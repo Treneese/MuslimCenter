@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import "../../../../styles/components.css"
+
 export default function QuizGame({ title, questions }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selected, setSelected] = useState(null);
@@ -80,18 +82,18 @@ export default function QuizGame({ title, questions }) {
         )}
 
         <div className="quizActions">
-          {!isLast && showFeedback && (
-            <button type="button" onClick={handleNext}>
-              Next Question
-            </button>
-          )}
+  {!isLast && showFeedback && (
+    <button type="button" className="gameActionBtn" onClick={handleNext}>
+      Next Question
+    </button>
+  )}
 
-          {isLast && showFeedback && (
-            <button type="button" onClick={handleRestart}>
-              Restart Quiz
-            </button>
-          )}
-        </div>
+  {isLast && showFeedback && (
+    <button type="button" className="gameActionBtn" onClick={handleRestart}>
+      Restart Quiz
+    </button>
+  )}
+</div>
 
         {isLast && showFeedback && (
           <div className="quizScore">

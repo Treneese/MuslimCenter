@@ -1,238 +1,90 @@
 import { useState } from "react";
 import ServiceRequestModal from "../home/components/servicerequestmodal";
 import { serviceFormConfig } from "../home/components/serviceformconfig";
+import "../../styles/pages.css";
 
 export default function Shahada() {
   const [openModal, setOpenModal] = useState(false);
 
-
   return (
     <div className="page">
-      <header style={header}>
-        <div style={badge}>Services</div>
-        <h1 className="pageTitle" style={{ marginBottom: 10 }}>
-          New Shahada Support
-        </h1>
-        <p className="pageSubtitle" style={{ ...subtitle, maxWidth: 920 }}>
-          Support for new Muslims and those exploring Islam. We’re here to help you feel
-          welcomed, grounded, and connected to community.
+      <header className="getInvolvedHero">
+        <div className="pageBadge">Services</div>
+
+        <h1 className="pageTitle">New Shahada Support</h1>
+
+        <p className="pageSubtitle pageIntro">
+          Support for new Muslims and those exploring Islam. We’re here to help
+          you feel welcomed, grounded, and connected to community.
         </p>
 
-        <div style={quickFacts}>
-          <div style={factCard}>
-            <div style={factLabel}>Support Type</div>
-            <div style={factValue}>Guidance • Mentorship • Community</div>
+        <div className="getInvolvedFacts">
+          <div className="getInvolvedFactCard">
+            <div className="getInvolvedFactLabel">Support Type</div>
+            <div className="getInvolvedFactValue">
+              Guidance • Mentorship • Community
+            </div>
           </div>
-          <div style={factCard}>
-            <div style={factLabel}>Who it’s for</div>
-            <div style={factValue}>New Muslims & seekers</div>
+          <div className="getInvolvedFactCard">
+            <div className="getInvolvedFactLabel">Who it’s for</div>
+            <div className="getInvolvedFactValue">New Muslims &amp; seekers</div>
           </div>
-          <div style={factCard}>
-            <div style={factLabel}>Next Step</div>
-            <div style={factValue}>Contact us to get connected</div>
+          <div className="getInvolvedFactCard">
+            <div className="getInvolvedFactLabel">Next Step</div>
+            <div className="getInvolvedFactValue">Contact us to get connected</div>
           </div>
         </div>
       </header>
 
-      <section style={section}>
-        <h2 style={sectionTitle}>What we can help with</h2>
-        <ul style={list}>
-          <li style={li}>Learning the basics (prayer, wudu, Qur’an, daily practices)</li>
-          <li style={li}>Finding community and supportive friendships</li>
-          <li style={li}>Answering questions in a respectful, non-judgmental way</li>
-          <li style={li}>Connecting you to classes and programs</li>
+      <section className="getInvolvedSectionCard">
+        <h2 className="getInvolvedSectionTitle">What we can help with</h2>
+        <ul className="getInvolvedList">
+          <li>Learning the basics (prayer, wudu, Qur’an, daily practices)</li>
+          <li>Finding community and supportive friendships</li>
+          <li>Answering questions in a respectful, non-judgmental way</li>
+          <li>Connecting you to classes and programs</li>
         </ul>
       </section>
 
-       <section style={section}>
-  <h2 style={sectionTitle}>How to get connected</h2>
-  <p style={bodyText}>
-    If you are interested in support, shahada, or learning more, reach out through the form below.
-    We’ll follow up with care and next steps.
-  </p>
-</section>
-      
-            <section style={ctaWrap}>
-              <div style={ctaCard}>
-                <div>
-                  <h3 style={ctaTitle}>Ready to talk?</h3>
-                  <p style={ctaText}>
-                    Send us a message and we’ll help you schedule the right support.
-                  </p>
-                </div>
-      
-                <div style={ctaButtons}>
-                  <button
-                    type="button"
-                    className="btn"
-                    style={btnPrimary}
-                    onClick={() => setOpenModal(true)}
-                  >
-                    Request Support
-                  </button>
-                  <a href="/services" className="btn" style={btnSecondary}>
-                    Back to Services
-                  </a>
-                </div>
-              </div>
-            </section>
-      
-             <ServiceRequestModal
-              serviceKey="new-shahada-support"
-              open={openModal}
-              onClose={() => {
-                  setOpenModal(false);
-                  setActiveServiceKey(null);
-                }}
-                configMap={serviceFormConfig}
-            />
+      <section className="getInvolvedSectionCard">
+        <h2 className="getInvolvedSectionTitle">How to get connected</h2>
+        <p className="getInvolvedBodyText">
+          If you are interested in support, shahada, or learning more, reach out
+          through the form below. We’ll follow up with care and next steps.
+        </p>
+      </section>
+
+      <section className="getInvolvedCtaWrap">
+        <div className="getInvolvedCtaCard">
+          <div>
+            <h3 className="getInvolvedCtaTitle">Ready to talk?</h3>
+            <p className="getInvolvedCtaText">
+              Send us a message and we’ll help you take the next step.
+            </p>
+          </div>
+
+          <div className="getInvolvedCtaButtons">
+            <button
+              type="button"
+              className="primaryBtn"
+              onClick={() => setOpenModal(true)}
+            >
+              Request Support
+            </button>
+
+            <a href="/services" className="getInvolvedBackLink">
+              Back to Services
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <ServiceRequestModal
+        serviceKey="new-shahada-support"
+        open={openModal}
+        onClose={() => setOpenModal(false)}
+        configMap={serviceFormConfig}
+      />
     </div>
   );
-}
-
-/* styles (same as others) */
-const header = {
-  background: "#efefef",
-  borderRadius: 18,
-  padding: "22px 18px",
-  border: "1px solid #d9e4dd",
-  marginBottom: 18,
-};
-
-const badge = {
-  display: "inline-flex",
-  alignItems: "center",
-  gap: 8,
-  fontSize: 12,
-  fontWeight: 800,
-  letterSpacing: 0.3,
-  textTransform: "uppercase",
-  color: "#1e6b3a",
-  background: "#e6f3ea",
-  border: "1px solid #cfe4d6",
-  padding: "6px 10px",
-  borderRadius: 999,
-  marginBottom: 10,
-};
-
-const subtitle = { lineHeight: 1.6, color: "#2b2b2b" };
-
-const quickFacts = {
-  display: "grid",
-  gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
-  gap: 12,
-  marginTop: 16,
-};
-
-const factCard = {
-  background: "#ffffff",
-  borderRadius: 14,
-  padding: "12px 12px",
-  border: "1px solid #e3e3e3",
-};
-
-const factLabel = {
-  fontSize: 12,
-  color: "#55715f",
-  fontWeight: 800,
-  marginBottom: 6,
-};
-
-const factValue = {
-  fontSize: 14,
-  color: "#1b1b1b",
-  fontWeight: 800,
-  lineHeight: 1.3,
-};
-
-const section = {
-  background: "#ffffff",
-  borderRadius: 18,
-  padding: "18px 18px",
-  border: "1px solid #e3e3e3",
-  marginBottom: 14,
-};
-
-const sectionTitle = {
-  margin: 0,
-  color: "#1e6b3a",
-  fontSize: 20,
-  letterSpacing: -0.2,
-};
-
-const bodyText = {
-  marginTop: 10,
-  marginBottom: 0,
-  lineHeight: 1.7,
-  color: "#2b2b2b",
-  maxWidth: 920,
-};
-
-const list = {
-  marginTop: 10,
-  marginBottom: 0,
-  paddingLeft: 18,
-  color: "#2b2b2b",
-  lineHeight: 1.7,
-  maxWidth: 920,
-};
-
-const li = { marginBottom: 8 };
-
-const ctaWrap = { marginTop: 10 };
-
-const ctaCard = {
-  display: "flex",
-  justifyContent: "space-between",
-  gap: 16,
-  alignItems: "center",
-  background: "#0f2a1d",
-  borderRadius: 18,
-  padding: "18px 18px",
-  color: "#ffffff",
-};
-
-const ctaTitle = { margin: 0, fontSize: 18, letterSpacing: -0.2 };
-
-const ctaText = {
-  margin: "6px 0 0",
-  opacity: 0.9,
-  lineHeight: 1.5,
-  maxWidth: 720,
-};
-
-const ctaButtons = { display: "flex", gap: 10, flexWrap: "wrap" };
-
-const btnPrimary = {
-  display: "inline-flex",
-  alignItems: "center",
-  justifyContent: "center",
-  padding: "10px 14px",
-  borderRadius: 12,
-  background: "#ffffff",
-  color: "#0f2a1d",
-  fontWeight: 900,
-  textDecoration: "none",
-  border: "1px solid rgba(255,255,255,0.35)",
-};
-
-const btnSecondary = {
-  display: "inline-flex",
-  alignItems: "center",
-  justifyContent: "center",
-  padding: "10px 14px",
-  borderRadius: 12,
-  background: "transparent",
-  color: "#ffffff",
-  fontWeight: 900,
-  textDecoration: "none",
-  border: "1px solid rgba(255,255,255,0.45)",
-};
-
-const mq = window?.matchMedia?.("(max-width: 900px)")?.matches;
-if (mq) {
-  quickFacts.gridTemplateColumns = "1fr";
-  ctaCard.flexDirection = "column";
-  ctaCard.alignItems = "stretch";
-  ctaButtons.justifyContent = "flex-start";
 }
