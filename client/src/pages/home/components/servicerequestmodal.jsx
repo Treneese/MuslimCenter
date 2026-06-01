@@ -6,8 +6,10 @@ function buildInitialState(fields) {
   const state = {};
 
   fields.forEach((field) => {
-    state[field.name] = field.type === "checkbox" ? [] : "";
-  });
+  if (field.type === "checkbox") state[field.name] = [];
+  else if (field.type === "boolean") state[field.name] = false;
+  else state[field.name] = "";
+});
 
   return state;
 }
@@ -173,7 +175,19 @@ export default function ServiceRequestModal({
                 </div>
               )}
 
-              {(field.type === "text" || field.type === "email") && (
+              {field.type === "boolean" && (
+  <label style={checkRow}>
+    <input
+      type="checkbox"
+      checked={!!form[field.name]}
+      onChange={(e) => setField(field.name, e.target.checked)}
+      style={checkInput}
+    />
+    <span>{field.label}</span>
+  </label>
+)}
+
+              {["text", "email", "tel", "date", "time"].includes(field.type) && (
                 <input
                   type={field.type}
                   value={form[field.name]}
@@ -204,6 +218,19 @@ const overlay = {
   alignItems: "center",
   padding: 20,
   zIndex: 999,
+};
+
+const checkRow = {
+  display: "flex",
+  alignItems: "center",
+  gap: 10,
+  fontWeight: 700,
+};
+
+const checkInput = {
+  width: 18,
+  height: 18,
+  accentColor: "#1e6b3a",
 };
 
 const modal = {

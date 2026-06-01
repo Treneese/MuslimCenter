@@ -10,7 +10,7 @@ export const serviceFormConfig = {
       { name: "firstName", label: "First Name", type: "text", required: true },
       { name: "lastName", label: "Last Name", type: "text", required: true },
       { name: "email", label: "Email", type: "email", required: true },
-      { name: "phone", label: "Phone", type: "text" },
+      { name: "phone", label: "Phone", type: "tel" },
       {
         name: "preferredContactMethod",
         label: "Preferred Contact Method",
@@ -63,7 +63,7 @@ export const serviceFormConfig = {
       { name: "firstName", label: "First Name", type: "text", required: true },
       { name: "lastName", label: "Last Name", type: "text", required: true },
       { name: "email", label: "Email", type: "email", required: true },
-      { name: "phone", label: "Phone", type: "text" },
+      { name: "phone", label: "Phone", type: "tel" },
       {
         name: "preferredContactMethod",
         label: "Preferred Contact Method",
@@ -116,7 +116,7 @@ export const serviceFormConfig = {
       { name: "firstName", label: "First Name", type: "text", required: true },
       { name: "lastName", label: "Last Name", type: "text", required: true },
       { name: "email", label: "Email", type: "email", required: true },
-      { name: "phone", label: "Phone", type: "text" },
+      { name: "phone", label: "Phone", type: "tel" },
       {
         name: "preferredContactMethod",
         label: "Preferred Contact Method",
@@ -162,7 +162,7 @@ export const serviceFormConfig = {
       { name: "firstName", label: "First Name", type: "text", required: true },
       { name: "lastName", label: "Last Name", type: "text", required: true },
       { name: "email", label: "Email", type: "email", required: true },
-      { name: "phone", label: "Phone", type: "text" },
+      { name: "phone", label: "Phone", type: "tel" },
       {
         name: "preferredContactMethod",
         label: "Preferred Contact Method",
@@ -207,7 +207,7 @@ export const serviceFormConfig = {
       { name: "firstName", label: "First Name", type: "text", required: true },
       { name: "lastName", label: "Last Name", type: "text", required: true },
       { name: "email", label: "Email", type: "email", required: true },
-      { name: "phone", label: "Phone", type: "text" },
+      { name: "phone", label: "Phone", type: "tel" },
       {
         name: "preferredContactMethod",
         label: "Preferred Contact Method",

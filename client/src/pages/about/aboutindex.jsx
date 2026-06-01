@@ -37,7 +37,7 @@ export default function AboutIndex() {
         <p className="pageSubtitle pageIntro">
           The Muslim Center Mosque &amp; Community Center serves Detroit through
           worship, education, outreach, and community support. We welcome people
-          of all backgrounds and work to strengthen families, build belonging,
+          of all backgrounds and work to strengthen families, build a islamic foundation,
           and serve our neighbors.
         </p>
 

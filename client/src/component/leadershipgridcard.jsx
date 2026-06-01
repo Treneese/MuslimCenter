@@ -1,14 +1,22 @@
+import "../styles/components.css";
+
 export default function LeadershipGridCard({
   name,
   role,
   image,
   blurb,
   onClick,
+  imagePosition = "center center",
 }) {
   return (
     <button type="button" className="leadershipCard" onClick={onClick}>
       <div className="leadershipCardImageWrap">
-        <img src={image} alt={name} className="leadershipCardImage" />
+        <img
+          src={image}
+          alt={name}
+          className="leadershipCardImage"
+          style={{ objectPosition: imagePosition }}
+        />
       </div>
 
       <div className="leadershipCardBody">

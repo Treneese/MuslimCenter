@@ -16,7 +16,7 @@ export const getInvolvedConfig = {
         label: "Sign up for news and updates",
         type: "boolean",
       },
-      { name: "phone", label: "Phone", type: "text", required: true },
+      { name: "phone", label: "Phone", type: "tel", required: true },
       {
         name: "preferredContactMethod",
         label: "Preferred Method of Contact",
@@ -57,7 +57,7 @@ export const getInvolvedConfig = {
     fields: [
       { name: "firstName", label: "First Name", type: "text", required: true },
       { name: "lastName", label: "Last Name", type: "text", required: true },
-      { name: "phone", label: "Phone", type: "text", required: true },
+      { name: "phone", label: "Phone", type: "tel", required: true },
       { name: "email", label: "Email", type: "email", required: true },
       {
         name: "subscribeUpdates",
@@ -171,7 +171,7 @@ export const getInvolvedConfig = {
       { name: "firstName", label: "First Name", type: "text", required: true },
       { name: "lastName", label: "Last Name", type: "text", required: true },
       { name: "email", label: "Email", type: "email", required: true },
-      { name: "phone", label: "Phone", type: "text" },
+      { name: "phone", label: "Phone", type: "tel" },
       {
         name: "organizationName",
         label: "Organization / Business Name",
@@ -217,7 +217,7 @@ export const getInvolvedConfig = {
       { name: "firstName", label: "First Name", type: "text", required: true },
       { name: "lastName", label: "Last Name", type: "text", required: true },
       { name: "email", label: "Email", type: "email", required: true },
-      { name: "phone", label: "Phone", type: "text" },
+      { name: "phone", label: "Phone", type: "tel" },
       {
         name: "preferredContactMethod",
         label: "Preferred Method of Contact",
@@ -234,9 +234,9 @@ export const getInvolvedConfig = {
   },
 
   appointment: {
-    title: "Book an Appointment",
-    intro:
-      "Schedule a meeting or request support by filling out the form below. We’ll follow up with availability and next steps.",
+    title: "Book an Appointment with the Imam",
+intro:
+  "Use this form to request an appointment with the Imam. Whether you are seeking guidance, have questions, or need personal support, please share a brief description below. After submission, your request will be reviewed and you will be contacted with availability.",
     successMessage:
       "✅ Your appointment request was sent. We’ll be in touch soon.",
     submitLabel: "Submit Appointment Request",
@@ -245,7 +245,7 @@ export const getInvolvedConfig = {
       { name: "firstName", label: "First Name", type: "text", required: true },
       { name: "lastName", label: "Last Name", type: "text", required: true },
       { name: "email", label: "Email", type: "email", required: true },
-      { name: "phone", label: "Phone", type: "text", required: true },
+      { name: "phone", label: "Phone", type: "tel", required: true },
       {
         name: "preferredContactMethod",
         label: "Preferred Method of Contact",

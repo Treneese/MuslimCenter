@@ -3,6 +3,20 @@ import "../styles/prayertimes.css";
 
 const prayerOrder = ["Fajr", "Dhuhr", "Asr", "Maghrib", "Isha"];
 
+function formatTime12(time) {
+  if (!time || time === "--") return "--";
+
+  const [hour, minute] = time.split(":");
+  const date = new Date();
+  date.setHours(Number(hour));
+  date.setMinutes(Number(minute));
+
+  return date.toLocaleTimeString([], {
+    hour: "numeric",
+    minute: "2-digit",
+  });
+}
+
 export default function PrayerTimes() {
   const [data, setData] = useState(null);
   const [err, setErr] = useState("");
@@ -87,8 +101,8 @@ export default function PrayerTimes() {
               <span className="prayerDot" />
               <span className="prayerName">{prayer.name}</span>
             </div>
-            <span className="prayerTime">{prayer.adhan}</span>
-            <span className="prayerTime">{prayer.iqamah}</span>
+            <span className="prayerTime">{formatTime12(prayer.adhan)}</span>
+<span className="prayerTime">{formatTime12(prayer.iqamah)}</span>
           </div>
         ))}
       </section>

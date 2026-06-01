@@ -1,3 +1,4 @@
+import { useState } from "react";
 import SectionCards from "../../component/sectioncard";
 import "../../styles/pages.css";
 
@@ -8,6 +9,13 @@ import bookImg from "../../assets/getinvolved/book.jpg";
 import memberImg from "../../assets/getinvolved/bemember.jpg";
 
 export default function GetInvolvedIndex() {
+  const [formData, setFormData] = useState({
+    name: "",
+    message: "",
+  });
+
+  const [status, setStatus] = useState("");
+
   const items = [
     {
       to: "/get-involved/volunteer",
@@ -41,6 +49,23 @@ export default function GetInvolvedIndex() {
     },
   ];
 
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // TEMP (we’ll connect to backend next)
+    console.log("Suggestion submitted:", formData);
+
+    setStatus("Thank you for your suggestion!");
+    setFormData({ name: "", message: "" });
+  };
+
   return (
     <div className="page">
       <section className="learnHero">
@@ -53,6 +78,36 @@ export default function GetInvolvedIndex() {
       </section>
 
       <SectionCards items={items} />
+
+      {/* ✅ Suggestion Box */}
+      <section className="suggestionSection">
+        <h2 className="sectionTitle">Suggestion Box</h2>
+        <p className="sectionSubtitle">
+          Have an idea, feedback, or something you'd like to see? Let us know.
+        </p>
+
+        <form className="suggestionForm" onSubmit={handleSubmit}>
+          <input
+            type="text"
+            name="name"
+            placeholder="Your name (optional)"
+            value={formData.name}
+            onChange={handleChange}
+          />
+
+          <textarea
+            name="message"
+            placeholder="Write your suggestion..."
+            required
+            value={formData.message}
+            onChange={handleChange}
+          />
+
+          <button type="submit">Submit</button>
+        </form>
+
+        {status && <p className="formStatus">{status}</p>}
+      </section>
     </div>
   );
 }

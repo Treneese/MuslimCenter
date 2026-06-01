@@ -14,7 +14,7 @@ export default function Navbar() {
           <img src={logo} alt="Muslim Center logo" className="brandLogo" />
           <div className="brandText">
             <div className="brandTitle">Muslim Center</div>
-            <div className="brandSubtitle">Mosque & Community Hub</div>
+            <div className="brandSubtitle">Mosque & Community Center</div>
           </div>
         </NavLink>
 

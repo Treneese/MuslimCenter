@@ -16,6 +16,18 @@ export default function History() {
   function closeModal() {
     setOpen(false);
   }
+  const founders = [
+  "Imam Emeritus Al Hajj Abdullah Bey El Amin & Al Hajjah, Dr. Cheryl El Amin",
+  "Saleem & Sophia Mu'min",
+  "Al Hajj Azzam & Juliette Sami",
+  "Malik & Zakiyyah Salaam",
+  "Karim & Sayyidah Muhammad",
+  "Al Hajj Henri & Al Hajjah Saleema Ansari",
+  "Mitchell & Crystal Shamsud Din",
+  "Lawrence & Al Hajjah Catherine Ziyad",
+  "Robin Mahdi",
+  "Azzam & Juliette Sami"
+];
 
   // ESC to close + prevent background scroll
   useEffect(() => {
@@ -55,7 +67,7 @@ export default function History() {
         </h1>
 
         <p className="pageSubtitle" style={{ ...subtitle, maxWidth: 920 }}>
-          The Muslim Center Mosque &amp; Community Center was incorporated in January 1985
+          The Muslim Center: Mosque &amp; Community Center was incorporated in January 1985
           as a mosque dedicated to the pure worship of Allah and the inclusion of Muslims of
           all races, cultures, and ethnic groups.
         </p>
@@ -85,6 +97,22 @@ export default function History() {
           </a>
         </div>
       </header>
+      <section style={section}>
+  <h2 style={sectionTitle}>Founders of The Muslim Center</h2>
+  <p style={bodyText}>
+  We honor the founding families whose vision, service, and dedication helped
+  establish The Muslim Center Mosque & Community Center in 1985 and shape its
+  lasting legacy in the community.
+</p>
+
+  <div style={foundersGrid}>
+    {founders.map((founder) => (
+      <div key={founder} style={founderCard}>
+        {founder}
+      </div>
+    ))}
+  </div>
+</section>
 
       <section style={section}>
         <h2 style={sectionTitle}>A Legacy of Leadership</h2>
@@ -101,10 +129,11 @@ export default function History() {
           and building a safer, healthier community—especially for our youth.
         </p>
       </section>
-       <PersonCard
-  name="Imam Khalil"
-  image={khalilImg}
-  description="Imam Khalil has served the community through teaching, outreach, and spiritual leadership..."
+      <PersonCard
+  name="Imam W. Deen Mohammed"
+  title="The Muslim American Spokesman for Human Salvation"
+  image={wdMohammedImg}
+  description="Imam W. Deen Mohammed was one of the most influential Muslim leaders in American history..."
 />
 
 <PersonCard
@@ -115,12 +144,7 @@ export default function History() {
   reverse
 />
 
-<PersonCard
-  name="Imam W. Deen Mohammed"
-  title="The Muslim American Spokesman for Human Salvation"
-  image={wdMohammedImg}
-  description="Imam W. Deen Mohammed was one of the most influential Muslim leaders in American history..."
-/>
+
 
       {/* ===== Modal Popup ===== */}
       {open && (
@@ -154,8 +178,8 @@ export default function History() {
               </p>
 
               <p style={modalText}>
-                At the Muslim center, we identify with the leadership of Imam W. Deen Mohammed,
-                the son of the late leaders, the Honorable Elijah Muhammad. Imam W. D. Mohammed
+                At the Muslim Center, we identify with the leadership of Imam Warith Deen Mohammed,
+                the son of the late leader, the Honorable Elijah Muhammad. Imam W. D. Mohammed
                 is credited with turning an entire nation of Muslims toward the pure teaching of
                 the Holy Prophet Muhammad (Peace Be Upon Him) to whom the Holy Qur’an was
                 revealed over 1,400 years ago.
@@ -169,7 +193,7 @@ export default function History() {
               </p>
 
               <p style={modalText}>
-                To this end we wish to work with people of good will, putting our common God
+                To this end we wish to work with people of good will, putting Allah
                 first, above us all, to collectively improve our communities and society.
               </p>
             </div>
@@ -316,6 +340,22 @@ const modalBadge = {
   padding: "6px 10px",
   borderRadius: 999,
   marginBottom: 8,
+};
+const foundersGrid = {
+  display: "grid",
+  gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+  gap: 12,
+  marginTop: 18,
+};
+
+const founderCard = {
+  background: "#f8f8f8",
+  border: "1px solid #e3e3e3",
+  borderRadius: 14,
+  padding: "14px 16px",
+  fontWeight: 700,
+  color: "#183126",
+  lineHeight: 1.5,
 };
 
 const modalTitle = { margin: 0, fontSize: 20, letterSpacing: -0.2 };

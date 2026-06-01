@@ -13,7 +13,8 @@ export default function Hero() {
       <div className="heroOverlay" />
 
       <div className="heroContent">
-        <h1 className="heroTitle">The Muslim Center Mosque & Community Center</h1>
+        <h1 className="heroTitle">The Muslim Center <br></br>
+          (Mosque & Community Center)</h1>
         <p className="heroSubtitle">
           A welcoming mosque and gathering place for the Muslim community in Detroit.
         </p>

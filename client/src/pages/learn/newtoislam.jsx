@@ -126,13 +126,13 @@ export default function NewToIslam() {
 
         <div className="learnGrid two">
 
-          <Link to="/events" className="navCard">
+          <Link to="/programs" className="navCard">
             <h3>Attend a Program</h3>
             <p>
               Join classes, prayers, and gatherings to begin building
               connection.
             </p>
-            <span>View events →</span>
+            <span>View programs →</span>
           </Link>
 
           <Link to="/contact" className="navCard">

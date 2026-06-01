@@ -1,6 +1,10 @@
 import "../../styles/pages.css";
 import forgottenHarvestLogo from "../../assets/partners/forgotten-harvest.png";
 import hudaLogo from "../../assets/partners/huda-clinic.png";
+import icdLogo from "../../assets/partners/icdLogo.png";
+import dmmLogo from "../../assets/partners/dmmLogo.png";
+import miplLogo from "../../assets/partners/MIPL.jpg";
+import uhfLogo from "../../assets/partners/UHFLogo.png";
 
 export default function PartnersPage() {
   const partners = [
@@ -17,6 +21,34 @@ export default function PartnersPage() {
       description:
         "HUDA Clinic provides free and low-cost healthcare services to underserved communities in southeast Michigan. Through this partnership, the Muslim Center supports access to health education, medical resources, and community wellness initiatives.",
       website: "https://www.hudaclinic.org",
+    },
+    {
+      name: "Islamic Center of Detroit (ICD)",
+      image: icdLogo,
+      description:
+        "The Islamic Center of Detroit (ICD) is a leading institution dedicated to serving the spiritual, educational, and social needs of the Muslim community. Through programs in religious education, community outreach, and interfaith engagement, ICD plays a vital role in strengthening faith, unity, and service across the region. The Muslim Center values its connection with ICD in advancing shared goals of community development and collective impact.",
+      website: "https://icdonline.org",
+    },
+    {
+      name: "Detroit Muslim Mission",
+      image: dmmLogo,
+      description:
+        "Detroit Muslim Mission is committed to uplifting the community through outreach, service, and grassroots engagement. Focused on meeting real needs and building strong relationships, the organization works to support individuals and families while fostering unity and purpose. The Muslim Center appreciates its alignment with Detroit Muslim Mission in serving the broader community with compassion and action.",
+      website: "https://detroitmuslimmission.com",
+    },
+ {
+      name: "Michigan Interfaith Power & Light",
+      image: miplLogo,
+      description:
+        "Michigan Interfaith Power & Light’s mission is to inspire and equip people of faith to exercise stewardship of and love for all Creation. We offer practical ways to put faith into action by promoting energy efficiency, renewable energy, and other sustainable practices that lead to a cleaner, healthier, and more just world.",
+      website: "https://www.miipl.org",
+    },
+     {
+      name: "United Humanitarian Foundation",
+      image: uhfLogo,
+      description:
+        "UHF Relief envisions a world where communities are empowered, and all individuals have access to basic human needs. Together, we strive to bridge the gaps of inequality, ensuring that compassion and resources reach every corner of the globe.",
+      website: "https://uhfrelief.org/",
     },
   ];
 

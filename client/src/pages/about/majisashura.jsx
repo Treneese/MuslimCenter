@@ -6,6 +6,10 @@ import "../../styles/pages.css";
 import moussaImg from "../../assets/leadership/moussa.webp";
 import catherineImg from "../../assets/leadership/catherine.webp";
 import lawrenceImg from "../../assets/leadership/lawerence.webp";
+import abdurImg from "../../assets/leadership/abdur.jpg";
+import ibrahimImg from "../../assets/leadership/ibrahim.jpg";
+import jabrilImg from "../../assets/leadership/jabril.jpg";
+
 
 export default function MajlisAshuraBoard() {
   const [open, setOpen] = useState(false);
@@ -17,11 +21,11 @@ export default function MajlisAshuraBoard() {
       role: "Treasurer",
       image: moussaImg,
       blurb: "Treasurer and community leader.",
-      bio: `Moussa Niang serves as Treasurer for The Muslim Center of Detroit, supporting the financial stewardship and operational stability of the organization. In this role, he helps ensure that the Center’s resources are managed responsibly so that programs, services, and community initiatives can continue to grow and serve the Detroit Muslim community.
+      bio: `Moussa Niang serves as Treasurer for The Muslim Center of Detroit, where he supports the financial stewardship and long-term sustainability of the organization. In this role, he helps ensure that the Center’s resources are managed responsibly to support programs, services, and community growth.
 
-Known for his thoughtful leadership and commitment to community development, Moussa works closely with the Ashura and leadership team to help guide responsible financial planning and long-term sustainability for the Center.
+He is also the Founder and President of Foundation 221, an international nonprofit that has led over $25 million in humanitarian initiatives across Africa, including healthcare development, education, clean water access, and support for vulnerable communities. He previously served as the muslim center boerd chair man.
 
-Beyond his financial responsibilities, he is dedicated to strengthening the community by supporting initiatives that bring people together, encourage service, and promote the values of faith, cooperation, and mutual support.`,
+With a background in global supply chain management at Ford Motor Company and extensive experience in nonprofit leadership, Moussa brings both strategic insight and a deep commitment to service. He works closely with leadership to strengthen the Center’s impact while supporting initiatives that promote unity, faith, and community development.`,
     },
     {
       name: "Al Hajjah Catherine L. Ziyad",
@@ -49,7 +53,28 @@ It is rare to see Brother Lawrence without a hammer in hand, as he is often repa
 
 He has also been instrumental in the success of many programs at The Muslim Center and across the Islamic community in Michigan, including Feed 500, Muslim Center family camps, and the soup kitchen. His service extends beyond Detroit through collaboration on the Janaaza Committee with Historic Masjid Wali Muhammad, as well as da’wah efforts with communities in Flint, Michigan, and Toledo, Ohio.`,
     },
-  ];
+     {
+      name: "Abdur Rasheed Vanzant",
+      role: "Board Member",
+      image: abdurImg,
+      blurb: "Board member.",
+      bio: ``,
+    },
+     {
+      name: "Ibrahim Saadiq",
+      role: "Board Member, Ex Committee Chair",
+      image: ibrahimImg,
+      blurb: "Board member.",
+      bio: ``,
+    },
+     {
+      name: "Jabril Abdus Salam",
+      role: "Board Member",
+      image: jabrilImg,
+      blurb: "Boerd member.",
+      bio: ``,
+    },
+  ]
 
   function handleOpen(person) {
     setSelected(person);
@@ -69,14 +94,15 @@ He has also been instrumental in the success of many programs at The Muslim Cent
 
       <section className="leadershipGridPage">
         {people.map((p) => (
-          <LeadershipGridCard
-            key={p.name}
-            name={p.name}
-            role={p.role}
-            image={p.image}
-            blurb={p.blurb}
-            onClick={() => handleOpen(p)}
-          />
+         <LeadershipGridCard
+  key={p.id}
+  name={p.name}
+  role={p.role}
+  image={p.image}
+  imagePosition={p.imagePosition}
+  blurb={p.blurb}
+  onClick={() => handleOpen(p)}
+/>
         ))}
       </section>
 

@@ -22,7 +22,7 @@ export default function IqamahAdmin({ adminKey }) {
     setLoading(true);
 
     try {
-      const res = await fetch("/api/admin/iqamah", {
+      const res = await fetch("/api/iqamah", {
         headers: { "x-admin-key": adminKey },
       });
 
@@ -54,7 +54,7 @@ export default function IqamahAdmin({ adminKey }) {
     setLoading(true);
 
     try {
-      const res = await fetch("/api/admin/iqamah", {
+      const res = await fetch("/api/iqamah", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -104,12 +104,13 @@ export default function IqamahAdmin({ adminKey }) {
             <label key={k} className="adminFileLabel">
               <span className="adminLabel">{k.toUpperCase()}</span>
               <input
-                className="adminInput"
-                value={iqamah[k] || ""}
-                onChange={(e) =>
-                  setIqamah({ ...iqamah, [k]: e.target.value })
-                }
-              />
+  type="time"
+  className="adminInput"
+  value={iqamah[k] || ""}
+  onChange={(e) =>
+    setIqamah({ ...iqamah, [k]: e.target.value })
+  }
+/>
             </label>
           ))}
 

@@ -2,17 +2,33 @@ import { useEffect, useState } from "react";
 import { uploadAdminImage } from "./adminutils";
 import "../../styles/pages.css";
 
+function formatTime12(time) {
+  if (!time) return "";
+
+  const [hour, minute] = time.split(":");
+  const date = new Date();
+  date.setHours(Number(hour));
+  date.setMinutes(Number(minute));
+
+  return date.toLocaleTimeString([], {
+    hour: "numeric",
+    minute: "2-digit",
+  });
+}
+
 export default function ProgramsAdmin({ adminKey }) {
   const [programs, setPrograms] = useState([]);
   const [status, setStatus] = useState("");
 
   const [newProgram, setNewProgram] = useState({
-    title: "",
-    audience: "",
-    schedule: "",
-    description: "",
-    image_url: "",
-  });
+  title: "",
+  audience: "",
+  schedule: "",
+  program_date: "",
+  program_time: "",
+  description: "",
+  image_url: "",
+});
   const [newProgramFile, setNewProgramFile] = useState(null);
 
   const [editingProgramId, setEditingProgramId] = useState(null);
@@ -33,12 +49,14 @@ export default function ProgramsAdmin({ adminKey }) {
     setStatus("");
     setEditingProgramId(p.id);
     setEditProgram({
-      title: p.title || "",
-      audience: p.audience || "",
-      schedule: p.schedule || "",
-      description: p.description || "",
-      image_url: p.image_url || "",
-    });
+  title: p.title || "",
+  audience: p.audience || "",
+  schedule: p.schedule || "",
+  program_date: p.program_date || "",
+  program_time: p.program_time || "",
+  description: p.description || "",
+  image_url: p.image_url || "",
+});
     setEditProgramFile(null);
   }
 
@@ -80,13 +98,15 @@ export default function ProgramsAdmin({ adminKey }) {
       if (!res.ok) return setStatus(json.error || "Create failed");
 
       setStatus("✅ Program created");
-      setNewProgram({
-        title: "",
-        audience: "",
-        schedule: "",
-        description: "",
-        image_url: "",
-      });
+     setNewProgram({
+  title: "",
+  audience: "",
+  schedule: "",
+  program_date: "",
+  program_time: "",
+  description: "",
+  image_url: "",
+});
       setNewProgramFile(null);
       loadPrograms();
     } catch (err) {
@@ -172,23 +192,42 @@ export default function ProgramsAdmin({ adminKey }) {
           />
 
           <div className="adminFormRow">
-            <input
-              className="adminInput"
-              placeholder="Audience (Youth / Adults / Family)"
-              value={newProgram.audience}
-              onChange={(e) =>
-                setNewProgram({ ...newProgram, audience: e.target.value })
-              }
-            />
-            <input
-              className="adminInput"
-              placeholder="Schedule (Saturdays 10:00 AM)"
-              value={newProgram.schedule}
-              onChange={(e) =>
-                setNewProgram({ ...newProgram, schedule: e.target.value })
-              }
-            />
-          </div>
+  <input
+    className="adminInput"
+    placeholder="Audience (Youth / Adults / Family)"
+    value={newProgram.audience}
+    onChange={(e) =>
+      setNewProgram({ ...newProgram, audience: e.target.value })
+    }
+  />
+
+  <div className="adminGrid2">
+    <input
+      type="date"
+      className="adminInput"
+      value={newProgram.program_date || ""}
+      onChange={(e) =>
+        setNewProgram({
+          ...newProgram,
+          program_date: e.target.value,
+        })
+      }
+    />
+
+    <input
+      type="time"
+      className="adminInput"
+      value={newProgram.program_time || ""}
+      onChange={(e) =>
+        setNewProgram({
+          ...newProgram,
+          program_time: e.target.value,
+        })
+      }
+    />
+  </div>
+</div>
+          
 
           <label className="adminFileLabel">
             <span className="adminLabel">Program Image (upload)</span>
@@ -235,9 +274,9 @@ export default function ProgramsAdmin({ adminKey }) {
                 <div className="adminItemTop">
                   <div className="adminItemMeta">
                     <strong>{p.title}</strong>
-                    <div className="adminItemSubtext">
-                      {p.audience || "-"} • {p.schedule || "-"}
-                    </div>
+                   <div className="adminItemSubtext">
+  {p.audience || "-"} • {p.program_date || "-"} • {formatTime12(p.program_time)}
+</div>
                   </div>
 
                   <div className="adminButtonRow">
@@ -290,30 +329,45 @@ export default function ProgramsAdmin({ adminKey }) {
                         placeholder="Title *"
                       />
 
-                      <div className="adminFormRow">
-                        <input
-                          className="adminInput"
-                          value={editProgram.audience}
-                          onChange={(e) =>
-                            setEditProgram({
-                              ...editProgram,
-                              audience: e.target.value,
-                            })
-                          }
-                          placeholder="Audience"
-                        />
-                        <input
-                          className="adminInput"
-                          value={editProgram.schedule}
-                          onChange={(e) =>
-                            setEditProgram({
-                              ...editProgram,
-                              schedule: e.target.value,
-                            })
-                          }
-                          placeholder="Schedule"
-                        />
-                      </div>
+<div className="adminFormRow">
+  <input
+    className="adminInput"
+    value={editProgram.audience}
+    onChange={(e) =>
+      setEditProgram({
+        ...editProgram,
+        audience: e.target.value,
+      })
+    }
+    placeholder="Audience"
+  />
+
+  <div className="adminGrid2">
+    <input
+      type="date"
+      className="adminInput"
+      value={editProgram.program_date || ""}
+      onChange={(e) =>
+        setEditProgram({
+          ...editProgram,
+          program_date: e.target.value,
+        })
+      }
+    />
+
+    <input
+      type="time"
+      className="adminInput"
+      value={editProgram.program_time || ""}
+      onChange={(e) =>
+        setEditProgram({
+          ...editProgram,
+          program_time: e.target.value,
+        })
+      }
+    />
+  </div>
+</div>
 
                       <label className="adminFileLabel">
                         <span className="adminLabel">Replace Image (upload)</span>

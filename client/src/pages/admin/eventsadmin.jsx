@@ -2,6 +2,20 @@ import { useEffect, useState } from "react";
 import { parseCap, uploadAdminImage } from "./adminutils";
 import "../../styles/pages.css";
 
+function formatTime12(time) {
+  if (!time) return "";
+
+  const [hour, minute] = time.split(":");
+  const date = new Date();
+  date.setHours(Number(hour));
+  date.setMinutes(Number(minute));
+
+  return date.toLocaleTimeString([], {
+    hour: "numeric",
+    minute: "2-digit",
+  });
+}
+
 export default function EventsAdmin({ adminKey }) {
   const [status, setStatus] = useState("");
   const [events, setEvents] = useState([]);
@@ -233,17 +247,18 @@ export default function EventsAdmin({ adminKey }) {
 
         <div className="adminGrid2">
           <input
-            className="adminInput"
-            placeholder="Day (Friday)"
-            value={newEvent.day}
-            onChange={(e) => setNewEvent({ ...newEvent, day: e.target.value })}
-          />
-          <input
-            className="adminInput"
-            placeholder="Time (1:30 PM)"
-            value={newEvent.time}
-            onChange={(e) => setNewEvent({ ...newEvent, time: e.target.value })}
-          />
+  type="date"
+  className="adminInput"
+  value={newEvent.day}
+  onChange={(e) => setNewEvent({ ...newEvent, day: e.target.value })}
+/>
+
+<input
+  type="time"
+  className="adminInput"
+  value={newEvent.time}
+  onChange={(e) => setNewEvent({ ...newEvent, time: e.target.value })}
+/>
         </div>
 
         <input
@@ -338,8 +353,8 @@ export default function EventsAdmin({ adminKey }) {
                 <div>
                   <strong>{ev.title}</strong>
                   <div className="adminMeta">
-                    {ev.day} • {ev.time} • {ev.category}
-                  </div>
+  {ev.day} • {formatTime12(ev.time)} • {ev.category}
+</div>
                 </div>
 
                 <div className="adminActions">
@@ -390,20 +405,23 @@ export default function EventsAdmin({ adminKey }) {
                   />
 
                   <div className="adminGrid2">
-                    <input
-                      className="adminInput"
-                      value={editEvent.day}
-                      onChange={(e) =>
-                        setEditEvent({ ...editEvent, day: e.target.value })
-                      }
-                    />
-                    <input
-                      className="adminInput"
-                      value={editEvent.time}
-                      onChange={(e) =>
-                        setEditEvent({ ...editEvent, time: e.target.value })
-                      }
-                    />
+                   <input
+  type="date"
+  className="adminInput"
+  value={editEvent.day}
+  onChange={(e) =>
+    setEditEvent({ ...editEvent, day: e.target.value })
+  }
+/>
+
+<input
+  type="time"
+  className="adminInput"
+  value={editEvent.time}
+  onChange={(e) =>
+    setEditEvent({ ...editEvent, time: e.target.value })
+  }
+/>
                   </div>
 
                   <textarea
