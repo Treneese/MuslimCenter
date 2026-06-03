@@ -1,3 +1,5 @@
 VITE_MOHID_DONATE_URL=https://us.mohid.co/mi/detroit/mcd/masjid/online/donation
 VITE_QUICKPAY_CASHAPP_URL=https://cash.app/$1605TheMuslimCenter
 VITE_QUICKPAY_PAYPAL_URL=https://www.paypal.com/ncp/payment/8S9PKS2USMNBW
+
+VITE_API_BASE_URL=https://muslimcenter-production.up.railway.app

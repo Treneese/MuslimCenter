@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "../styles/featurecards.css";
+import { apiUrl } from "../../api";
 
 export default function Programs() {
   const [programs, setPrograms] = useState([]);
@@ -11,7 +12,7 @@ export default function Programs() {
     setLoading(true);
 
     try {
-      const res = await fetch("/api/programs");
+      const res = await fetch(apiUrl("/api/programs"));
       const data = await res.json().catch(() => []);
       if (!res.ok) throw new Error(data?.error || "Failed to load programs");
       setPrograms(Array.isArray(data) ? data : []);

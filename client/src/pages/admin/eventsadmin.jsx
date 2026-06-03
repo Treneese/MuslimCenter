@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { parseCap, uploadAdminImage } from "./adminutils";
 import "../../styles/pages.css";
+import { apiUrl } from "../../../api";
 
 function formatTime12(time) {
   if (!time) return "";
@@ -46,7 +47,7 @@ export default function EventsAdmin({ adminKey }) {
   const [rsvpStatus, setRsvpStatus] = useState("");
 
   async function loadEvents() {
-    const res = await fetch("/api/events");
+    const res = await fetch(apiUrl("/api/events"));
     const data = await res.json().catch(() => []);
     setEvents(Array.isArray(data) ? data : []);
   }
@@ -100,14 +101,14 @@ export default function EventsAdmin({ adminKey }) {
         rsvp_capacity: parseCap(newEvent.rsvp_capacity),
       };
 
-      const res = await fetch("/api/events", {
+      const res = await fetch(apiUrl("/api/events", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           "x-admin-key": adminKey,
         },
         body: JSON.stringify(payload),
-      });
+      }));
 
       const json = await res.json().catch(() => ({}));
       if (!res.ok) return setStatus(json.error || "Create failed");
@@ -151,14 +152,14 @@ export default function EventsAdmin({ adminKey }) {
         rsvp_capacity: parseCap(editEvent.rsvp_capacity),
       };
 
-      const res = await fetch(`/api/events/${id}`, {
+      const res = await fetch(apiUrl(`/api/events/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
           "x-admin-key": adminKey,
         },
         body: JSON.stringify(payload),
-      });
+      }));
 
       const json = await res.json().catch(() => ({}));
       if (!res.ok) return setStatus(json.error || "Update failed");
@@ -175,10 +176,10 @@ export default function EventsAdmin({ adminKey }) {
     setStatus("");
     if (!adminKey) return setStatus("Enter admin key first.");
 
-    const res = await fetch(`/api/events/${id}`, {
+    const res = await fetch(apiUrl(`/api/events/${id}`, {
       method: "DELETE",
       headers: { "x-admin-key": adminKey },
-    });
+    }));
 
     const json = await res.json().catch(() => ({}));
     if (!res.ok) return setStatus(json.error || "Delete failed");
@@ -196,9 +197,9 @@ export default function EventsAdmin({ adminKey }) {
     setRsvpStatus("");
     setRsvpOpenForEventId(eventId);
 
-    const res = await fetch(`/api/admin/rsvps?event_id=${eventId}`, {
+    const res = await fetch(apiUrl(`/api/admin/rsvps?event_id=${eventId}`, {
       headers: { "x-admin-key": adminKey },
-    });
+    }));
 
     const data = await res.json().catch(() => []);
     if (!res.ok) {
@@ -212,10 +213,10 @@ export default function EventsAdmin({ adminKey }) {
   async function deleteRsvp(rsvpId) {
     if (!adminKey) return;
 
-    const res = await fetch(`/api/admin/rsvps/${rsvpId}`, {
+    const res = await fetch(apiUrl(`/api/admin/rsvps/${rsvpId}`, {
       method: "DELETE",
       headers: { "x-admin-key": adminKey },
-    });
+    }));
 
     const json = await res.json().catch(() => ({}));
     if (!res.ok) return setRsvpStatus(json.error || "Failed to delete RSVP");

@@ -5,6 +5,7 @@ import IqamahAdmin from "./iqamahadmin";
 import { TabButton } from "./adminutils";
 import "../../styles/pages.css";
 
+
 export default function Admin() {
   const [adminKey, setAdminKey] = useState("");
   const [tab, setTab] = useState("events");

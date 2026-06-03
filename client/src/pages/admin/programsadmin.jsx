@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { uploadAdminImage } from "./adminutils";
 import "../../styles/pages.css";
+import { apiUrl } from "../../../api";
 
 function formatTime12(time) {
   if (!time) return "";
@@ -36,7 +37,7 @@ export default function ProgramsAdmin({ adminKey }) {
   const [editProgramFile, setEditProgramFile] = useState(null);
 
   async function loadPrograms() {
-    const res = await fetch("/api/programs");
+    const res = await fetch(apiUrl("/api/programs"));
     const data = await res.json().catch(() => []);
     setPrograms(Array.isArray(data) ? data : []);
   }
@@ -85,14 +86,14 @@ export default function ProgramsAdmin({ adminKey }) {
         image_url: image_url || null,
       };
 
-      const res = await fetch("/api/programs", {
+      const res = await fetch(apiUrl("/api/programs", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           "x-admin-key": adminKey,
         },
         body: JSON.stringify(payload),
-      });
+      }));
 
       const json = await res.json().catch(() => ({}));
       if (!res.ok) return setStatus(json.error || "Create failed");
@@ -131,14 +132,14 @@ export default function ProgramsAdmin({ adminKey }) {
         image_url: image_url || null,
       };
 
-      const res = await fetch(`/api/programs/${id}`, {
+      const res = await fetch(apiUrl(`/api/programs/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
           "x-admin-key": adminKey,
         },
         body: JSON.stringify(payload),
-      });
+      }));
 
       const json = await res.json().catch(() => ({}));
       if (!res.ok) return setStatus(json.error || "Update failed");
@@ -155,10 +156,10 @@ export default function ProgramsAdmin({ adminKey }) {
     setStatus("");
     if (!adminKey) return setStatus("Enter admin key first.");
 
-    const res = await fetch(`/api/programs/${id}`, {
+    const res = await fetch(apiUrl(`/api/programs/${id}`, {
       method: "DELETE",
       headers: { "x-admin-key": adminKey },
-    });
+    }));
 
     const json = await res.json().catch(() => ({}));
     if (!res.ok) return setStatus(json.error || "Delete failed");

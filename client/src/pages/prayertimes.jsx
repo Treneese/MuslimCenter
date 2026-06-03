@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "../styles/prayertimes.css";
+import { apiUrl } from "../../api";
 
 const prayerOrder = ["Fajr", "Dhuhr", "Asr", "Maghrib", "Isha"];
 
@@ -25,7 +26,7 @@ export default function PrayerTimes() {
     async function load() {
       try {
         setErr("");
-        const res = await fetch("/api/prayer-times");
+        const res = await fetch(apiUrl("/api/prayer-times"));
         const json = await res.json();
         if (!json.ok) throw new Error(json.error || "Failed to load");
         setData(json);

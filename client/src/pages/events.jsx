@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "../styles/featurecards.css";
+import { apiUrl } from "../../api";
 
 export default function Events() {
   const [events, setEvents] = useState([]);
@@ -12,7 +13,7 @@ export default function Events() {
       setLoading(true);
 
       try {
-        const res = await fetch("/api/events");
+        const res = await fetch(apiUrl("/api/events"));
         const data = await res.json().catch(() => []);
         if (!res.ok) throw new Error(data?.error || "Failed to load events");
         setEvents(Array.isArray(data) ? data : []);
