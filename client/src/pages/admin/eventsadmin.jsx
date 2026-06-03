@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { parseCap, uploadAdminImage } from "./adminutils";
 import "../../styles/pages.css";
-import { apiUrl } from "../../../api";
+import { apiUrl } from "../../api";
 
 function formatTime12(time) {
   if (!time) return "";

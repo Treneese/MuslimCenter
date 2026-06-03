@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "../styles/prayertimes.css";
-import { apiUrl } from "../../api";
+import { apiUrl } from "../api";
 
 const prayerOrder = ["Fajr", "Dhuhr", "Asr", "Maghrib", "Isha"];
 

@@ -1,5 +1,5 @@
 import "../../styles/pages.css";
-import { apiUrl } from "../../../api";
+import { apiUrl } from "../../api";
 
 export function TabButton({ active, onClick, children }) {
   return (

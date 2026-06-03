@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "../styles/featurecards.css";
-import { apiUrl } from "../../api";
+import { apiUrl } from "../api";
 
 export default function Programs() {
   const [programs, setPrograms] = useState([]);

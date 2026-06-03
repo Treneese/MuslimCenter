@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "../../styles/pages.css";
-import { apiUrl } from "../../../api";
+import { apiUrl } from "../../api";
 
 export default function IqamahAdmin({ adminKey }) {
   const [iqamah, setIqamah] = useState({

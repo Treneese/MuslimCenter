@@ -1,5 +1,6 @@
 // client/src/pages/home/useHomeData.js
 import { useEffect, useState } from "react";
+import { apiUrl } from "../../api";
 
 export default function useHomeData() {
   const [events, setEvents] = useState([]);
