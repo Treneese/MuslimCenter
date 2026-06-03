@@ -11,8 +11,8 @@ resend.api_key = os.getenv("RESEND_API_KEY")
 
 def send_contact_email(msg):
     resend.Emails.send({
-        "from": "Muslim Center <onboarding@resend.dev>",
-        "to": [os.getenv("CONTACT_RECEIVER_EMAIL", "treneesejohnson9012@gmail.com")],
+        "from": "Muslim Center <contact@themuslimcenter.com>",
+        "to": [os.getenv("CONTACT_RECEIVER_EMAIL")],
         "subject": f"New Contact Message: {msg.subject or 'No Subject'}",
         "html": f"""
             <h2>New Contact Message</h2>
