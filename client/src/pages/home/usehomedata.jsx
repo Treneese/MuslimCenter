@@ -19,7 +19,7 @@ export default function useHomeData() {
       setLoadingEvents(true);
       setEventsError("");
       try {
-        const res = await fetch("/api/events");
+        const res = await fetch(apiUrl("/api/events"));
         const data = await res.json().catch(() => []);
         if (!res.ok) throw new Error(data?.error || "Failed to load events");
 
@@ -37,7 +37,7 @@ export default function useHomeData() {
       setPrayerError("");
       try {
         // ✅ Change this endpoint if yours is different
-        const res = await fetch("/api/prayer-times");
+        const res = await fetch(apiUrl("/api/prayer-times"));
         const data = await res.json().catch(() => null);
         if (!res.ok) throw new Error(data?.error || "Failed to load prayer times");
         if (alive) setPrayerTimes(data);
