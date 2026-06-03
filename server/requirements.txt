@@ -63,7 +63,7 @@ MarkupSafe==2.1.5
 marshmallow==3.22.0
 marshmallow-sqlalchemy==1.1.1
 msgspec==0.18.6
-narwhals==1.5.2numpy==1.24.4
+narwhals==1.5.2
 openai==1.42.0
 opencv-python==4.10.0.84
 opencv-python-headless==4.10.0.84
