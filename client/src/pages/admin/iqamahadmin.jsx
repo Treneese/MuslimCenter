@@ -23,9 +23,9 @@ export default function IqamahAdmin({ adminKey }) {
     setLoading(true);
 
     try {
-      const res = await fetch(apiUrl("/api/iqamah", {
+      const res = await fetch(apiUrl("/api/iqamah"), {
         headers: { "x-admin-key": adminKey },
-      }));
+      });
 
       const json = await res.json().catch(() => ({}));
 
@@ -55,14 +55,14 @@ export default function IqamahAdmin({ adminKey }) {
     setLoading(true);
 
     try {
-      const res = await fetch(apiUrl("/api/iqamah", {
+      const res = await fetch(apiUrl("/api/iqamah"), {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
           "x-admin-key": adminKey,
         },
         body: JSON.stringify(iqamah),
-      }));
+      });
 
       const json = await res.json().catch(() => ({}));
 

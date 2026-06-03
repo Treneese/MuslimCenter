@@ -17,11 +17,11 @@ export async function uploadAdminImage({ adminKey, file }) {
   const fd = new FormData();
   fd.append("file", file);
 
-  const res = await fetch(apiUrl("/api/admin/upload", {
+  const res = await fetch(apiUrl("/api/admin/upload"), {
     method: "POST",
     headers: { "x-admin-key": adminKey },
     body: fd,
-  }));
+  });
 
   const json = await res.json().catch(() => ({}));
   if (!res.ok) throw new Error(json.error || "Upload failed");
