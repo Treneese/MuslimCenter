@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { serviceFormConfig } from "./serviceformconfig";
 import { getInvolvedConfig } from "./getinvolvedconfig";
+import { apiUrl } from "../../../api";
 
 function buildInitialState(fields) {
   const state = {};
@@ -92,7 +93,7 @@ export default function ServiceRequestModal({
         ...form,
       };
 
-      const res = await fetch("/api/contact", {
+      const res = await fetch(apiUrl("/api/contact"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
