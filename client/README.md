@@ -1,16 +1,115 @@
-# React + Vite
+# Portfolio Client
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The Portfolio Client is a modern React application showcasing my work as a software engineer, founder, and artist. It serves as the primary online presence for my professional brand, bringing together software projects, business ventures, and creative work in one experience.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Purpose
 
-## React Compiler
+The client was designed to provide recruiters, collaborators, and visitors with a central place to learn about my background, explore my projects, and connect with me professionally.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+# Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Home
+
+- Professional introduction
+- Featured highlights
+- Quick navigation
+
+---
+
+## Software Engineering
+
+- Technical projects
+- Skills
+- Technologies
+- GitHub integration
+
+---
+
+## Founder
+
+- DOKO Battlefield
+- D'AMS
+- Product vision
+- Startup roadmap
+
+---
+
+## Artist
+
+- Fine art
+- Film projects
+- Zanura
+- Creative portfolio
+
+---
+
+## Contact
+
+- Contact form
+- Social links
+- Professional profiles
+
+---
+
+# Technology Stack
+
+## Frontend
+
+- React
+- JavaScript
+- HTML5
+- CSS3
+
+## Deployment
+
+- Vercel
+
+---
+
+# Project Structure
+
+```text
+client/
+│
+├── src/
+│   ├── assets/
+│   ├── components/
+│   ├── pages/
+│   ├── styles/
+│   └── App.jsx
+│
+├── public/
+├── package.json
+└── README.md
+```
+
+---
+
+# Design Goals
+
+- Responsive design
+- Modern user interface
+- Fast performance
+- Clear project presentation
+- Consistent branding
+- Professional recruiter experience
+
+---
+
+# Current Status
+
+Active Development
+
+The portfolio continues to evolve alongside new software projects, products, and creative work.
+
+---
+
+# Related Projects
+
+- DOKO Battlefield
+- Muslim Center
+- D'AMS
