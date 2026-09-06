@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import heroImg from "../../../assets/muslim center.webp";
+import heroImg from "../../../assets/muslim_center.png";
 import "../../../styles/home.css";
 
 export default function Hero() {

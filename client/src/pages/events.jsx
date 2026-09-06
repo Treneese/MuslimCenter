@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "../styles/featurecards.css";
-import { apiUrl } from "../api";
+import { apiUrl, mediaUrl } from "../api";
 
 export default function Events() {
   const [events, setEvents] = useState([]);
@@ -46,7 +46,7 @@ export default function Events() {
           <article key={e.id} className="featureCard">
             {e.image_url ? (
               <img
-                src={e.image_url}
+                src={mediaUrl(e.image_url)}
                 alt={e.title || "Event image"}
                 className="featureCardImage"
                 onError={(ev) => {

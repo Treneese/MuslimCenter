@@ -853,3 +853,435 @@
   margin-top: 10px;
   color: #164800;
 }
+
+.adminScheduleBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+}
+
+.adminFieldLabel {
+  font-weight: 700;
+}
+
+.adminDateList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.adminDateRow {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.adminDateRow .adminInput {
+  flex: 1;
+}
+
+.adminTimeSection {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.adminWeekdayGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.adminWeekdayGrid button {
+  min-width: 90px;
+}
+
+
+.calendarPage {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+.calendarHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.calendarEyebrow {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.7;
+  margin-bottom: 6px;
+}
+
+.calendarTitle {
+  margin: 0;
+  font-size: clamp(
+    2rem,
+    4vw,
+    3.5rem
+  );
+}
+
+.calendarIntro {
+  margin: 8px 0 0;
+  max-width: 620px;
+  opacity: 0.8;
+}
+
+.calendarNav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.calendarFilters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.calendarStatus {
+  margin-bottom: 16px;
+}
+
+.calendarShell {
+  overflow: hidden;
+  border: 1px solid
+    rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  background: #fff;
+}
+
+.calendarWeekdays {
+  display: grid;
+  grid-template-columns:
+    repeat(7, minmax(0, 1fr));
+  border-bottom: 1px solid
+    rgba(0, 0, 0, 0.1);
+}
+
+.calendarWeekday {
+  padding: 14px 10px;
+  font-weight: 700;
+  text-align: center;
+  font-size: 0.85rem;
+  border-right: 1px solid
+    rgba(0, 0, 0, 0.08);
+}
+
+.calendarWeekday:last-child {
+  border-right: 0;
+}
+
+.calendarGrid {
+  display: grid;
+  grid-template-columns:
+    repeat(7, minmax(0, 1fr));
+}
+
+.calendarDay {
+  min-height: 150px;
+  padding: 10px;
+  border-right: 1px solid
+    rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid
+    rgba(0, 0, 0, 0.08);
+  background: #fff;
+}
+
+.calendarDay:nth-child(7n) {
+  border-right: 0;
+}
+
+.calendarDayMuted {
+  opacity: 0.42;
+}
+
+.calendarDayToday {
+  box-shadow:
+    inset 0 0 0 2px
+    rgba(23, 117, 60, 0.7);
+}
+
+.calendarDayNumber {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  margin-bottom: 8px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.calendarDayToday
+.calendarDayNumber {
+  background: rgba(
+    23,
+    117,
+    60,
+    0.12
+  );
+}
+
+.calendarDayItems {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.calendarItem {
+  padding: 7px 8px;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  line-height: 1.25;
+}
+
+.calendarItemEVENT {
+  background: rgba(
+    219,
+    160,
+    76,
+    0.14
+  );
+  border-left: 3px solid
+    rgba(219, 160, 76, 0.9);
+}
+
+.calendarItemPROGRAM {
+  background: rgba(
+    23,
+    117,
+    60,
+    0.12
+  );
+  border-left: 3px solid
+    rgba(23, 117, 60, 0.85);
+}
+
+.calendarItemTitle {
+  font-weight: 700;
+}
+
+.calendarItemTime {
+  margin-top: 2px;
+  opacity: 0.72;
+  font-size: 0.72rem;
+}
+
+
+@media (max-width: 900px) {
+  .calendarHeader {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .calendarShell {
+    overflow-x: auto;
+  }
+
+  .calendarWeekdays,
+  .calendarGrid {
+    min-width: 840px;
+  }
+}
+
+
+@media (max-width: 600px) {
+  .calendarPage {
+    padding:
+      28px 16px 60px;
+  }
+
+  .calendarNav {
+    width: 100%;
+  }
+
+  .calendarNav button {
+    flex: 1;
+  }
+
+  .calendarFilters button {
+    flex: 1;
+  }
+}
+
+
+.calendarItem {
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  border-top: 0;
+  border-right: 0;
+  border-bottom: 0;
+}
+
+.calendarItem:hover {
+  transform: translateY(-1px);
+}
+
+.calendarDetailOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.calendarDetailCard {
+  position: relative;
+  width: min(560px, 100%);
+  max-height: 85vh;
+  overflow-y: auto;
+  background: #fff;
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow:
+    0 20px 60px
+    rgba(0, 0, 0, 0.2);
+}
+
+.calendarDetailClose {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  border: 0;
+  background: transparent;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+.calendarDetailType {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.65;
+  margin-bottom: 6px;
+}
+
+.calendarDetailTitle {
+  margin:
+    0 40px 12px 0;
+}
+
+.calendarDetailMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  margin-bottom: 18px;
+  font-weight: 600;
+}
+
+.calendarDetailLine {
+  margin-top: 10px;
+}
+
+.calendarDetailDescription {
+  margin-top: 18px;
+  line-height: 1.6;
+}
+
+.calendarMobileList {
+  display: none;
+}
+
+.calendarMobileEmpty {
+  padding: 24px;
+  text-align: center;
+  opacity: 0.7;
+}
+
+.calendarMobileItem {
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+  gap: 14px;
+  padding: 14px;
+  border: 0;
+  border-radius: 12px;
+  background: #fff;
+  text-align: left;
+  cursor: pointer;
+}
+
+.calendarMobileItemEVENT {
+  border-left: 4px solid rgba(219, 160, 76, 0.9);
+}
+
+.calendarMobileItemPROGRAM {
+  border-left: 4px solid rgba(23, 117, 60, 0.85);
+}
+
+.calendarMobileDate {
+  width: 54px;
+  min-width: 54px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid rgba(0, 0, 0, 0.08);
+  padding-right: 12px;
+}
+
+.calendarMobileDay {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  opacity: 0.65;
+}
+
+.calendarMobileDate strong {
+  font-size: 1.35rem;
+  line-height: 1.1;
+}
+
+.calendarMobileContent {
+  flex: 1;
+}
+
+.calendarMobileType {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.6;
+  margin-bottom: 4px;
+}
+
+.calendarMobileTitle {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.calendarMobileTime {
+  margin-top: 4px;
+  font-size: 0.85rem;
+  opacity: 0.75;
+}
+
+@media (max-width: 600px) {
+  .calendarShell {
+    display: none;
+  }
+
+  .calendarMobileList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}

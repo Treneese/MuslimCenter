@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "../styles/featurecards.css";
-import { apiUrl } from "../api";
+import { apiUrl, mediaUrl } from "../api";
 
 export default function Programs() {
   const [programs, setPrograms] = useState([]);
@@ -46,7 +46,7 @@ export default function Programs() {
           <article key={p.id} className="featureCard">
             {p.image_url ? (
               <img
-                src={p.image_url}
+                src={mediaUrl(p.image_url)}
                 alt={p.title || "Program image"}
                 className="featureCardImage"
                 onError={(ev) => {

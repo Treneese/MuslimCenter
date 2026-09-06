@@ -1,99 +1,132 @@
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, request, jsonify
 from config import db
 from models.event import Event
-from utils.admin import require_admin
 
 events_bp = Blueprint("events", __name__)
 
-def parse_bool(v, default=False):
-    if v is None:
-        return default
-    if isinstance(v, bool):
-        return v
-    if isinstance(v, (int, float)):
-        return bool(v)
-    if isinstance(v, str):
-        return v.strip().lower() in ("1", "true", "yes", "y", "on")
-    return default
 
-def parse_int(v, default=None):
-    if v is None or v == "":
-        return default
-    try:
-        return int(v)
-    except:
-        return default
+def normalize_event_payload(data):
+    dates = data.get("dates") or []
+
+    if isinstance(dates, str):
+        dates = [dates]
+
+    return {
+        "title": data.get("title"),
+        "dates": dates,
+        "start_time_type": data.get("start_time_type"),
+        "start_time_value": data.get("start_time_value"),
+        "end_time_type": data.get("end_time_type"),
+        "end_time_value": data.get("end_time_value"),
+        "all_day": bool(data.get("all_day", False)),
+        "no_end_time": bool(data.get("no_end_time", False)),
+        "category": data.get("category"),
+        "description": data.get("description"),
+        "image_url": data.get("image_url"),
+        "is_special": bool(data.get("is_special", False)),
+        "rsvp_enabled": bool(data.get("rsvp_enabled", False)),
+        "rsvp_capacity": data.get("rsvp_capacity"),
+        "location": data.get("location"),
+    }
+
 
 @events_bp.get("/api/events")
 def get_events():
     events = Event.query.order_by(Event.id.desc()).all()
-    return jsonify([e.to_dict() for e in events])
+    return jsonify([event.to_dict() for event in events])
+
 
 @events_bp.get("/api/events/<int:event_id>")
 def get_event(event_id):
-    e = Event.query.get_or_404(event_id)
-    return jsonify(e.to_dict())
+    event = Event.query.get_or_404(event_id)
+    return jsonify(event.to_dict())
+
 
 @events_bp.post("/api/events")
-@require_admin
 def create_event():
     data = request.get_json() or {}
+    payload = normalize_event_payload(data)
 
-    title = (data.get("title") or "").strip()
-    if not title:
-        return jsonify({"error": "title is required"}), 400
+    if not payload["title"]:
+        return jsonify({"error": "Title is required"}), 400
 
-    e = Event(
-        title=title,
-        day=data.get("day"),
-        time=data.get("time"),
-        category=data.get("category"),
-        description=data.get("description"),
-        image_url=data.get("image_url"),
-        is_special=parse_bool(data.get("is_special"), False),
-        rsvp_enabled=parse_bool(data.get("rsvp_enabled"), False),
-        rsvp_capacity=parse_int(data.get("rsvp_capacity"), None),
-        location=data.get("location"),
+    event = Event(
+        title=payload["title"],
+        start_time_type=payload["start_time_type"],
+        start_time_value=payload["start_time_value"],
+        end_time_type=payload["end_time_type"],
+        end_time_value=payload["end_time_value"],
+        all_day=payload["all_day"],
+        no_end_time=payload["no_end_time"],
+        category=payload["category"],
+        description=payload["description"],
+        image_url=payload["image_url"],
+        is_special=payload["is_special"],
+        rsvp_enabled=payload["rsvp_enabled"],
+        rsvp_capacity=payload["rsvp_capacity"],
+        location=payload["location"],
     )
 
-    db.session.add(e)
+    event.set_dates(payload["dates"])
+
+    # Keep old `time` field useful while older frontend code still exists.
+    if event.all_day:
+        event.time = "All Day"
+
+    elif event.start_time_value:
+        event.time = event.start_time_value
+
+    db.session.add(event)
     db.session.commit()
-    return jsonify(e.to_dict()), 201
+
+    return jsonify(event.to_dict()), 201
+
 
 @events_bp.put("/api/events/<int:event_id>")
-@require_admin
 def update_event(event_id):
-    e = Event.query.get_or_404(event_id)
+    event = Event.query.get_or_404(event_id)
+
     data = request.get_json() or {}
+    payload = normalize_event_payload(data)
 
-    if "title" in data:
-        e.title = (data.get("title") or "").strip()
-        if not e.title:
-            return jsonify({"error": "title is required"}), 400
+    if payload["title"]:
+        event.title = payload["title"]
 
-    if "day" in data: e.day = data.get("day")
-    if "time" in data: e.time = data.get("time")
-    if "category" in data: e.category = data.get("category")
-    if "description" in data: e.description = data.get("description")
-    if "image_url" in data: e.image_url = data.get("image_url")
-    if "location" in data: e.location = data.get("location")
+    event.set_dates(payload["dates"])
 
-    if "is_special" in data:
-        e.is_special = parse_bool(data.get("is_special"), e.is_special)
+    event.start_time_type = payload["start_time_type"]
+    event.start_time_value = payload["start_time_value"]
+    event.end_time_type = payload["end_time_type"]
+    event.end_time_value = payload["end_time_value"]
 
-    if "rsvp_enabled" in data:
-        e.rsvp_enabled = parse_bool(data.get("rsvp_enabled"), e.rsvp_enabled)
+    event.all_day = payload["all_day"]
+    event.no_end_time = payload["no_end_time"]
 
-    if "rsvp_capacity" in data:
-        e.rsvp_capacity = parse_int(data.get("rsvp_capacity"), None)
+    event.category = payload["category"]
+    event.description = payload["description"]
+    event.image_url = payload["image_url"]
+    event.is_special = payload["is_special"]
+    event.rsvp_enabled = payload["rsvp_enabled"]
+    event.rsvp_capacity = payload["rsvp_capacity"]
+    event.location = payload["location"]
+
+    if event.all_day:
+        event.time = "All Day"
+    elif event.start_time_value:
+        event.time = event.start_time_value
+    else:
+        event.time = None
 
     db.session.commit()
-    return jsonify(e.to_dict())
+
+    return jsonify(event.to_dict())
+
 
 @events_bp.delete("/api/events/<int:event_id>")
-@require_admin
 def delete_event(event_id):
-    e = Event.query.get_or_404(event_id)
-    db.session.delete(e)
+    event = Event.query.get_or_404(event_id)
+
+    db.session.delete(event)
     db.session.commit()
-    return jsonify({"deleted": True, "id": event_id})
+
+    return jsonify({"message": "Event deleted"})

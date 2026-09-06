@@ -19,6 +19,7 @@ import Donate from "./pages/donate.jsx";
 import Contact from "./pages/contact.jsx";
 import Admin from "./pages/admin/admin.jsx";
 import QuickPay from "./pages/quickpay";
+import Calendar from "./pages/calendar.jsx";
 
 import LearnIndex from "./pages/learn/learnindex";
 import WhatIsIslam from "./pages/learn/whatisislam";
@@ -86,6 +87,7 @@ export default function App() {
 
           <Route path="/prayer-times" element={<PrayerTimes />} />
           <Route path="/events" element={<Events />} />
+          <Route path="/calendar" element={<Calendar />} />
 
           <Route path="/services" element={<ServicesIndex />} />
           <Route path="/services/marriage" element={<Marriage />} />

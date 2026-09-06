@@ -97,13 +97,15 @@ leadership to serve the community with consistency and care.
       <section className="leadershipGridPage">
         {people.map((p) => (
           <LeadershipGridCard
-            key={p.id}
-            name={p.name}
-            role={p.role}
-            image={p.image}
-            blurb={p.blurb}
-            onClick={() => openPerson(p)}
-          />
+  key={p.id}
+  name={p.name}
+  role={p.role}
+  image={p.image}
+  imagePosition={p.imagePosition}
+  imageFit={p.imageFit}
+  blurb={p.blurb}
+  onClick={() => openPerson(p)}
+/>
         ))}
       </section>
 

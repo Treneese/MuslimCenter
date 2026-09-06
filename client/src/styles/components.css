@@ -167,15 +167,23 @@
 
 .leadershipCardImageWrap {
   width: 100%;
-  height: 255px;
-  background: linear-gradient(180deg, rgba(23,117,60,0.06), rgba(219,160,76,0.06));
+  height: 280px;
+  background: linear-gradient(
+    180deg,
+    rgba(23, 117, 60, 0.06),
+    rgba(219, 160, 76, 0.06)
+  );
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .leadershipCardImage {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center center;
   display: block;
 }
 

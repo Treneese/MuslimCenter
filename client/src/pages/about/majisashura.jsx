@@ -71,7 +71,7 @@ He has also been instrumental in the success of many programs at The Muslim Cent
       name: "Jabril Abdus Salam",
       role: "Board Member",
       image: jabrilImg,
-      blurb: "Boerd member.",
+      blurb: "Board member.",
       bio: ``,
     },
   ]
@@ -95,11 +95,12 @@ He has also been instrumental in the success of many programs at The Muslim Cent
       <section className="leadershipGridPage">
         {people.map((p) => (
          <LeadershipGridCard
-  key={p.id}
+  key={p.name}
   name={p.name}
   role={p.role}
   image={p.image}
   imagePosition={p.imagePosition}
+  imageFit={p.imageFit}
   blurb={p.blurb}
   onClick={() => handleOpen(p)}
 />

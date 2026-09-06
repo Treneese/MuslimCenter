@@ -1,14 +1,54 @@
 import "../styles/components.css";
 
-export default function LeadershipGrid({ children }) {
-  return <div style={grid}>{children}</div>;
+export default function LeadershipGridCard({
+  name,
+  role,
+  image,
+  blurb,
+  onClick,
+  imagePosition = "center center",
+  imageFit = "contain",
+}) {
+  return (
+    <button
+      type="button"
+      className="leadershipCard"
+      onClick={onClick}
+    >
+      <div className="leadershipCardImageWrap">
+        <img
+          src={image}
+          alt={name}
+          className="leadershipCardImage"
+          style={{
+            objectPosition: imagePosition,
+            objectFit: imageFit,
+          }}
+        />
+      </div>
+
+      <div className="leadershipCardBody">
+        <div className="leadershipCardName">
+          {name}
+        </div>
+
+        {role && (
+          <div className="leadershipCardRole">
+            {role}
+          </div>
+        )}
+
+        {blurb && (
+          <div className="leadershipCardBlurb">
+            {blurb}
+          </div>
+        )}
+
+        <div className="leadershipCardFooter">
+          <span>View</span>
+          <span>→</span>
+        </div>
+      </div>
+    </button>
+  );
 }
-
-const grid = {
-  display: "grid",
-  gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
-  gap: 14,
-};
-
-const mq = window?.matchMedia?.("(max-width: 900px)")?.matches;
-if (mq) grid.gridTemplateColumns = "1fr";

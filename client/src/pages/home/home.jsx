@@ -5,6 +5,7 @@ import ThisWeek from "./components/thisweek";
 import TodaysPrayerTimes from "./components/todaysprayertimes";
 import SupportMasjid from "./components/supportmasjid";
 import GetInvolved from "./components/getinvolved";
+import Calendar from "../calendar";
 
 export default function Home() {
   const {
