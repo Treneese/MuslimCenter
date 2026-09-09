@@ -14,3 +14,8 @@ client/.env
 
 # Mac
 .DS_Store
+
+instance/app.db
+*.db
+*.sqlite
+*.sqlite3
