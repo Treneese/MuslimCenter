@@ -46,7 +46,8 @@ import SpaceRental from "./pages/get-involved/spacerental";
 import Partner from "./pages/get-involved/partner";
 import Member from "./pages/get-involved/member";
 import Appointment from "./pages/get-involved/appointment";
-import GeneralCounseling from "./pages/services/generalcounseling.jsx";
+import GeneralCounseling from "./pages/services/generalcounseling";
+import ProposalForm from "./pages/get-involved/proposal";
 
 
 
@@ -106,6 +107,7 @@ export default function App() {
           <Route path="/get-involved/partner" element={<Partner />} />
           <Route path="/get-involved/member" element={<Member />} />
           <Route path="/get-involved/appointment" element={<Appointment />} />
+          <Route path="/get-involved/proposal" element={<ProposalForm />} />
 
           <Route path="/admin" element={<Admin />} />
         </Routes>

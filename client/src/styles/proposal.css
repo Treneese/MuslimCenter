@@ -1,0 +1,307 @@
+
+/* THE MUSLIM CENTER — PROPOSAL FORM */
+
+.proposalPage {
+  --proposal-primary: #365840;
+  --proposal-primary-dark: #274530;
+  --proposal-border: #d9e0d8;
+  --proposal-text: #25362b;
+  --proposal-muted: #69746c;
+
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 48px 24px 80px;
+  color: var(--proposal-text);
+}
+
+.proposalPage *,
+.proposalPage *::before,
+.proposalPage *::after {
+  box-sizing: border-box;
+}
+
+/* Header */
+
+.proposalHeader {
+  margin: 28px 0 36px;
+}
+
+.proposalHeader h1 {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+
+.proposalHeader p {
+  color: var(--proposal-muted);
+  line-height: 1.7;
+  max-width: 650px;
+}
+
+/* Progress */
+
+.proposalProgress {
+  background: #f5f7f3;
+  border: 1px solid var(--proposal-border);
+  border-radius: 14px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.proposalProgress p {
+  color: var(--proposal-muted);
+  font-size: 0.9rem;
+  margin: 0 0 12px;
+}
+
+.proposalProgress progress {
+  width: 100%;
+  height: 9px;
+  border: none;
+  border-radius: 20px;
+  overflow: hidden;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.proposalProgress progress::-webkit-progress-bar {
+  background: #e1e8df;
+  border-radius: 20px;
+}
+
+.proposalProgress progress::-webkit-progress-value {
+  background: var(--proposal-primary);
+  border-radius: 20px;
+}
+
+.proposalProgress progress::-moz-progress-bar {
+  background: var(--proposal-primary);
+}
+
+.proposalProgress h2 {
+  font-size: 1.35rem;
+  margin: 18px 0 0;
+}
+
+/* Form container */
+
+.proposalPage form {
+  background: #fff;
+  border: 1px solid var(--proposal-border);
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.035);
+}
+
+.proposalFields {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.proposalFields h3 {
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+/* Input fields */
+
+.proposalField,
+.proposalFields > label {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.proposalPage input:not([type="checkbox"]):not([type="radio"]),
+.proposalPage textarea,
+.proposalPage select {
+  width: 100%;
+  padding: 13px 15px;
+  border: 1px solid var(--proposal-border);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--proposal-text);
+  font: inherit;
+  font-weight: 400;
+}
+
+.proposalPage textarea {
+  min-height: 115px;
+  resize: vertical;
+}
+
+.proposalPage input:focus-visible,
+.proposalPage textarea:focus-visible,
+.proposalPage button:focus-visible {
+  outline: 3px solid rgba(54, 88, 64, 0.3);
+  outline-offset: 2px;
+  border-color: var(--proposal-primary);
+}
+
+/* Checkboxes and radio groups */
+
+.proposalPage fieldset {
+  min-width: 0;
+  margin: 0;
+  padding: 20px;
+  border: 1px solid var(--proposal-border);
+  border-radius: 10px;
+}
+
+.proposalPage legend {
+  padding: 0 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.proposalPage fieldset label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 12px 0;
+  font-weight: 400;
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+.proposalPage input[type="checkbox"],
+.proposalPage input[type="radio"] {
+  accent-color: var(--proposal-primary);
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+/* Review screen */
+
+.proposalReview {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.proposalReview > div {
+  padding: 16px;
+  border: 1px solid var(--proposal-border);
+  border-radius: 9px;
+  overflow-wrap: anywhere;
+}
+
+.proposalReview strong {
+  display: block;
+  font-size: 0.85rem;
+  margin-bottom: 7px;
+}
+
+.proposalReview p {
+  color: var(--proposal-muted);
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* Navigation buttons */
+
+.proposalActions {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.proposalPage button {
+  padding: 12px 26px;
+  border-radius: 8px;
+  border: 1px solid var(--proposal-primary);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.proposalActions button:first-child {
+  background: #fff;
+  color: var(--proposal-primary);
+}
+
+.proposalActions button:last-child,
+.proposalFields button[type="submit"] {
+  background: var(--proposal-primary);
+  color: #fff;
+}
+
+.proposalPage button:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.proposalPage button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Mobile */
+
+@media (max-width: 640px) {
+  .proposalPage {
+    padding: 24px 14px 56px;
+  }
+
+  .proposalHeader {
+    margin: 24px 0;
+  }
+
+  .proposalPage form {
+    padding: 20px 16px;
+  }
+
+  .proposalProgress {
+    padding: 20px 16px;
+  }
+
+  .proposalReview {
+    grid-template-columns: 1fr;
+  }
+
+  .proposalActions button {
+    flex: 1;
+    padding: 12px 14px;
+  }
+}
+
+
+
+.proposalErrors {
+  padding: 18px 22px;
+  margin-bottom: 24px;
+  background: #fff3f1;
+  border: 1px solid #e9b7b0;
+  border-radius: 10px;
+  color: #8d3026;
+}
+
+.proposalErrors strong {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.proposalErrors ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.proposalErrors li {
+  margin: 5px 0;
+}
+
+.proposalSuccess {
+  padding: 20px;
+  margin-bottom: 24px;
+  background: #edf7ed;
+  border: 1px solid #a8d5a8;
+  border-radius: 10px;
+  color: #245b32;
+}

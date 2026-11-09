@@ -7,6 +7,7 @@ import rentspaceImg from "../../assets/getinvolved/rentspace.png";
 import partnerImg from "../../assets/getinvolved/partnerwithus.jpg";
 import bookImg from "../../assets/getinvolved/book.jpg";
 import memberImg from "../../assets/getinvolved/bemember.jpg";
+import formImg from "../../assets/getinvolved/formImg.webp";
 
 export default function GetInvolvedIndex() {
   const [formData, setFormData] = useState({
@@ -46,6 +47,12 @@ export default function GetInvolvedIndex() {
       title: "Book an Appointment",
       subtitle: "Schedule a meeting or request support.",
       image: bookImg,
+    },
+    {
+      to: "/get-involved/proposal",
+      title: "Program & Event Proposal",
+      subtitle: "Have an idea for a program, class, event, or community service? Submit your proposal to The Muslim Center.",
+      image: formImg,
     },
   ];
 
